@@ -1,0 +1,19 @@
+.main-movies-title {
+  text-align: center;
+  margin: 1em;
+}
+
+.main-movies-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.main-movies-items-pro {
+  width: 400px;
+  height: 400px;
+  border: 1px solid;
+}
+/*# sourceMappingURL=app.component.css.map */

@@ -1,0 +1,15 @@
+.main-movies {
+  &-title {
+    text-align: center;
+    margin: 1em;
+  }
+  &-items {
+    display: flex;
+    justify-content: space-around;
+    &-pro {
+      width: 400px;
+      height: 400px;
+      border: 1px solid;
+    }
+  }
+}
