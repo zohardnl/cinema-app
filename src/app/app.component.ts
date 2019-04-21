@@ -1,30 +1,58 @@
 import { ApiService } from "./api.service";
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  styleUrls: ["./app.component.scss"]
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   private movie: any = {
     id: this.getID(),
-    title: this.api
-      .getPostTitle()
-      .subscribe(title => (this.movie.title = title)),
-    year: 0,
-    runtime: "",
-    genere: "",
-    director: ""
+    title: this.getTitle(),
+    year: this.getYear(),
+    runtime: this.getRunTime(),
+    genre: this.getGenre(),
+    director: this.getDirector()
   };
 
-  constructor(private api: ApiService) {}
-
-  // ngOnInit() {
-  //   this.api.getPostTitle().subscribe(title => (this.movie.title = title));
-  // }
+  constructor(private api: ApiService) { }
 
   getID() {
-    return Math.floor(Math.random() * 10 + 1);
+    return Math.floor(Math.random() * 1000 + 1);
   }
+
+  getTitle() {
+    this.api.getMovie().subscribe(
+      (res) => {
+        this.movie.title = res.Title
+        console.log(res)
+      }
+    );
+  }
+
+  getYear() {
+    this.api.getMovie().subscribe(
+      (res) => { this.movie.year = res.Year }
+    );
+  }
+
+  getRunTime() {
+    this.api.getMovie().subscribe(
+      (res) => { this.movie.runtime = res.Runtime }
+    );
+  }
+
+  getGenre() {
+    this.api.getMovie().subscribe(
+      (res) => { this.movie.genre = res.Genre }
+    );
+  }
+
+  getDirector() {
+    this.api.getMovie().subscribe(
+      (res) => { this.movie.director = res.Director }
+    );
+  }
+
 }
