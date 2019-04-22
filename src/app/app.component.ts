@@ -16,43 +16,40 @@ export class AppComponent {
     director: this.getDirector()
   };
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService) {}
 
   getID() {
     return Math.floor(Math.random() * 1000 + 1);
   }
 
   getTitle() {
-    this.api.getMovie().subscribe(
-      (res) => {
-        this.movie.title = res.Title
-        console.log(res)
-      }
-    );
+    this.api.getMovie().subscribe(res => {
+      this.movie.title = res.Title;
+      console.log(res);
+    });
   }
 
   getYear() {
-    this.api.getMovie().subscribe(
-      (res) => { this.movie.year = res.Year }
-    );
+    this.api.getMovie().subscribe(res => {
+      this.movie.year = res.Year;
+    });
   }
 
   getRunTime() {
-    this.api.getMovie().subscribe(
-      (res) => { this.movie.runtime = res.Runtime }
-    );
+    this.api.getMovie().subscribe(res => {
+      this.movie.runtime = res.Runtime;
+    });
   }
 
   getGenre() {
-    this.api.getMovie().subscribe(
-      (res) => { this.movie.genre = res.Genre }
-    );
+    this.api.getMovie().subscribe(res => {
+      this.movie.genre = res.Genre;
+    });
   }
 
   getDirector() {
-    this.api.getMovie().subscribe(
-      (res) => { this.movie.director = res.Director }
-    );
+    this.api.getMovie().subscribe(res => {
+      this.movie.director = res.Director;
+    });
   }
-
 }
