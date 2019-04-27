@@ -16,7 +16,7 @@ export class AppComponent {
     director: this.getDirector()
   };
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService) { }
 
   getID() {
     return Math.floor(Math.random() * 1000 + 1);
@@ -25,7 +25,6 @@ export class AppComponent {
   getTitle() {
     this.api.getMovie().subscribe(res => {
       this.movie.title = res.Title;
-      console.log(res);
     });
   }
 
