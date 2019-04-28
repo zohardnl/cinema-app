@@ -1,0 +1,5 @@
+@mixin background-image($url, $pos, $size) {
+  background-image: url("#{$url}");
+  background-position: $pos;
+  background-size: $size;
+}

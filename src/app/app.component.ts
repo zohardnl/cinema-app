@@ -1,5 +1,5 @@
-import { ApiService } from "./api.service";
 import { Component } from "@angular/core";
+import { MovieComponent } from './movie/movie.component';
 
 @Component({
   selector: "app-root",
@@ -7,48 +7,15 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-  private movie: any = {
-    id: this.getID(),
-    title: this.getTitle(),
-    year: this.getYear(),
-    runtime: this.getRunTime(),
-    genre: this.getGenre(),
-    director: this.getDirector()
-  };
+  movies = [];
+  movieitem: MovieComponent;
 
-  constructor(private api: ApiService) { }
-
-  getID() {
-    return Math.floor(Math.random() * 1000 + 1);
+  constructor(private movie: MovieComponent) {
+    this.movieitem = movie;
   }
 
-  getTitle() {
-    this.api.getMovie().subscribe(res => {
-      this.movie.title = res.Title;
-    });
-  }
 
-  getYear() {
-    this.api.getMovie().subscribe(res => {
-      this.movie.year = res.Year;
-    });
-  }
-
-  getRunTime() {
-    this.api.getMovie().subscribe(res => {
-      this.movie.runtime = res.Runtime;
-    });
-  }
-
-  getGenre() {
-    this.api.getMovie().subscribe(res => {
-      this.movie.genre = res.Genre;
-    });
-  }
-
-  getDirector() {
-    this.api.getMovie().subscribe(res => {
-      this.movie.director = res.Director;
-    });
+  addMovie() {
+    this.movies.push(this.movieitem);
   }
 }

@@ -1,0 +1,20 @@
+.movie-info {
+  h3 {
+    text-align: center;
+    white-space: nowrap;
+    font-weight: bold;
+    font-size: 30px;
+  }
+
+  label {
+    color: #6200ee;
+    font-weight: bold;
+    padding-right: 0.4em;
+  }
+
+  span {
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+}

@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
   providedIn: "root"
 })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getMovie() {
     return this.http.get<any>("http://www.omdbapi.com/?apikey=4b8331d2&t=t");
