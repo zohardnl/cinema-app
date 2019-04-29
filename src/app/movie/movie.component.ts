@@ -1,11 +1,10 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable } from "@angular/core";
 import { ApiService } from "../api.service";
 
-
 @Component({
-  selector: 'app-movie',
-  templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.scss']
+  selector: "app-movie",
+  templateUrl: "./movie.component.html",
+  styleUrls: ["./movie.component.scss"]
 })
 @Injectable({
   providedIn: "root"
@@ -17,14 +16,13 @@ export class MovieComponent implements OnInit {
     year: this.getYear(),
     runtime: this.getRunTime(),
     genre: this.getGenre(),
-    director: this.getDirector()
+    director: this.getDirector(),
+    poster: this.getPoster()
   };
 
+  constructor(private api: ApiService) {}
 
-
-  constructor(private api: ApiService) { }
-
-  ngOnInit() { }
+  ngOnInit() {}
 
   getID() {
     return Math.floor(Math.random() * 1000 + 1);
@@ -57,6 +55,12 @@ export class MovieComponent implements OnInit {
   getDirector() {
     this.api.getMovie().subscribe(res => {
       this.movie.director = res.Director;
+    });
+  }
+
+  getPoster() {
+    this.api.getMovie().subscribe(res => {
+      this.movie.poster = res.Poster;
     });
   }
 }
