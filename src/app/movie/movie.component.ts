@@ -8,7 +8,7 @@ import { EventEmitter } from "@angular/core";
   styleUrls: ["./movie.component.scss"]
 })
 export class MovieComponent implements OnInit {
-  @Output() imagePic = new EventEmitter<string>();
+  @Output() image = new EventEmitter<string>();
 
   movie: any = {
     id: this.getID(),
@@ -20,9 +20,16 @@ export class MovieComponent implements OnInit {
     poster: this.getPoster()
   };
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
+
+  getPoster() {
+    this.api.getMovie().subscribe(res => {
+      this.movie.poster = res.Poster;
+      this.image.emit(this.movie.poster);
+    });
+  }
 
   getID() {
     return Math.floor(Math.random() * 1000 + 1);
@@ -55,13 +62,6 @@ export class MovieComponent implements OnInit {
   getDirector() {
     this.api.getMovie().subscribe(res => {
       this.movie.director = res.Director;
-    });
-  }
-
-  getPoster() {
-    this.api.getMovie().subscribe(res => {
-      this.movie.poster = res.Poster;
-      this.imagePic.emit(this.movie.poster);
     });
   }
 }

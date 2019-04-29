@@ -9,15 +9,17 @@ import { MovieComponent } from "./movie/movie.component";
 export class AppComponent {
   movies = [];
   movieitem: MovieComponent;
-  image: any;
+  image: {};
 
   constructor(private movie: MovieComponent) {
-    this.movieitem = movie;
-    this.image = movie.imagePic;
-    console.log(this.image);
+    //this.movieitem = movie;
   }
 
   addMovie() {
     this.movies.push(this.movieitem);
+  }
+
+  getImageUrl(data: string) {
+    this.image = { 'background': 'url(' + data + ')' };
   }
 }

@@ -1,18 +1,29 @@
-.movie-info {
-  h3 {
-    text-align: center;
-    font-weight: bold;
-    font-size: 30px;
+.show-info {
+  opacity: 0;
+  transition: all 2s;
+
+  &:hover {
+    opacity: 1;
+    transition: all 2s;
+    transform: rotateY(-180deg);
   }
 
-  label {
-    color: #6200ee;
-    font-weight: bold;
-    padding-right: 0.4em;
-  }
+  .movie-info {
+    h3 {
+      text-align: center;
+      font-weight: bold;
+      font-size: 30px;
+    }
 
-  span {
-    font-size: 16px;
-    font-weight: bold;
+    label {
+      color: #6200ee;
+      font-weight: bold;
+      padding-right: 0.4em;
+    }
+
+    span {
+      font-size: 16px;
+      font-weight: bold;
+    }
   }
 }

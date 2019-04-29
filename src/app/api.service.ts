@@ -7,7 +7,7 @@ import { Injectable } from "@angular/core";
 export class ApiService {
   private ch: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getMovie() {
     return this.http.get<any>(
