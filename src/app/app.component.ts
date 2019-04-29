@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { MovieComponent } from "./movie/movie.component";
 
 @Component({
@@ -9,9 +9,12 @@ import { MovieComponent } from "./movie/movie.component";
 export class AppComponent {
   movies = [];
   movieitem: MovieComponent;
+  image: any;
 
   constructor(private movie: MovieComponent) {
     this.movieitem = movie;
+    this.image = movie.imagePic;
+    console.log(this.image);
   }
 
   addMovie() {
