@@ -1,6 +1,8 @@
 import { Component, OnInit, Injectable, Input, Output } from "@angular/core";
 import { ApiService } from "../api.service";
 import { EventEmitter } from "@angular/core";
+import { Movie, MovieResponse } from "../models/Movie";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: "app-movie",
@@ -10,58 +12,15 @@ import { EventEmitter } from "@angular/core";
 export class MovieComponent implements OnInit {
   @Output() image = new EventEmitter<string>();
 
-  movie: any = {
-    id: this.getID(),
-    title: this.getTitle(),
-    year: this.getYear(),
-    runtime: this.getRunTime(),
-    genre: this.getGenre(),
-    director: this.getDirector(),
-    poster: this.getPoster()
-  };
+  movie = new Movie();
+  res: MovieResponse;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService) {}
 
-  ngOnInit() { }
-
-  getPoster() {
-    this.api.getMovie().subscribe(res => {
-      this.movie.poster = res.Poster;
+  ngOnInit() {
+    this.api.getMovie().subscribe(movie => {
+      this.movie = movie;
       this.image.emit(this.movie.poster);
-    });
-  }
-
-  getID() {
-    return Math.floor(Math.random() * 1000 + 1);
-  }
-
-  getTitle() {
-    this.api.getMovie().subscribe(res => {
-      this.movie.title = res.Title;
-    });
-  }
-
-  getYear() {
-    this.api.getMovie().subscribe(res => {
-      this.movie.year = res.Year;
-    });
-  }
-
-  getRunTime() {
-    this.api.getMovie().subscribe(res => {
-      this.movie.runtime = res.Runtime;
-    });
-  }
-
-  getGenre() {
-    this.api.getMovie().subscribe(res => {
-      this.movie.genre = res.Genre;
-    });
-  }
-
-  getDirector() {
-    this.api.getMovie().subscribe(res => {
-      this.movie.director = res.Director;
     });
   }
 }

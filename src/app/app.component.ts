@@ -11,15 +11,13 @@ export class AppComponent {
   movieitem: MovieComponent;
   image: {};
 
-  constructor(private movie: MovieComponent) {
-    //this.movieitem = movie;
-  }
+  constructor() {}
 
   addMovie() {
     this.movies.push(this.movieitem);
   }
 
   getImageUrl(data: string) {
-    this.image = { 'background': 'url(' + data + ')' };
+    this.image = { background: "url(" + data + ")" };
   }
 }

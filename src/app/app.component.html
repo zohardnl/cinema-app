@@ -1,28 +1,28 @@
 <nav class="navbar navbar-expand navbar-light sticky-top">
-  <div class="nav navbar-nav">
-    <span>
-      <img
-        src="https://s3.amazonaws.com/herolo/herolo-logo-animated.gif"
-        alt="herolo-logo"
-      />
-    </span>
-    <button
-      class="mdc-button mdc-button--raised mdc-button--dense"
-      (click)="addMovie()"
-    >
-      Show Movie
-    </button>
-  </div>
+    <div class="nav navbar-nav">
+        <span>
+            <img
+                src="https://s3.amazonaws.com/herolo/herolo-logo-animated.gif"
+                alt="herolo-logo"
+            >
+        </span>
+        <button
+            class="mdc-button mdc-button--raised mdc-button--dense"
+            (click)="addMovie()"
+        >
+            Add Movie
+        </button>
+    </div>
 </nav>
 <div class="main-movies">
-  <h2 class="main-movies__title">Most Popular Movies</h2>
-  <hr />
-  <div class="main-movies__items">
-    <app-movie
-      class="main-movies__items__movie mdc-card"
-      (image)="getImageUrl($event)"
-      [ngStyle]="image"
-      *ngFor="let item of movies"
-    ></app-movie>
-  </div>
+    <h2 class="main-movies__title">Most Popular Movies</h2>
+    <hr>
+    <div class="main-movies__items">
+        <app-movie
+            class="main-movies__items__movie mdc-card"
+            *ngFor="let item of movies"
+            (image)="getImageUrl($event)"
+            [ngStyle]="image"
+        ></app-movie>
+    </div>
 </div>

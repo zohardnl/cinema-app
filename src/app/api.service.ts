@@ -1,5 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { MovieResponse, Movie } from "./models/Movie";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root"
@@ -7,15 +10,35 @@ import { Injectable } from "@angular/core";
 export class ApiService {
   private ch: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getMovie() {
-    return this.http.get<any>(
-      `http://www.omdbapi.com/?apikey=4b8331d2&t=${(this.ch = this.getChar())}`
+  getMovie(): Observable<Movie> {
+    return this.getMovieHttp().pipe(
+      map(movieRes => {
+        return {
+          id: this.getID(),
+          title: movieRes.Title,
+          poster: movieRes.Poster,
+          year: +movieRes.Year,
+          runtime: movieRes.Runtime,
+          genre: movieRes.Genre,
+          director: movieRes.Director
+        } as Movie;
+      })
+    );
+  }
+
+  getMovieHttp() {
+    return this.http.get<MovieResponse>(
+      `http://www.omdbapi.com/?apikey=4b8331d2&t=${this.getChar()}`
     );
   }
 
   getChar() {
     return String.fromCharCode(Math.floor(Math.random() * (122 - 97 + 1)) + 97);
+  }
+
+  getID() {
+    return Math.floor(Math.random() * 1000 + 1);
   }
 }
