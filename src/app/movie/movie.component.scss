@@ -1,29 +1,45 @@
+@import "../../tools/_vars";
+@import "../../tools/_mixins";
+
 .show-info {
-  opacity: 0;
+  width: 300px;
+  height: 400px;
+  align-items: flex-start;
+  padding: 1em;
+  margin-bottom: 1em;
+  box-shadow: 0 2px 5px 0 rgba(231, 231, 231, 0.404), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
+    0 3px 5px -1px rgba(0, 0, 0, 0.2);
   transition: all 2s;
 
   &:hover {
-    opacity: 1;
+    transform: rotateY(180deg);
     transition: all 2s;
-    transform: rotateY(-180deg);
+    background: white !important;
+
+    .all-info {
+      opacity: 1;
+    }
   }
 
-  .movie-info {
-    h3 {
-      text-align: center;
-      font-weight: bold;
-      font-size: 30px;
-    }
+  .all-info {
+    opacity: 0;
+    .movie-info {
+      h3 {
+        text-align: center;
+        font-weight: bold;
+        font-size: 30px;
+      }
 
-    label {
-      color: #6200ee;
-      font-weight: bold;
-      padding-right: 0.4em;
-    }
+      label {
+        color: #6200ee;
+        font-weight: bold;
+        padding-right: 0.4em;
+      }
 
-    span {
-      font-size: 16px;
-      font-weight: bold;
+      span {
+        font-size: 16px;
+        font-weight: bold;
+      }
     }
   }
 }

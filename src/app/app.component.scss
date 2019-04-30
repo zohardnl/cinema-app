@@ -35,6 +35,7 @@
     background: white;
     border-width: 3px;
   }
+
   &__title {
     text-align: center;
     margin: 0.5em;
@@ -48,22 +49,5 @@
     flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 3em;
-
-    &__movie {
-      width: 300px;
-      height: 400px;
-      align-items: flex-start;
-      padding: 1em;
-      margin-bottom: 1em;
-      box-shadow: 0 2px 5px 0 rgba(231, 231, 231, 0.404), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
-        0 3px 5px -1px rgba(0, 0, 0, 0.2);
-      transition: all 2s;
-
-      &:hover {
-        background: white !important;
-        transform: rotateY(180deg);
-        transition: all 2s;
-      }
-    }
   }
 }

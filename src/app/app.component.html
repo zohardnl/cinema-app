@@ -18,11 +18,6 @@
     <h2 class="main-movies__title">Most Popular Movies</h2>
     <hr>
     <div class="main-movies__items">
-        <app-movie
-            class="main-movies__items__movie mdc-card"
-            *ngFor="let item of movies"
-            (image)="getImageUrl($event)"
-            [ngStyle]="image"
-        ></app-movie>
+        <app-movie *ngFor="let movie of movies"></app-movie>
     </div>
 </div>
