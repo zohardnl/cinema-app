@@ -10,7 +10,7 @@ import { map } from "rxjs/operators";
 export class ApiService {
   private ch: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getMovie(): Observable<Movie> {
     return this.getMovieHttp().pipe(

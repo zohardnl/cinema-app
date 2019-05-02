@@ -11,4 +11,4 @@ import { MovieComponent } from "./movie/movie.component";
   providers: [MovieComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
