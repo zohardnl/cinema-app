@@ -1,3 +1,4 @@
+import { Movie } from "./models/Movie";
 import { Component, Input } from "@angular/core";
 import { MovieComponent } from "./movie/movie.component";
 
@@ -7,7 +8,7 @@ import { MovieComponent } from "./movie/movie.component";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-  movies = [];
+  movies: any = [Movie, Movie, Movie];
   movieitem: MovieComponent;
 
   constructor(private movie: MovieComponent) {

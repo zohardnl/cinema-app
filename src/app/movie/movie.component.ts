@@ -8,18 +8,14 @@ import { Movie, MovieResponse } from "../models/Movie";
   styleUrls: ["./movie.component.scss"]
 })
 export class MovieComponent implements OnInit {
-  //@Output() image = new EventEmitter<string>();
   url: {};
-
   movie = new Movie();
-  res: MovieResponse;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService) {}
 
   ngOnInit() {
     this.api.getMovie().subscribe(movie => {
       this.movie = movie;
-      //this.image.emit(this.movie.poster);
       this.url = { background: "url(" + this.movie.poster + ")" };
     });
   }
