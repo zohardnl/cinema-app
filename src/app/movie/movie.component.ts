@@ -11,7 +11,7 @@ export class MovieComponent implements OnInit {
   url: {};
   movie = new Movie();
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService) { }
 
   ngOnInit() {
     this.api.getMovie().subscribe(movie => {

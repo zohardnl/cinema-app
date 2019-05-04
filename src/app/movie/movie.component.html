@@ -2,7 +2,9 @@
   <div class="flip-card-inner">
     <div class="front-info" [ngStyle]="getImageUrl()"></div>
     <div class="back-info">
-      <i class="fas fa-edit"></i>
+      <span data-toggle="modal" data-target="#myModal" class="edit-icon">
+        <i class="fas fa-edit"></i>
+      </span>
       <div class="movie-info">
         <h3>{{ movie.title }}</h3>
       </div>
@@ -29,3 +31,4 @@
     </div>
   </div>
 </div>
+<app-modal *ngIf="show === true"></app-modal>

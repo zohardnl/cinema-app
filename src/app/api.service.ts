@@ -8,7 +8,6 @@ import { map } from "rxjs/operators";
   providedIn: "root"
 })
 export class ApiService {
-  private ch: string;
 
   constructor(private http: HttpClient) { }
 

@@ -29,7 +29,11 @@
 
     .search-movie {
       input {
-        outline: none;
+        box-shadow: none;
+
+        &:focus {
+          border-color: #6200ee;
+        }
       }
 
       button {
