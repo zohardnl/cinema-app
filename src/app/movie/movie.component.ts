@@ -8,8 +8,8 @@ import { Movie } from "../models/Movie";
 })
 export class MovieComponent implements OnInit {
   url: Object;
-  @Input() movie = new Movie();
-  @Output() infoMovie = new EventEmitter<Movie>();
+  movie = new Movie();
+  @Output() infoMovie = new EventEmitter<any>();
 
   constructor(private api: ApiService) { }
 

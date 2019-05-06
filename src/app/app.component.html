@@ -27,6 +27,10 @@
   <h2 class="main-movies__title">Most Popular Movies</h2>
   <hr />
   <div class="main-movies__items">
-    <app-movie *ngFor="let movie of movies" [movie]="movie"></app-movie>
+    <app-movie
+      *ngFor="let movie of movies"
+      (infoMovie)="getInfoMovie($event)"
+    ></app-movie>
   </div>
 </div>
+<app-modal [movieInfo]="getMovieInfo()"></app-modal>

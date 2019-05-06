@@ -8,15 +8,9 @@ import { Movie } from '../models/Movie';
   styleUrls: ["./modal.component.scss"]
 })
 export class Modal implements OnInit {
-  movieModal = new Movie();
+  movieInfo: MovieComponent;
 
   constructor() { }
 
   ngOnInit() { }
-
-
-  getInfo(movie: Movie) {
-    this.movieModal = movie;
-    console.log(this.movieModal);
-  }
 }
