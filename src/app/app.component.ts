@@ -10,9 +10,11 @@ import { MovieComponent } from "./movie/movie.component";
 export class AppComponent implements OnInit {
   movies: MovieComponent[] = [];
 
-  constructor(private movie: MovieComponent) {}
+  constructor(private movie: MovieComponent) {
+    this.movies.push(movie, movie, movie);
+  }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   addMovie() {
     this.movies.push(this.movie);

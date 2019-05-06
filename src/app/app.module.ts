@@ -5,11 +5,12 @@ import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { MovieComponent } from "./movie/movie.component";
 import { Modal } from "./modal/modal.component";
+import { Movie } from './models/Movie';
 
 @NgModule({
   declarations: [AppComponent, MovieComponent, Modal],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [MovieComponent, Modal],
+  providers: [MovieComponent, Modal, Movie],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

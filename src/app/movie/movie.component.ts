@@ -9,13 +9,15 @@ import { Movie } from "../models/Movie";
 export class MovieComponent implements OnInit {
   url: Object;
   @Input() movie = new Movie();
+  @Output() infoMovie = new EventEmitter<Movie>();
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService) { }
 
   ngOnInit() {
     this.api.getMovie().subscribe(movie => {
       this.movie = movie;
       this.url = { background: "url(" + this.movie.poster + ")" };
+      this.infoMovie.emit(this.movie);
     });
   }
 
