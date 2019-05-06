@@ -1,5 +1,5 @@
 import { Movie } from "./models/Movie";
-import { Component, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { MovieComponent } from "./movie/movie.component";
 
 @Component({
@@ -7,15 +7,14 @@ import { MovieComponent } from "./movie/movie.component";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
-export class AppComponent {
-  movies: any = [Movie, Movie, Movie];
-  movieitem: MovieComponent;
+export class AppComponent implements OnInit {
+  movies: MovieComponent[] = [];
 
-  constructor(private movie: MovieComponent) {
-    this.movieitem = movie;
-  }
+  constructor(private movie: MovieComponent) {}
+
+  ngOnInit() {}
 
   addMovie() {
-    this.movies.push(this.movieitem);
+    this.movies.push(this.movie);
   }
 }

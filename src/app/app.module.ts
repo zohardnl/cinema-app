@@ -4,7 +4,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { MovieComponent } from "./movie/movie.component";
-import { Modal } from './modal/modal.component';
+import { Modal } from "./modal/modal.component";
 
 @NgModule({
   declarations: [AppComponent, MovieComponent, Modal],
@@ -12,4 +12,4 @@ import { Modal } from './modal/modal.component';
   providers: [MovieComponent, Modal],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

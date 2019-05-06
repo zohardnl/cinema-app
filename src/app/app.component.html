@@ -1,32 +1,26 @@
 <nav class="navbar navbar-expand navbar-light sticky-top">
-  <div class="nav navbar-nav">
-    <span>
-      <img
-        src="https://s3.amazonaws.com/herolo/herolo-logo-animated.gif"
-        alt="herolo-logo"
-      />
-    </span>
+    <div class="nav navbar-nav">
+        <span>
+            <img src="https://s3.amazonaws.com/herolo/herolo-logo-animated.gif" alt="herolo-logo">
+        </span>
 
-    <form class="form-inline my-2 my-lg-0 search-movie">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-        Search
-      </button>
-    </form>
+        <form class="form-inline my-2 my-lg-0 search-movie">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                Search
+            </button>
+        </form>
 
-    <button
-      class="mdc-button mdc-button--raised mdc-button--dense"
-      (click)="addMovie()"
-    >
-      Show Movie
-    </button>
-  </div>
+        <button class="mdc-button mdc-button--raised mdc-button--dense" (click)="addMovie()">
+            Show Movie
+        </button>
+    </div>
 </nav>
 
 <div class="main-movies">
-  <h2 class="main-movies__title">Most Popular Movies</h2>
-  <hr />
-  <div class="main-movies__items">
-    <app-movie *ngFor="let movie of movies"></app-movie>
-  </div>
+    <h2 class="main-movies__title">Most Popular Movies</h2>
+    <hr>
+    <div class="main-movies__items">
+        <app-movie *ngFor="let movie of movies" [movie]="movie"></app-movie>
+    </div>
 </div>
