@@ -1,4 +1,3 @@
-import { Movie } from "./models/Movie";
 import { Component, OnInit, Input } from "@angular/core";
 import { MovieComponent } from "./movie/movie.component";
 
@@ -12,10 +11,10 @@ export class AppComponent implements OnInit {
   @Input() movieInfo: MovieComponent;
 
   constructor(private movie: MovieComponent) {
-    this.movies.push(movie);
+    this.movies.push(movie, movie, movie);
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   addMovie() {
     this.movies.push(this.movie);
@@ -23,6 +22,5 @@ export class AppComponent implements OnInit {
 
   getInfoMovie(data: MovieComponent) {
     this.movieInfo = data;
-    console.log(this.movieInfo);
   }
 }

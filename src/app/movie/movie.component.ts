@@ -11,17 +11,20 @@ export class MovieComponent implements OnInit {
   movie = new Movie();
   @Output() infoMovie = new EventEmitter<any>();
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService) {}
 
   ngOnInit() {
     this.api.getMovie().subscribe(movie => {
       this.movie = movie;
       this.url = { background: "url(" + this.movie.poster + ")" };
-      this.infoMovie.emit(this.movie);
     });
   }
 
   getImageUrl() {
     return this.url;
+  }
+
+  openInfo() {
+    this.infoMovie.emit(this.movie);
   }
 }

@@ -1,6 +1,6 @@
+import { Movie } from "./../models/Movie";
+import { MovieComponent } from "./../movie/movie.component";
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
-import { MovieComponent } from "../movie/movie.component";
-import { Movie } from '../models/Movie';
 
 @Component({
   selector: "app-modal",
@@ -8,9 +8,9 @@ import { Movie } from '../models/Movie';
   styleUrls: ["./modal.component.scss"]
 })
 export class Modal implements OnInit {
-  movieInfo: MovieComponent;
+  @Input() movieInfo: MovieComponent;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 }
