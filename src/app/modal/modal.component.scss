@@ -1,0 +1,13 @@
+.modal {
+  &-header {
+    .form-group {
+      width: 50%;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 30px;
+      color: #8b44f1;
+    }
+  }
+}

@@ -1,6 +1,5 @@
-import { Movie } from "./../models/Movie";
 import { MovieComponent } from "./../movie/movie.component";
-import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
   selector: "app-modal",
