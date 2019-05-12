@@ -1,13 +1,18 @@
-@import url("https://fonts.googleapis.com/css?family=Assistant:200,300,400,600,700,800");
-@import url("https://fonts.googleapis.com/icon?family=Roboto");
 @import "tools/mixins";
+@include google-font("Assistant");
+@include google-font("Roboto");
 
 * {
   outline: none !important;
 }
 
+html,
 body {
-  @include background-image("./images/b&w.jpg", inherit, cover);
+  height: 100%;
+}
+
+body {
   font-family: "Assistant", sans-serif;
-  height: 100vh;
+  background: linear-gradient(to right, rgb(112, 112, 112), black);
+  background-attachment: fixed;
 }

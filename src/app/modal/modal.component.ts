@@ -9,7 +9,7 @@ import { Component, OnInit, Input } from "@angular/core";
 export class Modal implements OnInit {
   @Input() movieInfo: MovieComponent;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }
