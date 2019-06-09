@@ -2,8 +2,8 @@
 @import "../tools/mixins";
 
 .navbar {
-  box-shadow: 0 2px 10px 0 rgba(231, 231, 231, 0.404),
-    0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 10px 0 rgba(231, 231, 231, 0.404), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
+    0 3px 5px -1px rgba(0, 0, 0, 0.2);
   background: white;
 
   .nav {
@@ -13,7 +13,7 @@
 
     span {
       @include bp-mobile {
-        width: 40%;
+        width: 20%;
       }
 
       @include bp-tablet {
@@ -29,6 +29,10 @@
 
     .search-movie {
       input {
+        @include bp-mobile {
+          width: 70%;
+        }
+
         box-shadow: none;
 
         &:focus {
@@ -43,6 +47,17 @@
         &:hover {
           background: #6200ee;
           color: white;
+        }
+      }
+    }
+
+    &-btn {
+      @include bp-mobile {
+        width: 100%;
+        margin-top: 10px;
+
+        button {
+          width: 100%;
         }
       }
     }
