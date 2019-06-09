@@ -28,7 +28,7 @@ export class ApiService {
 
   getMovieHttp() {
     return this.http.get<MovieResponse>(
-      `http://www.omdbapi.com/?apikey=4b8331d2&t=${this.getChar()}`
+      `https://www.omdbapi.com/?apikey=4b8331d2&t=${this.getChar()}`
     );
   }
 

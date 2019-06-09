@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
     this.movies.push(movie, movie, movie);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   addMovie() {
     this.movies.push(this.movie);

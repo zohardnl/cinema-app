@@ -1,7 +1,8 @@
-@mixin background-image($url, $pos, $size) {
+@mixin background-image($url, $pos, $size, $repeat) {
   background-image: url("#{$url}");
   background-position: $pos;
   background-size: $size;
+  background-repeat: $repeat;
 }
 
 @mixin bp-mobile {
@@ -14,4 +15,9 @@
   @media (min-width: 768px) and (max-width: 1024px) {
     @content;
   }
+}
+
+@mixin google-font($font) {
+  $font: unquote($font);
+  @import url("https://fonts.googleapis.com/css?family=#{$font}:300,400,500,600,700,800");
 }
