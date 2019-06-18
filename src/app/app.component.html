@@ -1,12 +1,12 @@
-<nav class="navbar navbar-expand navbar-light sticky-top">
+<nav class="navbar navbar-expand navbar-light header-navbar">
     <div class="nav navbar-nav">
         <span>
             <img src="https://s3.amazonaws.com/herolo/herolo-logo-animated.gif" alt="herolo-logo" />
         </span>
 
         <div class="form-inline search-movie">
-            <input class="form-control" type="search" placeholder="Search" />
-            <button class="btn btn-outline-success" type="submit">
+            <input class="form-control" type="search" placeholder="Search" #movieVal>
+            <button class="btn btn-outline-success" type="submit" (click)="getMovieSearch()">
                 Search
             </button>
         </div>

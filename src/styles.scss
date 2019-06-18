@@ -9,10 +9,16 @@
 html,
 body {
   height: 100%;
+  overflow: auto;
 }
 
 body {
+  @include bp-mobile {
+    padding-top: 6em;
+  }
+
   font-family: "Assistant", sans-serif;
   background: linear-gradient(to right, rgb(112, 112, 112), black);
   background-attachment: fixed;
+  padding-top: 8em;
 }

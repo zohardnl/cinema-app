@@ -16,3 +16,12 @@ export interface MovieResponse {
   Genre: string;
   Runtime: string;
 }
+
+export class movieStar {
+  id: number;
+  name: string;
+}
+export interface movieMdb {
+  id: number;
+  name: string;
+}
