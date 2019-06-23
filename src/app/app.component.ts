@@ -9,18 +9,21 @@ import { movieStar } from "./models/Movie";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-  movies: any[] = [];
+  movies: MovieComponent[] = [];
+  flag: boolean = false;
   moviesFromSearch: movieStar[] = [];
   movieInfo: MovieComponent;
   mvMdb = new movieStar();
+  asValue: boolean = true;
   @ViewChild("movieVal") movieSearchVal: ElementRef;
 
-  constructor(private movie: MovieComponent, private api: ApiService) {}
+  constructor(private movie: MovieComponent, private api: ApiService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   addMovie() {
     this.movies.push(this.movieInfo);
+    this.flag = true;
   }
 
   getInfoMovie(data: MovieComponent) {
@@ -28,13 +31,18 @@ export class AppComponent implements OnInit {
   }
 
   getMovieSearch(el: any) {
-    let val = el.nativeElement.value;
+    let val = el.nativeElement.value.trim();
     if (val !== "" && val !== null && val !== undefined) {
-      this.movieSearchVal = el;
-      this.api.searchMovie(this.movieSearchVal).subscribe(movie => {
-        this.mvMdb = movie;
-        this.moviesFromSearch.push(this.mvMdb);
-      });
+      this.asValue = true;
+      this.movies.splice(0);
+      this.moviesFromSearch.push(this.mvMdb);
+    } else {
+      this.asValue = false;
+      alert("Please enter a value for search!");
     }
+  }
+
+  getSearch(dataSearch: movieStar) {
+    this.mvMdb = dataSearch;
   }
 }
