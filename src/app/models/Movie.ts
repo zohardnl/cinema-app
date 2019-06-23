@@ -19,9 +19,8 @@ export interface MovieResponse {
 
 export class movieStar {
   id: number;
-  name: string;
-}
-export interface movieMdb {
-  id: number;
-  name: string;
+  title: string;
+  poster_path: string;
+  release_date: string;
+  overview: string;
 }

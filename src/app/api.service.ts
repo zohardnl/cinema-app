@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, ElementRef } from "@angular/core";
-import { MovieResponse, Movie, movieMdb } from "./models/Movie";
+import { MovieResponse, Movie, movieStar } from "./models/Movie";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
@@ -32,21 +32,24 @@ export class ApiService {
     );
   }
 
-  searchMovie(searchElement: ElementRef) {
+  searchMovieHttp(searchElement: ElementRef) {
     return this.http.get<any>(
-      `https://api.themoviedb.org/3/search/company?api_key=4d9fc135f367468f10bcbf31008637e6&query=${
+      `https://api.themoviedb.org/3/search/movie?api_key=4d9fc135f367468f10bcbf31008637e6&query=${
         searchElement.nativeElement.value
       }`
     );
   }
 
-  searchMovieMdb(search: ElementRef): Observable<any> {
-    return this.searchMovie(search).pipe(
+  searchMovie(search: ElementRef): Observable<any> {
+    return this.searchMovieHttp(search).pipe(
       map(movie => {
         return {
           id: movie.results[0].id,
-          name: movie.results[0].name
-        } as movieMdb;
+          title: movie.results[0].title,
+          poster_path: movie.results[0].poster_path,
+          release_date: movie.results[0].release_date,
+          overview: movie.results[0].overview
+        } as movieStar;
       })
     );
   }
