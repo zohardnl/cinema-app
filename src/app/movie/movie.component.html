@@ -2,12 +2,7 @@
   <div class="flip-card-inner">
     <div class="front-info" [ngStyle]="getImageUrl()"></div>
     <div class="back-info">
-      <span
-        data-toggle="modal"
-        data-target="#myModal"
-        class="edit-icon"
-        (click)="openInfo()"
-      >
+      <span data-toggle="modal" data-target="#myModal" class="edit-icon" (click)="openInfo()">
         <i class="fas fa-edit"></i>
       </span>
       <div class="movie-info">
@@ -18,20 +13,12 @@
         <span>{{ movie.id }}</span>
       </div>
       <div class="movie-info">
-        <label>Year:</label>
-        <span>{{ movie.year }}</span>
+        <label>Release Date:</label>
+        <span>{{ movie.release_date }}</span>
       </div>
       <div class="movie-info">
-        <label>Runtime:</label>
-        <span>{{ movie.runtime }}</span>
-      </div>
-      <div class="movie-info">
-        <label>Genre:</label>
-        <span>{{ movie.genre }}</span>
-      </div>
-      <div class="movie-info">
-        <label>Director:</label>
-        <span>{{ movie.director }}</span>
+        <label>Overview:</label>
+        <span>{{ movie.overview }}</span>
       </div>
     </div>
   </div>

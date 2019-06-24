@@ -1,5 +1,6 @@
 import { MovieComponent } from "./../movie/movie.component";
 import { Component, OnInit, Input } from "@angular/core";
+import { Movie } from "../models/Movie";
 
 @Component({
   selector: "app-modal",
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./modal.component.scss"]
 })
 export class Modal implements OnInit {
-  @Input() movieInfo: MovieComponent;
+  @Input() movieInfo: Movie;
 
   constructor() {}
 

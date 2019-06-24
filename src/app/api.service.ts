@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, ElementRef } from "@angular/core";
-import { MovieResponse, Movie, movieStar } from "./models/Movie";
+import { Movie } from "./models/Movie";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
@@ -8,34 +8,34 @@ import { map } from "rxjs/operators";
   providedIn: "root"
 })
 export class ApiService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
+  //SHOW MOVIE REQUSEST
   getMovie(): Observable<Movie> {
     return this.getMovieHttp().pipe(
       map(movieRes => {
         return {
-          id: this.getID(),
-          title: movieRes.Title,
-          poster: movieRes.Poster,
-          year: +movieRes.Year,
-          runtime: movieRes.Runtime,
-          genre: movieRes.Genre,
-          director: movieRes.Director
+          id: movieRes.results[0].id,
+          title: movieRes.results[0].title,
+          poster_path: movieRes.results[0].poster_path,
+          release_date: movieRes.results[0].release_date,
+          overview: movieRes.results[0].overview
         } as Movie;
       })
     );
   }
 
   getMovieHttp() {
-    return this.http.get<MovieResponse>(
-      `https://www.omdbapi.com/?apikey=4b8331d2&t=${this.getChar()}`
+    return this.http.get<any>(
+      `https://api.themoviedb.org/3/search/movie?api_key=4d9fc135f367468f10bcbf31008637e6&query=${this.getChar()}`
     );
   }
 
+  //SEARCH MOVIE REQUEST
   searchMovieHttp(searchElement: ElementRef) {
     return this.http.get<any>(
       `https://api.themoviedb.org/3/search/movie?api_key=4d9fc135f367468f10bcbf31008637e6&query=${
-      searchElement.nativeElement.value
+        searchElement.nativeElement.value
       }`
     );
   }
@@ -49,11 +49,12 @@ export class ApiService {
           poster_path: movie.results[0].poster_path,
           release_date: movie.results[0].release_date,
           overview: movie.results[0].overview
-        } as movieStar;
+        } as Movie;
       })
     );
   }
 
+  //RANDOM FUNCTIONS
   getChar() {
     return String.fromCharCode(Math.floor(Math.random() * (122 - 97 + 1)) + 97);
   }

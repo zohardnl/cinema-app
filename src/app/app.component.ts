@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef, Input } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { MovieComponent } from "./movie/movie.component";
-import { ApiService } from "./api.service";
-import { movieStar } from "./models/Movie";
+import { Movie } from "./models/Movie";
 
 @Component({
   selector: "app-root",
@@ -9,24 +8,27 @@ import { movieStar } from "./models/Movie";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-  movies: MovieComponent[] = [];
+  movies: Movie[] = [];
+  moviesFromSearch: Movie[] = [];
+
+  movieInfo = new Movie();
+  mvMdb = new Movie();
+
   flag: boolean = false;
-  moviesFromSearch: movieStar[] = [];
-  movieInfo: MovieComponent;
-  mvMdb = new movieStar();
   asValue: boolean = true;
+
   @ViewChild("movieVal") movieSearchVal: ElementRef;
 
-  constructor(private movie: MovieComponent, private api: ApiService) { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   addMovie() {
     this.movies.push(this.movieInfo);
     this.flag = true;
   }
 
-  getInfoMovie(data: MovieComponent) {
+  getInfoMovie(data: Movie) {
     this.movieInfo = data;
   }
 
@@ -42,7 +44,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  getSearch(dataSearch: movieStar) {
+  getSearch(dataSearch: Movie) {
     this.mvMdb = dataSearch;
   }
 }
