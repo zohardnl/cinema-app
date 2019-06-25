@@ -9,7 +9,7 @@ import { Movie } from "../models/Movie";
 export class Modal implements OnInit {
   @Input() movieInfo: Movie;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

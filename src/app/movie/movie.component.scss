@@ -20,8 +20,8 @@
     height: 100%;
     transition: transform 0.6s;
     transform-style: preserve-3d;
-    box-shadow: 0 2px 5px 0 rgba(231, 231, 231, 0.404), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
-      0 3px 5px -1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px 0 rgba(231, 231, 231, 0.404),
+      0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
     border-radius: 1em;
   }
 }
@@ -46,7 +46,6 @@
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 
   .edit-icon {
     display: flex;
@@ -61,10 +60,19 @@
   }
 
   .movie-info {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &:last-child {
+      overflow: auto;
+    }
+
     h3 {
       text-align: center;
       font-weight: bold;
       font-size: 30px;
+      padding-top: 10px;
     }
 
     label {
