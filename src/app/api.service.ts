@@ -43,13 +43,14 @@ export class ApiService {
   searchMovie(search: ElementRef): Observable<any> {
     return this.searchMovieHttp(search).pipe(
       map(movie => {
-        return {
-          id: movie.results[0].id,
-          title: movie.results[0].title,
-          poster_path: movie.results[0].poster_path,
-          release_date: movie.results[0].release_date,
-          overview: movie.results[0].overview
-        } as Movie;
+        // return {
+        //   id: movie.results[0].id,
+        //   title: movie.results[0].title,
+        //   poster_path: movie.results[0].poster_path,
+        //   release_date: movie.results[0].release_date,
+        //   overview: movie.results[0].overview
+        // } as Movie;-
+        return movie;
       })
     );
   }

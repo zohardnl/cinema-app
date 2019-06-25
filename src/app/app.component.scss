@@ -79,8 +79,12 @@
   }
 
   &__title {
+    @include bp-mobile {
+      margin: 1em;
+    }
+
     text-align: center;
-    margin: 1em;
+    margin: 0.5em 0;
     font-weight: bold;
     font-size: 60px;
     color: $c-white;

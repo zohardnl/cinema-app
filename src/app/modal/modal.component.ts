@@ -1,4 +1,3 @@
-import { MovieComponent } from "./../movie/movie.component";
 import { Component, OnInit, Input } from "@angular/core";
 import { Movie } from "../models/Movie";
 

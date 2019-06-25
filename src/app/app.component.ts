@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
-import { MovieComponent } from "./movie/movie.component";
 import { Movie } from "./models/Movie";
 
 @Component({
@@ -9,10 +8,9 @@ import { Movie } from "./models/Movie";
 })
 export class AppComponent implements OnInit {
   movies: Movie[] = [];
-  moviesFromSearch: Movie[] = [];
+  moviesFromSearch: Object[] = [];
 
   movieInfo = new Movie();
-  mvMdb = new Movie();
 
   flag: boolean = false;
   asValue: boolean = true;
@@ -37,14 +35,13 @@ export class AppComponent implements OnInit {
     if (val !== "" && val !== null && val !== undefined) {
       this.asValue = true;
       this.movies.splice(0);
-      this.moviesFromSearch.push(this.mvMdb);
     } else {
       this.asValue = false;
       alert("Please enter a value for search!");
     }
   }
 
-  getSearch(dataSearch: Movie) {
-    this.mvMdb = dataSearch;
+  getSearch(dataSearch: Object[]) {
+    this.moviesFromSearch = dataSearch;
   }
 }
