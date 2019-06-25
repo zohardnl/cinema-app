@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
-import { Movie } from "./models/Movie";
+import { Movie } from './models/Movie';
+import { ApiService } from './api.service';
 
 @Component({
   selector: "app-root",
@@ -9,19 +10,18 @@ import { Movie } from "./models/Movie";
 export class AppComponent implements OnInit {
   movies: Movie[] = [];
   moviesFromSearch: Object[] = [];
-
   movieInfo = new Movie();
-
   flag: boolean = false;
   asValue: boolean = true;
-
+  asResults: boolean = true;
   @ViewChild("movieVal") movieSearchVal: ElementRef;
 
-  constructor() {}
+  constructor(private api: ApiService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   addMovie() {
+    this.clearArray(this.moviesFromSearch);
     this.movies.push(this.movieInfo);
     this.flag = true;
   }
@@ -34,14 +34,24 @@ export class AppComponent implements OnInit {
     let val = el.nativeElement.value.trim();
     if (val !== "" && val !== null && val !== undefined) {
       this.asValue = true;
-      this.movies.splice(0);
+      this.api.searchMovie(this.movieSearchVal).subscribe(movies => {
+        if (movies.results.length > 0) {
+          this.clearArray(this.movies);
+          this.moviesFromSearch = movies.results;
+          this.asResults = true;
+          this.flag = false;
+        } else {
+          this.clearArray(this.moviesFromSearch);
+          this.asResults = false;
+        }
+      });
     } else {
       this.asValue = false;
       alert("Please enter a value for search!");
     }
   }
 
-  getSearch(dataSearch: Object[]) {
-    this.moviesFromSearch = dataSearch;
+  clearArray(arr: any[]) {
+    arr.splice(0);
   }
 }

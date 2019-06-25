@@ -1,19 +1,34 @@
 <nav class="navbar navbar-expand navbar-light header-navbar">
   <div class="nav navbar-nav">
     <span>
-      <img src="https://s3.amazonaws.com/herolo/herolo-logo-animated.gif" alt="herolo-logo" />
+      <img
+        src="https://s3.amazonaws.com/herolo/herolo-logo-animated.gif"
+        alt="herolo-logo"
+      />
     </span>
 
     <div class="form-inline search-movie">
-      <input class="form-control" type="search" placeholder="Search" #movieVal
-        [ngClass]="!asValue ? 'alertInput' : ''" />
-      <button class=" btn btn-outline-success" type="submit" (click)="getMovieSearch(movieSearchVal)">
+      <input
+        class="form-control"
+        type="search"
+        placeholder="Search"
+        #movieVal
+        [ngClass]="!asValue ? 'alertInput' : ''"
+      />
+      <button
+        class=" btn btn-outline-success"
+        type="submit"
+        (click)="getMovieSearch(movieSearchVal)"
+      >
         Search
       </button>
     </div>
 
     <div class=" nav-btn">
-      <button class="mdc-button mdc-button--raised mdc-button--dense" (click)="addMovie()">
+      <button
+        class="mdc-button mdc-button--raised mdc-button--dense"
+        (click)="addMovie()"
+      >
         Show Movie
       </button>
     </div>
@@ -21,15 +36,22 @@
 </nav>
 
 <div class="main-movies">
-  <h2 class="main-movies__title">Most Popular Movies</h2>
+  <h2 class="main-movies__title">Movie List</h2>
   <hr />
+  <div class="main-movies__error" *ngIf="!asResults">
+    No Results!
+  </div>
   <div class="main-movies__items" *ngIf="flag">
-    <app-movie *ngFor="let movie of movies" (infoMovie)="getInfoMovie($event)"></app-movie>
+    <app-movie
+      *ngFor="let movie of movies"
+      (infoMovie)="getInfoMovie($event)"
+    ></app-movie>
   </div>
   <div class="main-movies__items">
-    <app-search-movie *ngFor="let movieSearch of moviesFromSearch" [element]="movieSearchVal"
-      (SearchMovie)="getSearch($event)"></app-search-movie>
+    <app-search-movie
+      *ngFor="let movie of moviesFromSearch"
+      [movie]="movie"
+    ></app-search-movie>
   </div>
 </div>
 <app-modal [movieInfo]="movieInfo" *ngIf="movieInfo"></app-modal>
-<app-modal [movieInfo]="mvMdb" *ngIf="mvMdb"></app-modal>
