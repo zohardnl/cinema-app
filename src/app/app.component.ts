@@ -11,9 +11,10 @@ export class AppComponent implements OnInit {
   movies: Movie[] = [];
   moviesFromSearch: Object[] = [];
   movieInfo = new Movie();
-  flag: boolean = false;
+  flagMovies: boolean = false;
+  flagSearch: boolean = false;
   asValue: boolean = true;
-  asResults: boolean = true;
+  error: string;
   @ViewChild("movieVal") movieSearchVal: ElementRef;
 
   constructor(private api: ApiService) {}
@@ -21,10 +22,10 @@ export class AppComponent implements OnInit {
   ngOnInit() {}
 
   addMovie() {
-    this.clearArray(this.moviesFromSearch);
     this.movies.push(this.movieInfo);
-    this.asResults = true;
-    this.flag = true;
+    this.asValue = true;
+    this.flagMovies = true;
+    this.flagSearch = false;
   }
 
   getInfoMovie(data: Movie) {
@@ -34,21 +35,26 @@ export class AppComponent implements OnInit {
   getMovieSearch(el: any) {
     let val = el.nativeElement.value.trim();
     if (this.checkVal(val)) {
-      this.asValue = true;
       this.api.searchMovie(this.movieSearchVal).subscribe(movies => {
         if (movies.results.length > 0) {
-          this.clearArray(this.movies);
           this.moviesFromSearch = movies.results;
-          this.asResults = true;
-          this.flag = false;
+          this.asValue = true;
+          this.flagMovies = false;
+          this.flagSearch = true;
+          this.clearArray(this.movies);
         } else {
-          this.clearArray(this.moviesFromSearch);
-          this.asResults = false;
+          this.asValue = false;
+          this.flagMovies = false;
+          this.flagSearch = false;
+          this.error = "No Results!";
         }
       });
     } else {
       this.asValue = false;
-      alert("Please enter a value for search!");
+      this.flagSearch = false;
+      this.flagMovies = false;
+      this.error = "No value for search!";
+      this.clearArray(this.movies);
     }
   }
 

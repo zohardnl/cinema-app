@@ -5,8 +5,7 @@
     </span>
 
     <div class="form-inline search-movie">
-      <input class="form-control" type="search" placeholder="Search" #movieVal
-        [ngClass]="!asValue ? 'alertInput' : ''" />
+      <input class="form-control" type="search" placeholder="Search" #movieVal />
       <button class=" btn btn-outline-success" type="submit" (click)="getMovieSearch(movieSearchVal)">
         Search
       </button>
@@ -23,13 +22,13 @@
 <div class="main-movies">
   <h2 class="main-movies__title">Movie List</h2>
   <hr />
-  <div class="main-movies__error" *ngIf="!asResults">
-    No Results!
+  <div class="main-movies__error" *ngIf="!asValue">
+    {{error}}
   </div>
-  <div class="main-movies__items" *ngIf="flag">
+  <div class="main-movies__items" *ngIf="flagMovies">
     <app-movie *ngFor="let movie of movies" (infoMovie)="getInfoMovie($event)"></app-movie>
   </div>
-  <div class="main-movies__items">
+  <div class="main-movies__items" *ngIf="flagSearch">
     <app-search-movie *ngFor="let movie of moviesFromSearch" [movie]="movie" (SearchMovie)="sendInfoMovie($event)">
     </app-search-movie>
   </div>
