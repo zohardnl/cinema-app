@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
-import { Movie } from './models/Movie';
-import { ApiService } from './api.service';
+import { Movie } from "./models/Movie";
+import { ApiService } from "./api.service";
 
 @Component({
   selector: "app-root",
@@ -16,13 +16,14 @@ export class AppComponent implements OnInit {
   asResults: boolean = true;
   @ViewChild("movieVal") movieSearchVal: ElementRef;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   addMovie() {
     this.clearArray(this.moviesFromSearch);
     this.movies.push(this.movieInfo);
+    this.asResults = true;
     this.flag = true;
   }
 
@@ -32,7 +33,7 @@ export class AppComponent implements OnInit {
 
   getMovieSearch(el: any) {
     let val = el.nativeElement.value.trim();
-    if (val !== "" && val !== null && val !== undefined) {
+    if (this.checkVal(val)) {
       this.asValue = true;
       this.api.searchMovie(this.movieSearchVal).subscribe(movies => {
         if (movies.results.length > 0) {
@@ -51,7 +52,17 @@ export class AppComponent implements OnInit {
     }
   }
 
+  sendInfoMovie(modalMovie: any) {
+    this.movieInfo = modalMovie;
+  }
+
+  //HELP FUNCTIONS
   clearArray(arr: any[]) {
     arr.splice(0);
+  }
+
+  checkVal(val: any) {
+    if (val !== "" && val !== null && val !== undefined) return true;
+    else return false;
   }
 }

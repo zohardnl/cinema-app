@@ -11,20 +11,30 @@ export class SearchMovieComponent implements OnInit {
   @Input() movie: any;
   @Output() SearchMovie = new EventEmitter<any>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   getImageUrl() {
-    if (this.movie.poster_path !== undefined && this.movie.poster_path !== "" && this.movie.poster_path !== null) {
+    if (
+      this.movie.poster_path !== undefined &&
+      this.movie.poster_path !== "" &&
+      this.movie.poster_path !== null
+    ) {
       this.url = {
-        background: `url(https://image.tmdb.org/t/p/w500${this.movie.poster_path})`
+        background: `url(https://image.tmdb.org/t/p/w500${
+          this.movie.poster_path
+        })`
       };
     } else {
-      this.url = { background: `url(https://content.schoolinsites.com/api/documents/ebbca81b01694c91aa908f5374842a9f.gif)` };
+      this.url = {
+        background: `url(https://content.schoolinsites.com/api/documents/ebbca81b01694c91aa908f5374842a9f.gif)`
+      };
     }
     return this.url;
+  }
+
+  openInfo() {
+    this.SearchMovie.emit(this.movie);
   }
 }
