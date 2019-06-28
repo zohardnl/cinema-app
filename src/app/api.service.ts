@@ -8,18 +8,22 @@ import { map } from "rxjs/operators";
   providedIn: "root"
 })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  num: number;
+
+  constructor(private http: HttpClient) { }
+
 
   //SHOW MOVIE REQUSEST
   getMovie(): Observable<Movie> {
+    this.num = this.getNumber();
     return this.getMovieHttp().pipe(
       map(movieRes => {
         return {
-          id: movieRes.results[0].id,
-          title: movieRes.results[0].title,
-          poster_path: movieRes.results[0].poster_path,
-          release_date: movieRes.results[0].release_date,
-          overview: movieRes.results[0].overview
+          id: movieRes.results[this.num].id,
+          title: movieRes.results[this.num].title,
+          poster_path: movieRes.results[this.num].poster_path,
+          release_date: movieRes.results[this.num].release_date,
+          overview: movieRes.results[this.num].overview
         } as Movie;
       })
     );
@@ -35,7 +39,7 @@ export class ApiService {
   searchMovieHttp(searchElement: ElementRef) {
     return this.http.get<any>(
       `https://api.themoviedb.org/3/search/movie?api_key=4d9fc135f367468f10bcbf31008637e6&query=${
-        searchElement.nativeElement.value
+      searchElement.nativeElement.value
       }`
     );
   }
@@ -53,7 +57,7 @@ export class ApiService {
     return String.fromCharCode(Math.floor(Math.random() * (122 - 97 + 1)) + 97);
   }
 
-  getID() {
-    return Math.floor(Math.random() * 1000 + 1);
+  getNumber() {
+    return Math.floor(Math.random() * 20);
   }
 }

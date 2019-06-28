@@ -17,9 +17,9 @@ export class AppComponent implements OnInit {
   error: string;
   @ViewChild("movieVal") movieSearchVal: ElementRef;
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   addMovie() {
     this.movies.push(this.movieInfo);
@@ -35,26 +35,9 @@ export class AppComponent implements OnInit {
   getMovieSearch(el: any) {
     let val = el.nativeElement.value.trim();
     if (this.checkVal(val)) {
-      this.api.searchMovie(this.movieSearchVal).subscribe(movies => {
-        if (movies.results.length > 0) {
-          this.moviesFromSearch = movies.results;
-          this.asValue = true;
-          this.flagMovies = false;
-          this.flagSearch = true;
-          this.clearArray(this.movies);
-        } else {
-          this.asValue = false;
-          this.flagMovies = false;
-          this.flagSearch = false;
-          this.error = "No Results!";
-        }
-      });
+      this.callApi();
     } else {
-      this.asValue = false;
-      this.flagSearch = false;
-      this.flagMovies = false;
-      this.error = "No value for search!";
-      this.clearArray(this.movies);
+      this.noValue();
     }
   }
 
@@ -62,7 +45,40 @@ export class AppComponent implements OnInit {
     this.movieInfo = modalMovie;
   }
 
-  //HELP FUNCTIONS
+
+  onKeyPress() {
+    this.callApi();
+  }
+
+
+  /************ HELP FUNCTIONS ******************/
+  callApi() {
+    this.api.searchMovie(this.movieSearchVal).subscribe(movies => {
+      if (movies.results.length > 0) {
+        this.moviesFromSearch = movies.results;
+        this.asValue = true;
+        this.flagMovies = false;
+        this.flagSearch = true;
+        this.clearArray(this.movies);
+      }
+      else {
+        this.asValue = false;
+        this.flagMovies = false;
+        this.flagSearch = false;
+        this.error = "No Results!";
+      }
+    });
+  }
+
+
+  noValue() {
+    this.asValue = false;
+    this.flagSearch = false;
+    this.flagMovies = false;
+    this.error = "No value for search!";
+    this.clearArray(this.movies);
+  }
+
   clearArray(arr: any[]) {
     arr.splice(0);
   }
