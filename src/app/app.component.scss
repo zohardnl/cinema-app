@@ -14,6 +14,10 @@
   background: white;
 
   .nav {
+    @include bp-mobile {
+      justify-content: center;
+    }
+
     align-items: center;
     width: 100%;
     justify-content: space-between;
@@ -80,11 +84,11 @@
 
   &__title {
     @include bp-mobile {
-      margin: 1em;
+      margin: 1em 0 0;
     }
 
     text-align: center;
-    margin: 0.5em 0;
+    margin: 0;
     font-weight: bold;
     font-size: 60px;
     color: $c-white;
