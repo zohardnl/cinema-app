@@ -8,8 +8,14 @@ import { Movie } from "../models/Movie";
 })
 export class Modal implements OnInit {
   @Input() movieInfo: Movie;
+  favChecked: boolean = false;
 
   constructor() { }
 
   ngOnInit() { }
+
+  wishList() {
+    this.favChecked = !this.favChecked;
+    //alert((this.favChecked) ? 'Add to favorites' : 'Remove from favorites');
+  }
 }
