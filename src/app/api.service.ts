@@ -9,6 +9,7 @@ import { map } from "rxjs/operators";
 })
 export class ApiService {
   num: number;
+  url: Object;
 
   constructor(private http: HttpClient) { }
 
@@ -50,6 +51,27 @@ export class ApiService {
         return movie;
       })
     );
+  }
+
+
+  //check image of movie if exits
+  checkMovieImage(movie: any) {
+    if (
+      movie.poster_path !== undefined &&
+      movie.poster_path !== "" &&
+      movie.poster_path !== null
+    ) {
+      this.url = {
+        background: `url(https://image.tmdb.org/t/p/w500${
+          movie.poster_path
+          })`
+      };
+    } else {
+      this.url = {
+        background: `url(https://content.schoolinsites.com/api/documents/ebbca81b01694c91aa908f5374842a9f.gif)`
+      };
+    }
+    return this.url;
   }
 
   //RANDOM FUNCTIONS

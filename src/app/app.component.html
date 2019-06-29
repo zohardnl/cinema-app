@@ -44,6 +44,7 @@
   <div class="main-movies__items" *ngIf="flagMovies">
     <app-movie
       *ngFor="let movie of movies"
+      [movie]="movie"
       (infoMovie)="getInfoMovie($event)"
     ></app-movie>
   </div>
