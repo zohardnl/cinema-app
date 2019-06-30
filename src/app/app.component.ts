@@ -1,3 +1,4 @@
+import { Routes, Router } from "@angular/router";
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { Movie } from "./models/Movie";
 import { ApiService } from "./api.service";
@@ -17,9 +18,9 @@ export class AppComponent implements OnInit {
   error: string;
   @ViewChild("movieVal") movieSearchVal: ElementRef;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private route: Router) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   addMovie() {
     this.movies.push(this.movieInfo);
@@ -45,11 +46,14 @@ export class AppComponent implements OnInit {
     this.movieInfo = modalMovie;
   }
 
-
   onKeyPress() {
     this.callApi();
   }
 
+  resetList() {
+    this.clearArray(this.moviesFromSearch);
+    this.clearArray(this.movies);
+  }
 
   /************ HELP FUNCTIONS ******************/
   callApi() {
@@ -60,8 +64,7 @@ export class AppComponent implements OnInit {
         this.flagMovies = false;
         this.flagSearch = true;
         this.clearArray(this.movies);
-      }
-      else {
+      } else {
         this.asValue = false;
         this.flagMovies = false;
         this.flagSearch = false;
@@ -69,7 +72,6 @@ export class AppComponent implements OnInit {
       }
     });
   }
-
 
   noValue() {
     this.asValue = false;
@@ -86,5 +88,9 @@ export class AppComponent implements OnInit {
   checkVal(val: any) {
     if (val !== "" && val !== null && val !== undefined) return true;
     else return false;
+  }
+
+  navigate(link: string) {
+    this.api.navigatePages(link);
   }
 }

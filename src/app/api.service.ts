@@ -1,3 +1,4 @@
+import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { Injectable, ElementRef } from "@angular/core";
 import { Movie } from "./models/Movie";
@@ -11,8 +12,7 @@ export class ApiService {
   num: number;
   url: Object;
 
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient, private route: Router) {}
 
   //SHOW MOVIE REQUSEST
   getMovie(): Observable<Movie> {
@@ -40,7 +40,7 @@ export class ApiService {
   searchMovieHttp(searchElement: ElementRef) {
     return this.http.get<any>(
       `https://api.themoviedb.org/3/search/movie?api_key=4d9fc135f367468f10bcbf31008637e6&query=${
-      searchElement.nativeElement.value
+        searchElement.nativeElement.value
       }`
     );
   }
@@ -53,7 +53,6 @@ export class ApiService {
     );
   }
 
-
   //check image of movie if exits
   checkMovieImage(movie: any) {
     if (
@@ -62,9 +61,7 @@ export class ApiService {
       movie.poster_path !== null
     ) {
       this.url = {
-        background: `url(https://image.tmdb.org/t/p/w500${
-          movie.poster_path
-          })`
+        background: `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`
       };
     } else {
       this.url = {
@@ -72,6 +69,11 @@ export class ApiService {
       };
     }
     return this.url;
+  }
+
+  //navigate links
+  navigatePages(link: string) {
+    this.route.navigate([link]);
   }
 
   //RANDOM FUNCTIONS

@@ -7,7 +7,7 @@ import { MovieComponent } from "./movie/movie.component";
 import { Modal } from "./modal/modal.component";
 import { Movie } from "./models/Movie";
 import { ApiService } from "./api.service";
-import { SearchMovieComponent } from './search-movie/search-movie.component';
+import { SearchMovieComponent } from "./search-movie/search-movie.component";
 
 @NgModule({
   declarations: [AppComponent, MovieComponent, Modal, SearchMovieComponent],
@@ -15,4 +15,4 @@ import { SearchMovieComponent } from './search-movie/search-movie.component';
   providers: [MovieComponent, Modal, Movie, ApiService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
