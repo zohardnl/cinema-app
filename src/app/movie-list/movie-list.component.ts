@@ -2,6 +2,7 @@ import { Movie } from "./../models/Movie";
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { ApiService } from "../api.service";
 import { Router } from "@angular/router";
+import { MovieComponent } from './../movie/movie.component';
 
 @Component({
   selector: "app-movie-list",
@@ -9,7 +10,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./movie-list.component.scss"]
 })
 export class MovieListComponent implements OnInit {
-  movies: Movie[] = [];
+  movies: any[] = [];
   moviesFromSearch: Object[] = [];
   movieInfo = new Movie();
   flagMovies: boolean = false;
@@ -18,37 +19,41 @@ export class MovieListComponent implements OnInit {
   error: string;
   @ViewChild("movieVal") movieSearchVal: ElementRef;
 
-  constructor(private api: ApiService, private route: Router) {}
+  constructor(private api: ApiService, private route: Router, private movie: MovieComponent) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
   addMovie() {
-    this.movies.push(this.movieInfo);
-    this.asValue = true;
-    this.flagMovies = true;
-    this.flagSearch = false;
+    // this.movies.push(movie);
+    // this.asValue = true;
+    // this.flagMovies = true;
+    // this.flagSearch = false;
+    this.movies.push(this.movie);
   }
 
   getInfoMovie(data: Movie) {
     this.movieInfo = data;
+    this.movies.push(this.movieInfo);
   }
 
-  getMovieSearch(el: any) {
-    let val = el.nativeElement.value.trim();
-    if (this.checkVal(val)) {
-      this.callApi();
-    } else {
-      this.noValue();
-    }
-  }
+  // getMovieSearch(el: any) {
+  //   let val = el.nativeElement.value.trim();
+  //   if (this.checkVal(val)) {
+  //     this.callApi();
+  //   } else {
+  //     this.noValue();
+  //   }
+  // }
 
-  sendInfoMovie(modalMovie: any) {
-    this.movieInfo = modalMovie;
-  }
+  // sendInfoMovie(modalMovie: any) {
+  //   this.movieInfo = modalMovie;
+  // }
 
-  onKeyPress() {
-    this.callApi();
-  }
+  // onKeyPress() {
+  //   this.callApi();
+  // }
 
   resetList() {
     this.clearArray(this.moviesFromSearch);

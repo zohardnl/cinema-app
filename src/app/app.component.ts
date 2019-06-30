@@ -1,6 +1,7 @@
-import { Router } from "@angular/router";
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
-import { ApiService } from "./api.service";
+import { Component, OnInit } from "@angular/core";
+import { Movie } from './models/Movie';
+import { ApiService } from './api.service';
+import { MovieListComponent } from './movie-list/movie-list.component';
 
 @Component({
   selector: "app-root",
@@ -16,18 +17,17 @@ export class AppComponent implements OnInit {
   // asValue: boolean = true;
   // error: string;
   // @ViewChild("movieVal") movieSearchVal: ElementRef;
-  @Output() add = new EventEmitter<any>();
 
-  constructor(private api: ApiService, private route: Router) {}
+  constructor(private api: ApiService, private list: MovieListComponent) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   addMovie() {
     // this.movies.push(this.movieInfo);
     // this.asValue = true;
     // this.flagMovies = true;
     // this.flagSearch = false;
-    this.add.emit();
+    this.list.addMovie();
   }
 
   // getInfoMovie(data: Movie) {
@@ -51,10 +51,9 @@ export class AppComponent implements OnInit {
   //   this.callApi();
   // }
 
-  // resetList() {
-  //   this.clearArray(this.moviesFromSearch);
-  //   this.clearArray(this.movies);
-  // }
+  resetList() {
+    this.list.resetList();
+  }
 
   // /************ HELP FUNCTIONS ******************/
   // callApi() {
@@ -91,7 +90,7 @@ export class AppComponent implements OnInit {
   //   else return false;
   // }
 
-  // navigate(link: string) {
-  //   this.api.navigatePages(link);
-  // }
+  navigate(link: string) {
+    this.api.navigatePages(link);
+  }
 }

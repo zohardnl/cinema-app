@@ -19,7 +19,7 @@ import { MovieListComponent } from "./movie-list/movie-list.component";
     MovieListComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [MovieComponent, Modal, Movie, ApiService],
+  providers: [MovieComponent, Modal, Movie, ApiService, MovieListComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

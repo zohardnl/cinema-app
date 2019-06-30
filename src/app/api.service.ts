@@ -12,7 +12,7 @@ export class ApiService {
   num: number;
   url: Object;
 
-  constructor(private http: HttpClient, private route: Router) {}
+  constructor(private http: HttpClient, private route: Router) { }
 
   //SHOW MOVIE REQUSEST
   getMovie(): Observable<Movie> {
@@ -40,7 +40,7 @@ export class ApiService {
   searchMovieHttp(searchElement: ElementRef) {
     return this.http.get<any>(
       `https://api.themoviedb.org/3/search/movie?api_key=4d9fc135f367468f10bcbf31008637e6&query=${
-        searchElement.nativeElement.value
+      searchElement.nativeElement.value
       }`
     );
   }
