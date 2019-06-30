@@ -1,6 +1,5 @@
-import { Routes, Router } from "@angular/router";
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
-import { Movie } from "./models/Movie";
+import { Router } from "@angular/router";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { ApiService } from "./api.service";
 
 @Component({
@@ -9,88 +8,90 @@ import { ApiService } from "./api.service";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-  movies: Movie[] = [];
-  moviesFromSearch: Object[] = [];
-  movieInfo = new Movie();
-  flagMovies: boolean = false;
-  flagSearch: boolean = false;
-  asValue: boolean = true;
-  error: string;
-  @ViewChild("movieVal") movieSearchVal: ElementRef;
+  // movies: Movie[] = [];
+  // moviesFromSearch: Object[] = [];
+  // movieInfo = new Movie();
+  // flagMovies: boolean = false;
+  // flagSearch: boolean = false;
+  // asValue: boolean = true;
+  // error: string;
+  // @ViewChild("movieVal") movieSearchVal: ElementRef;
+  @Output() add = new EventEmitter<any>();
 
   constructor(private api: ApiService, private route: Router) {}
 
   ngOnInit() {}
 
   addMovie() {
-    this.movies.push(this.movieInfo);
-    this.asValue = true;
-    this.flagMovies = true;
-    this.flagSearch = false;
+    // this.movies.push(this.movieInfo);
+    // this.asValue = true;
+    // this.flagMovies = true;
+    // this.flagSearch = false;
+    this.add.emit();
   }
 
-  getInfoMovie(data: Movie) {
-    this.movieInfo = data;
-  }
+  // getInfoMovie(data: Movie) {
+  //   this.movieInfo = data;
+  // }
 
-  getMovieSearch(el: any) {
-    let val = el.nativeElement.value.trim();
-    if (this.checkVal(val)) {
-      this.callApi();
-    } else {
-      this.noValue();
-    }
-  }
+  // getMovieSearch(el: any) {
+  //   let val = el.nativeElement.value.trim();
+  //   if (this.checkVal(val)) {
+  //     this.callApi();
+  //   } else {
+  //     this.noValue();
+  //   }
+  // }
 
-  sendInfoMovie(modalMovie: any) {
-    this.movieInfo = modalMovie;
-  }
+  // sendInfoMovie(modalMovie: any) {
+  //   this.movieInfo = modalMovie;
+  // }
 
-  onKeyPress() {
-    this.callApi();
-  }
+  // onKeyPress() {
+  //   this.callApi();
+  // }
 
-  resetList() {
-    this.clearArray(this.moviesFromSearch);
-    this.clearArray(this.movies);
-  }
+  // resetList() {
+  //   this.clearArray(this.moviesFromSearch);
+  //   this.clearArray(this.movies);
+  // }
 
-  /************ HELP FUNCTIONS ******************/
-  callApi() {
-    this.api.searchMovie(this.movieSearchVal).subscribe(movies => {
-      if (movies.results.length > 0) {
-        this.moviesFromSearch = movies.results;
-        this.asValue = true;
-        this.flagMovies = false;
-        this.flagSearch = true;
-        this.clearArray(this.movies);
-      } else {
-        this.asValue = false;
-        this.flagMovies = false;
-        this.flagSearch = false;
-        this.error = "No Results!";
-      }
-    });
-  }
+  // /************ HELP FUNCTIONS ******************/
+  // callApi() {
+  //   this.api.searchMovie(this.movieSearchVal).subscribe(movies => {
+  //     if (movies.results.length > 0) {
+  //       this.moviesFromSearch = movies.results;
+  //       this.asValue = true;
+  //       this.flagMovies = false;
+  //       this.flagSearch = true;
+  //       this.clearArray(this.movies);
+  //     } else {
+  //       this.asValue = false;
+  //       this.flagMovies = false;
+  //       this.flagSearch = false;
+  //       this.error = "No Results!";
+  //     }
+  //   });
+  // }
 
-  noValue() {
-    this.asValue = false;
-    this.flagSearch = false;
-    this.flagMovies = false;
-    this.error = "No value for search!";
-    this.clearArray(this.movies);
-  }
+  // noValue() {
+  //   this.asValue = false;
+  //   this.flagSearch = false;
+  //   this.flagMovies = false;
+  //   this.error = "No value for search!";
+  //   this.clearArray(this.movies);
+  // }
 
-  clearArray(arr: any[]) {
-    arr.splice(0);
-  }
+  // clearArray(arr: any[]) {
+  //   arr.splice(0);
+  // }
 
-  checkVal(val: any) {
-    if (val !== "" && val !== null && val !== undefined) return true;
-    else return false;
-  }
+  // checkVal(val: any) {
+  //   if (val !== "" && val !== null && val !== undefined) return true;
+  //   else return false;
+  // }
 
-  navigate(link: string) {
-    this.api.navigatePages(link);
-  }
+  // navigate(link: string) {
+  //   this.api.navigatePages(link);
+  // }
 }

@@ -8,9 +8,16 @@ import { Modal } from "./modal/modal.component";
 import { Movie } from "./models/Movie";
 import { ApiService } from "./api.service";
 import { SearchMovieComponent } from "./search-movie/search-movie.component";
+import { MovieListComponent } from "./movie-list/movie-list.component";
 
 @NgModule({
-  declarations: [AppComponent, MovieComponent, Modal, SearchMovieComponent],
+  declarations: [
+    AppComponent,
+    MovieComponent,
+    Modal,
+    SearchMovieComponent,
+    MovieListComponent
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [MovieComponent, Modal, Movie, ApiService],
   bootstrap: [AppComponent]
