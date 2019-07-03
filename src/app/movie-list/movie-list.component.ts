@@ -15,7 +15,7 @@ export class MovieListComponent implements OnInit {
   flagSearch: boolean = false;
   asValue: boolean = true;
   error: string;
-  @ViewChild("movieVal") movieSearchVal: ElementRef;
+  @ViewChild("movieVal", { static: false }) movieSearchVal: ElementRef;
 
   constructor(private movie: MovieServiceService) {}
 
