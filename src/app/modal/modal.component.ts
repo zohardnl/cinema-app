@@ -10,12 +10,11 @@ export class Modal implements OnInit {
   @Input() movieInfo: Movie;
   favChecked: boolean = false;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   wishList() {
     this.favChecked = !this.favChecked;
-    //alert((this.favChecked) ? 'Add to favorites' : 'Remove from favorites');
   }
 }

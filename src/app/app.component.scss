@@ -70,6 +70,10 @@
     }
 
     &-btn {
+      button {
+        background-color: #007bff;
+        color: white;
+      }
       @include bp-mobile {
         width: 100%;
         margin-top: 10px;
@@ -77,18 +81,6 @@
         button {
           width: 100%;
         }
-      }
-    }
-
-    &-favorite {
-      button {
-        background-color: dodgerblue;
-      }
-    }
-
-    &-reset {
-      button {
-        background-color: red;
       }
     }
   }

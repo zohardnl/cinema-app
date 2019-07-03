@@ -1,19 +1,17 @@
 <div class="main-movies">
   <h2 class="main-movies__title">Movie List</h2>
   <hr />
-  <div class="main-movies__error" *ngIf="!asValue">
+  <!-- *ngIf="!asValue" -->
+  <div class="main-movies__error">
     {{ error }}
   </div>
   <!-- *ngIf="flagMovies" -->
   <div class="main-movies__items">
-    <app-movie *ngFor="let movie of movies" [movie]="movie"></app-movie>
+    <app-movie *ngFor="let movie of movies$ | async" [movie]="movie" (infoMovie)="getInfoMovie($event)"></app-movie>
   </div>
-  <!-- <div class="main-movies__items" *ngIf="flagSearch">
-    <app-search-movie
-      *ngFor="let movie of moviesFromSearch"
-      [movie]="movie"
-      (SearchMovie)="sendInfoMovie($event)"
-    >
+  <div class="main-movies__items" *ngIf="flagSearch">
+    <app-search-movie *ngFor="let movie of moviesFromSearch" [movie]="movie" (SearchMovie)="sendInfoMovie($event)">
     </app-search-movie>
-  </div> -->
+  </div>
 </div>
+<app-modal [movieInfo]="movieInfo" *ngIf="movieInfo"></app-modal>

@@ -1,7 +1,5 @@
+import { MovieServiceService } from "./movie-service.service";
 import { Component, OnInit } from "@angular/core";
-import { Movie } from './models/Movie';
-import { ApiService } from './api.service';
-import { MovieListComponent } from './movie-list/movie-list.component';
 
 @Component({
   selector: "app-root",
@@ -18,16 +16,20 @@ export class AppComponent implements OnInit {
   // error: string;
   // @ViewChild("movieVal") movieSearchVal: ElementRef;
 
-  constructor(private api: ApiService, private list: MovieListComponent) { }
+  constructor(private movie: MovieServiceService) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   addMovie() {
     // this.movies.push(this.movieInfo);
     // this.asValue = true;
     // this.flagMovies = true;
     // this.flagSearch = false;
-    this.list.addMovie();
+    this.movie.getMovie().subscribe();
+  }
+
+  onKeyPress() {
+    this.movie.getMovie().subscribe();
   }
 
   // getInfoMovie(data: Movie) {
@@ -52,7 +54,7 @@ export class AppComponent implements OnInit {
   // }
 
   resetList() {
-    this.list.resetList();
+    this.movie.resetMovies();
   }
 
   // /************ HELP FUNCTIONS ******************/
@@ -90,7 +92,7 @@ export class AppComponent implements OnInit {
   //   else return false;
   // }
 
-  navigate(link: string) {
-    this.api.navigatePages(link);
-  }
+  // navigate(link: string) {
+  //   this.api.navigatePages(link);
+  // }
 }

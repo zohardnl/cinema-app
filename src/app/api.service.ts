@@ -1,18 +1,17 @@
+import { environment } from "./../environments/environment";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
-import { Injectable, ElementRef } from "@angular/core";
+import { ElementRef, Injectable } from "@angular/core";
 import { Movie } from "./models/Movie";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
-@Injectable({
-  providedIn: "root"
-})
+@Injectable()
 export class ApiService {
   num: number;
   url: Object;
 
-  constructor(private http: HttpClient, private route: Router) { }
+  constructor(private http: HttpClient, private route: Router) {}
 
   //SHOW MOVIE REQUSEST
   getMovie(): Observable<Movie> {
@@ -32,7 +31,9 @@ export class ApiService {
 
   getMovieHttp() {
     return this.http.get<any>(
-      `https://api.themoviedb.org/3/search/movie?api_key=4d9fc135f367468f10bcbf31008637e6&query=${this.getChar()}`
+      `${environment.apiUrl}?api_key=${
+        environment.apiKey
+      }&query=${this.getChar()}`
     );
   }
 
@@ -40,7 +41,7 @@ export class ApiService {
   searchMovieHttp(searchElement: ElementRef) {
     return this.http.get<any>(
       `https://api.themoviedb.org/3/search/movie?api_key=4d9fc135f367468f10bcbf31008637e6&query=${
-      searchElement.nativeElement.value
+        searchElement.nativeElement.value
       }`
     );
   }
