@@ -10,13 +10,12 @@ export class MovieServiceService {
   private _movies: BehaviorSubject<Movie[]> = new BehaviorSubject([]);
   movies$: Observable<Movie[]> = this._movies.asObservable();
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService) { }
 
   getMovie(): Observable<Movie> {
     return this.api.getMovie().pipe(
       tap(movie => {
-        if (!this._movies.value)
-          this._movies.next([...this._movies.value, movie]);
+        this._movies.next([...this._movies.value, movie]);
       })
     );
   }
