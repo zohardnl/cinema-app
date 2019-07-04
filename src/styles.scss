@@ -1,4 +1,5 @@
 @import "tools/mixins";
+
 @include google-font("Assistant");
 @include google-font("Roboto");
 
@@ -19,7 +20,6 @@ body {
     padding-top: 17em;
   }
 
-  background: linear-gradient(to right, rgb(112, 112, 112), black);
-  background-attachment: fixed;
+  background: linear-gradient(to right, rgb(112, 112, 112), black) fixed;
   padding-top: 8em;
 }
