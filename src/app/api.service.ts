@@ -29,7 +29,7 @@ export class ApiService {
     );
   }
 
-  getMovieHttp() {
+  getMovieHttp(): Observable<any> {
     return this.http.get<any>(
       `${environment.apiUrl}?api_key=${
         environment.apiKey
@@ -38,7 +38,7 @@ export class ApiService {
   }
 
   //SEARCH MOVIE REQUEST
-  searchMovieHttp(searchElement: ElementRef) {
+  searchMovieHttp(searchElement: ElementRef): Observable<any> {
     return this.http.get<any>(
       `${environment.apiUrl}?api_key=${environment.apiKey}&query=${
         searchElement.nativeElement.value
@@ -46,7 +46,7 @@ export class ApiService {
     );
   }
 
-  searchMovie(search: ElementRef): Observable<any> {
+  searchMovie(search: ElementRef): Observable<Movie[]> {
     return this.searchMovieHttp(search).pipe(
       map(movies => {
         return movies.results;
@@ -73,11 +73,11 @@ export class ApiService {
   }
 
   //RANDOM FUNCTIONS
-  getChar() {
+  getChar(): string {
     return String.fromCharCode(Math.floor(Math.random() * (122 - 97 + 1)) + 97);
   }
 
-  getNumber() {
+  getNumber(): number {
     return Math.floor(Math.random() * 20);
   }
 }

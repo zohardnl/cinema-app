@@ -9,11 +9,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class MovieListComponent implements OnInit {
   movies$: Observable<Movie[]> = this.movies.movies$;
-  moviesFromSearch$: Observable<Movie[]> = this.movies.movies2$;
   movieInfo: Movie;
-  flagSearch: boolean = false;
-  asValue: boolean = true;
-  error: string;
 
   constructor(private movies: MovieServiceService) {}
 
@@ -22,23 +18,4 @@ export class MovieListComponent implements OnInit {
   getInfoMovie(data: Movie) {
     this.movieInfo = data;
   }
-
-  flagMovies() {}
-
-  // noValue() {
-  //   this.asValue = false;
-  //   this.flagSearch = false;
-  //   this.flagMovies = false;
-  //   this.error = "No value for search!";
-  //   this.clearArray(this.movies);
-  // }
-
-  // clearArray(arr: any[]) {
-  //   arr.splice(0);
-  // }
-
-  // checkVal(val: any) {
-  //   if (val !== "" && val !== null && val !== undefined) return true;
-  //   else return false;
-  // }
 }

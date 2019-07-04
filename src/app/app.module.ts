@@ -6,7 +6,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { MovieComponent } from "./movie/movie.component";
 import { Modal } from "./modal/modal.component";
 import { ApiService } from "./api.service";
-import { SearchMovieComponent } from "./search-movie/search-movie.component";
 import { MovieListComponent } from "./movie-list/movie-list.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MovieServiceService } from "./movie-service.service";
@@ -17,13 +16,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MovieComponent,
-    Modal,
-    SearchMovieComponent,
-    MovieListComponent
-  ],
+  declarations: [AppComponent, MovieComponent, Modal, MovieListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
