@@ -15,7 +15,8 @@ export class MovieServiceService {
   getMovie(): Observable<Movie> {
     return this.api.getMovie().pipe(
       tap(movie => {
-        this._movies.next([...this._movies.value, movie]);
+        if (!this._movies.value)
+          this._movies.next([...this._movies.value, movie]);
       })
     );
   }

@@ -11,7 +11,7 @@ export class ApiService {
   num: number;
   url: Object;
 
-  constructor(private http: HttpClient, private route: Router) {}
+  constructor(private http: HttpClient) {}
 
   //SHOW MOVIE REQUSEST
   getMovie(): Observable<Movie> {
@@ -55,7 +55,7 @@ export class ApiService {
   }
 
   //check image of movie if exits
-  checkMovieImage(movie: any) {
+  checkMovieImage(movie: Movie): Object {
     if (
       movie.poster_path !== undefined &&
       movie.poster_path !== "" &&
