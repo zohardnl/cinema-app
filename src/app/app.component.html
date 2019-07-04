@@ -1,21 +1,47 @@
 <nav class="navbar navbar-expand navbar-light header-navbar">
-  <div class="nav navbar-nav" fxLayoutAlign="space-between center" fxLayoutAlign.xs="center" fxLayoutAlign.sm="center">
+  <div
+    class="nav navbar-nav"
+    fxLayoutAlign="space-between center"
+    fxLayoutAlign.xs="center"
+    fxLayoutAlign.sm="center"
+  >
     <span routerLink="" style="cursor: pointer;">
-      <img src="https://s3.amazonaws.com/herolo/herolo-logo-animated.gif" alt="herolo-logo" />
+      <img
+        src="https://s3.amazonaws.com/herolo/herolo-logo-animated.gif"
+        alt="herolo-logo"
+      />
     </span>
 
     <div class="search-movie">
       <mat-form-field appearance="outline">
         <mat-label>Search Movie</mat-label>
-        <input matInput type="search" placeholder="Example: Titanic" (keyup)="onKeyPress()" #movieVal>
-        <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue()">
+        <input
+          matInput
+          type="search"
+          placeholder="Example: Titanic"
+          (keyup)="onKeyPress()"
+          #movieVal
+        />
+        <button
+          mat-button
+          *ngIf="value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="clearValue()"
+        >
           <mat-icon>close</mat-icon>
         </button>
         <mat-hint>Live Search</mat-hint>
       </mat-form-field>
     </div>
 
-    <div class="nav-wrap1" fxLayoutAlign.sm="space-around" fxLayout="row" fxLayoutAlign="space-between">
+    <div
+      class="nav-wrap1"
+      fxLayoutAlign.sm="space-around"
+      fxLayout="row"
+      fxLayoutAlign="space-between"
+    >
       <div class="nav-favorite">
         <button routerLink="favorites" mat-raised-button color="primary">
           Favorite Movies
@@ -23,7 +49,12 @@
       </div>
 
       <div class="nav-btn">
-        <button (click)="addMovie()" routerLink="" mat-raised-button color="accent">
+        <button
+          (click)="addMovie()"
+          routerLink=""
+          mat-raised-button
+          color="accent"
+        >
           Show Movie
         </button>
       </div>
