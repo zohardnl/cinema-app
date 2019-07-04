@@ -14,9 +14,10 @@ import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { FavoriteComponent } from './favorite/favorite.component';
 
 @NgModule({
-  declarations: [AppComponent, MovieComponent, Modal, MovieListComponent],
+  declarations: [AppComponent, MovieComponent, Modal, MovieListComponent, FavoriteComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

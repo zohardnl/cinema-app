@@ -1,0 +1,25 @@
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="front-info" [ngStyle]="getImageUrl()"></div>
+    <div class="back-info">
+      <span data-toggle="modal" data-target="#myModal" class="edit-icon" (click)="openInfo()">
+        <i class="fas fa-edit"></i>
+      </span>
+      <div class="movie-info">
+        <h3>{{ movie.title }}</h3>
+      </div>
+      <div class="movie-info">
+        <label>ID:</label>
+        <span>{{ movie.id }}</span>
+      </div>
+      <div class="movie-info">
+        <label>Release Date:</label>
+        <span>{{ movie.release_date }}</span>
+      </div>
+      <div class="movie-info">
+        <label>Overview:</label>
+        <span>{{ movie.overview }}</span>
+      </div>
+    </div>
+  </div>
+</div>

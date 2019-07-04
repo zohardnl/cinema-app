@@ -8,7 +8,7 @@ import {map} from "rxjs/operators";
 @Injectable()
 export class ApiService {
   num: number;
-  url: Object;
+  url: object;
 
   constructor(private http: HttpClient) {
   }
