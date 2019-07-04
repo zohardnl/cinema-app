@@ -5,12 +5,13 @@
   <div class="main-movies__error">
     {{ error }}
   </div>
-  <!-- *ngIf="flagMovies" -->
-  <div class="main-movies__items">
+
+  <div class="main-movies__items" *ngIf="flagMovies()">
     <app-movie *ngFor="let movie of movies$ | async" [movie]="movie" (infoMovie)="getInfoMovie($event)"></app-movie>
   </div>
-  <div class="main-movies__items" *ngIf="flagSearch">
-    <app-search-movie *ngFor="let movie of moviesFromSearch" [movie]="movie" (SearchMovie)="sendInfoMovie($event)">
+  <div class="main-movies__items">
+    <app-search-movie *ngFor="let movie of moviesFromSearch$ | async" [movie]="movie"
+      (SearchMovie)="getInfoMovie($event)">
     </app-search-movie>
   </div>
 </div>

@@ -1,10 +1,23 @@
 <nav class="navbar navbar-expand navbar-light header-navbar">
-  <div class="nav navbar-nav">
+  <div class="nav navbar-nav" fxLayoutAlign="space-between center" fxLayoutAlign.xs="center" fxLayoutAlign.sm="center">
     <span routerLink="" style="cursor: pointer;">
       <img src="https://s3.amazonaws.com/herolo/herolo-logo-animated.gif" alt="herolo-logo" />
     </span>
 
-    <div class="nav-wrap1">
+
+
+    <div class="search-movie">
+      <mat-form-field appearance="outline">
+        <mat-label>Search Movie</mat-label>
+        <input matInput type="search" placeholder="Example: Titanic" (keyup)="onKeyPress()" #movieVal>
+        <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-hint>Live Search</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="nav-wrap1" fxLayoutAlign.sm="space-around" fxLayout="row" fxLayoutAlign="space-between">
       <div class="nav-favorite">
         <button routerLink="favorites" mat-raised-button color="primary">
           Favorite Movies
@@ -12,7 +25,7 @@
       </div>
 
       <div class="nav-btn">
-        <button (click)="addMovie()" routerLink="" mat-raised-button>
+        <button (click)="addMovie()" routerLink="" mat-raised-button color="accent">
           Show Movie
         </button>
       </div>
@@ -23,29 +36,7 @@
         </button>
       </div>
     </div>
-
-    <div class="form-inline search-movie">
-      <input class="form-control" type="search" placeholder="Search" (keyup)="onKeyPress()" #movieVal />
-      <button class=" btn btn-outline-success" type="submit" (click)="getMovieSearch(movieSearchVal)">
-        Search
-      </button>
-    </div>
   </div>
 </nav>
 
 <router-outlet></router-outlet>
-
-<!-- <div class="main-movies">
-  <h2 class="main-movies__title">Movie List</h2>
-  <hr />
-  <div class="main-movies__error" *ngIf="!asValue">
-    {{ error }}
-  </div>
-  <div class="main-movies__items" *ngIf="flagMovies">
-    <app-movie *ngFor="let movie of movies" [movie]="movie" (infoMovie)="getInfoMovie($event)"></app-movie>
-  </div>
-  <div class="main-movies__items" *ngIf="flagSearch">
-    <app-search-movie *ngFor="let movie of moviesFromSearch" [movie]="movie" (SearchMovie)="sendInfoMovie($event)">
-    </app-search-movie>
-  </div>
-</div> -->

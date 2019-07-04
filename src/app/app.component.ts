@@ -1,5 +1,5 @@
 import { MovieServiceService } from "./movie-service.service";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 
 @Component({
   selector: "app-root",
@@ -7,29 +7,29 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-  // movies: Movie[] = [];
-  // moviesFromSearch: Object[] = [];
-  // movieInfo = new Movie();
-  // flagMovies: boolean = false;
-  // flagSearch: boolean = false;
-  // asValue: boolean = true;
-  // error: string;
-  // @ViewChild("movieVal") movieSearchVal: ElementRef;
+  @ViewChild("movieVal", { static: false }) movieSearchVal: ElementRef;
+  value: string = "";
 
   constructor(private movie: MovieServiceService) {}
 
   ngOnInit() {}
 
   addMovie() {
-    // this.movies.push(this.movieInfo);
-    // this.asValue = true;
-    // this.flagMovies = true;
-    // this.flagSearch = false;
     this.movie.getMovie().subscribe();
   }
 
   onKeyPress() {
-    this.movie.getMovie().subscribe();
+    this.value = this.movieSearchVal.nativeElement.value;
+    this.movie.getSearch(this.movieSearchVal).subscribe();
+  }
+
+  clearValue() {
+    this.value = "";
+    this.movieSearchVal.nativeElement.value = "";
+  }
+
+  resetList() {
+    this.movie.resetMovies();
   }
 
   // getInfoMovie(data: Movie) {
@@ -52,10 +52,6 @@ export class AppComponent implements OnInit {
   // onKeyPress() {
   //   this.callApi();
   // }
-
-  resetList() {
-    this.movie.resetMovies();
-  }
 
   // /************ HELP FUNCTIONS ******************/
   // callApi() {

@@ -40,7 +40,7 @@ export class ApiService {
   //SEARCH MOVIE REQUEST
   searchMovieHttp(searchElement: ElementRef) {
     return this.http.get<any>(
-      `https://api.themoviedb.org/3/search/movie?api_key=4d9fc135f367468f10bcbf31008637e6&query=${
+      `${environment.apiUrl}?api_key=${environment.apiKey}&query=${
         searchElement.nativeElement.value
       }`
     );
@@ -48,8 +48,8 @@ export class ApiService {
 
   searchMovie(search: ElementRef): Observable<any> {
     return this.searchMovieHttp(search).pipe(
-      map(movie => {
-        return movie;
+      map(movies => {
+        return movies.results;
       })
     );
   }
@@ -70,11 +70,6 @@ export class ApiService {
       };
     }
     return this.url;
-  }
-
-  //navigate links
-  navigatePages(link: string) {
-    this.route.navigate([link]);
   }
 
   //RANDOM FUNCTIONS

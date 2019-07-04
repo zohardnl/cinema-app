@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Input } from "@angular/core";
 import { Output } from "@angular/core";
-import { ApiService } from './../api.service';
+import { ApiService } from "./../api.service";
 
 @Component({
   selector: "app-search-movie",
@@ -12,12 +12,12 @@ export class SearchMovieComponent implements OnInit {
   @Input() movie: any;
   @Output() SearchMovie = new EventEmitter<any>();
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   getImageUrl() {
-    return this.url = this.api.checkMovieImage(this.movie);
+    return (this.url = this.api.checkMovieImage(this.movie));
   }
 
   openInfo() {

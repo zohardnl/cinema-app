@@ -10,24 +10,16 @@ html,
 body {
   height: 100%;
   overflow: auto;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 body {
-  @include bp-mobile {
-    padding-top: 6em;
+  @include bp-tablet {
+    padding-top: 17em;
   }
 
-  font-family: "Assistant", sans-serif;
   background: linear-gradient(to right, rgb(112, 112, 112), black);
   background-attachment: fixed;
   padding-top: 8em;
-}
-
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

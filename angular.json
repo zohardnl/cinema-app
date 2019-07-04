@@ -28,7 +28,11 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/bootstrap/jquery-3.4.1.min.js",
+              "src/bootstrap/popper.min.js",
+              "src/bootstrap/js/bootstrap.min.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
