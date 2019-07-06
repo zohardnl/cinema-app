@@ -1,5 +1,3 @@
-import { Movie } from "./Movie";
-
 export interface Movie {
   id: number;
   title: string;
