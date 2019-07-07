@@ -1,16 +1,18 @@
-import { Observable } from "rxjs";
-import { Movie } from "./models/Movie";
-import { ApiService } from "./api.service";
-import { Injectable, ElementRef } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
-import { tap } from "rxjs/operators";
+import {Observable} from "rxjs";
+import {Movie} from "./models/Movie";
+import {ApiService} from "./api.service";
+import {Injectable, ElementRef} from "@angular/core";
+import {BehaviorSubject} from "rxjs";
+import {tap} from "rxjs/operators";
 
 @Injectable()
 export class MovieServiceService {
   private _movies: BehaviorSubject<Movie[]> = new BehaviorSubject([]);
   movies$: Observable<Movie[]> = this._movies.asObservable();
+  favoriteMovies: Movie[] = [];
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService) {
+  }
 
   getMovie(): Observable<Movie> {
     return this.api.getMovie().pipe(
@@ -30,5 +32,10 @@ export class MovieServiceService {
 
   resetMovies(): void {
     this._movies.next([]);
+    this.favoriteMovies.splice(0);
+  }
+
+  setFavoriteMovie(movie: Movie) {
+    this.favoriteMovies.push(movie);
   }
 }

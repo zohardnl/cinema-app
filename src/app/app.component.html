@@ -2,8 +2,8 @@
   <div
     class="nav navbar-nav"
     fxLayoutAlign="space-between center"
-    fxLayoutAlign.xs="center"
-    fxLayoutAlign.sm="center"
+    fxLayoutAlign.xs="center center"
+    fxLayoutAlign.sm="center center"
   >
     <span routerLink="" style="cursor: pointer;">
       <img
@@ -13,7 +13,7 @@
     </span>
 
     <div class="search-movie">
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" routerLink="">
         <mat-label>Search Movie</mat-label>
         <input
           matInput
@@ -38,9 +38,10 @@
 
     <div
       class="nav-wrap1"
-      fxLayoutAlign.sm="space-around"
+      fxLayoutAlign.sm="space-around center"
+      fxLayoutAlign.xs="space-around center"
       fxLayout="row"
-      fxLayoutAlign="space-between"
+      fxLayoutAlign="space-between center"
     >
       <div class="nav-favorite">
         <button routerLink="favorites" mat-raised-button color="primary">

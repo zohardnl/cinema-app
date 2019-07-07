@@ -1,10 +1,12 @@
 <div class="flip-card">
   <div class="flip-card-inner">
-    <div class="front-info" [ngStyle]="getImageUrl()"></div>
+    <div class="front-info" [ngStyle]="imageUrl"></div>
     <div class="back-info">
-      <span data-toggle="modal" data-target="#myModal" class="edit-icon" (click)="openInfo()">
-        <i class="fas fa-edit"></i>
-      </span>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <span data-toggle="modal" data-target="#myModal" class="edit-icon clicked" (click)="openInfo()">
+          <i class="fas fa-info-circle"></i>
+        </span>
+      </div>
       <div class="movie-info">
         <h3>{{ movie.title }}</h3>
       </div>
@@ -16,9 +18,13 @@
         <label>Release Date:</label>
         <span>{{ movie.release_date }}</span>
       </div>
-      <div class="movie-info">
+      <div class="movie-info movie-info-scroll">
         <label>Overview:</label>
         <span>{{ movie.overview }}</span>
+      </div>
+      <div class="save" fxLayout="row" fxLayoutAlign="center">
+        <button type="submit" mat-raised-button (click)="wishList()" routerLink="favorites" class="clicked">Save
+        </button>
       </div>
     </div>
   </div>

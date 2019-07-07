@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { Movie } from "../models/Movie";
+import {Component, OnInit, Input} from "@angular/core";
+import {Movie} from "../models/Movie";
 
 @Component({
   selector: "app-modal",
@@ -8,13 +8,10 @@ import { Movie } from "../models/Movie";
 })
 export class Modal implements OnInit {
   @Input() movieInfo: Movie;
-  favChecked: boolean = false;
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit() {}
-
-  wishList() {
-    this.favChecked = !this.favChecked;
+  ngOnInit() {
   }
 }

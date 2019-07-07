@@ -55,18 +55,25 @@ export class ApiService {
   }
 
   //check image of movie if exits
-  checkMovieImage(movie: Movie): Object {
-    if (
-      movie.poster_path !== undefined &&
-      movie.poster_path !== "" &&
-      movie.poster_path !== null
-    ) {
+  checkMovieImage(movie: Movie): object {
+    if (movie !== undefined) {
+      if (
+        movie.poster_path !== undefined &&
+        movie.poster_path !== "" &&
+        movie.poster_path !== null
+      ) {
+        this.url = {
+          backgroundImage: `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`
+        };
+      } else {
+        this.url = {
+          backgroundImage: `url(https://www.metrorollerdoors.com.au/wp-content/uploads/2018/02/unavailable-image.jpg)`
+        };
+      }
+    }
+    else {
       this.url = {
-        background: `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`
-      };
-    } else {
-      this.url = {
-        background: `url(https://content.schoolinsites.com/api/documents/ebbca81b01694c91aa908f5374842a9f.gif)`
+        backgroundImage: `url(https://www.metrorollerdoors.com.au/wp-content/uploads/2018/02/unavailable-image.jpg)`
       };
     }
     return this.url;

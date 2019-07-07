@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ApiService} from "../api.service";
+import {Component, OnInit} from '@angular/core';
 import {Movie} from "../models/Movie";
+import {MovieServiceService} from "../movie-service.service";
 
 @Component({
   selector: 'app-favorite',
@@ -8,21 +8,20 @@ import {Movie} from "../models/Movie";
   styleUrls: ['./favorite.component.scss']
 })
 export class FavoriteComponent implements OnInit {
-  imageUrl: object;
-  @Input() movie: Movie;
-  @Output() infoMovie = new EventEmitter<Movie>();
+  movies: Movie[] = this.movie.favoriteMovies;
+  movieInfo: Movie;
 
-  constructor(private api: ApiService) {
+  constructor(private movie: MovieServiceService) {
   }
 
   ngOnInit() {
   }
 
-  getImageUrl() {
-    return (this.imageUrl = this.api.checkMovieImage(this.movie));
+  asFav() {
+    return this.movies !== null && this.movies !== undefined;
   }
 
-  openInfo() {
-    this.infoMovie.emit(this.movie);
+  getInfoMovie(data: Movie) {
+    this.movieInfo = data;
   }
 }
