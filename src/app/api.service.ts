@@ -1,17 +1,16 @@
-import {environment} from "../environments/environment";
-import {HttpClient} from "@angular/common/http";
-import {ElementRef, Injectable} from "@angular/core";
-import {Movie} from "./models/Movie";
-import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
+import { environment } from "../environments/environment";
+import { HttpClient } from "@angular/common/http";
+import { ElementRef, Injectable } from "@angular/core";
+import { Movie } from "./models/Movie";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Injectable()
 export class ApiService {
   num: number;
   url: object;
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   //SHOW MOVIE REQUSEST
   getMovie(): Observable<Movie> {
@@ -33,7 +32,7 @@ export class ApiService {
     return this.http.get<any>(
       `${environment.apiUrl}?api_key=${
         environment.apiKey
-        }&query=${this.getChar()}`
+      }&query=${this.getChar()}`
     );
   }
 
@@ -42,7 +41,7 @@ export class ApiService {
     return this.http.get<any>(
       `${environment.apiUrl}?api_key=${environment.apiKey}&query=${
         searchElement.nativeElement.value
-        }`
+      }`
     );
   }
 
@@ -63,15 +62,16 @@ export class ApiService {
         movie.poster_path !== null
       ) {
         this.url = {
-          backgroundImage: `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`
+          backgroundImage: `url(https://image.tmdb.org/t/p/w500${
+            movie.poster_path
+          })`
         };
       } else {
         this.url = {
           backgroundImage: `url(https://www.metrorollerdoors.com.au/wp-content/uploads/2018/02/unavailable-image.jpg)`
         };
       }
-    }
-    else {
+    } else {
       this.url = {
         backgroundImage: `url(https://www.metrorollerdoors.com.au/wp-content/uploads/2018/02/unavailable-image.jpg)`
       };

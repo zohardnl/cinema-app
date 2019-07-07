@@ -14,10 +14,19 @@ import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { FavoriteComponent } from './favorite/favorite.component';
+import { FavoriteComponent } from "./favorite/favorite.component";
+import { SnackBarComponent } from "./movie/snack-bar/snack-bar.component";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 @NgModule({
-  declarations: [AppComponent, MovieComponent, Modal, MovieListComponent, FavoriteComponent],
+  declarations: [
+    AppComponent,
+    MovieComponent,
+    Modal,
+    MovieListComponent,
+    FavoriteComponent,
+    SnackBarComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -27,8 +36,10 @@ import { FavoriteComponent } from './favorite/favorite.component';
     MatInputModule,
     MatIconModule,
     MatFormFieldModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatSnackBarModule
   ],
+  entryComponents: [SnackBarComponent],
   providers: [ApiService, MovieServiceService],
   bootstrap: [AppComponent]
 })

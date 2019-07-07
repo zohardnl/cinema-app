@@ -1,9 +1,9 @@
-import {Observable} from "rxjs";
-import {Movie} from "./models/Movie";
-import {ApiService} from "./api.service";
-import {Injectable, ElementRef} from "@angular/core";
-import {BehaviorSubject} from "rxjs";
-import {tap} from "rxjs/operators";
+import { Observable } from "rxjs";
+import { Movie } from "./models/Movie";
+import { ApiService } from "./api.service";
+import { Injectable, ElementRef } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
+import { tap } from "rxjs/operators";
 
 @Injectable()
 export class MovieServiceService {
@@ -11,8 +11,7 @@ export class MovieServiceService {
   movies$: Observable<Movie[]> = this._movies.asObservable();
   favoriteMovies: Movie[] = [];
 
-  constructor(private api: ApiService) {
-  }
+  constructor(private api: ApiService) {}
 
   getMovie(): Observable<Movie> {
     return this.api.getMovie().pipe(

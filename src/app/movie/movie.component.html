@@ -22,9 +22,8 @@
         <label>Overview:</label>
         <span>{{ movie.overview }}</span>
       </div>
-      <div class="save" fxLayout="row" fxLayoutAlign="center">
-        <button type="submit" mat-raised-button (click)="wishList()" routerLink="favorites" class="clicked">Save
-        </button>
+      <div class="save" fxLayout="row" fxLayoutAlign="center" *ngIf="isFavorite()">
+        <button type="submit" mat-raised-button (click)="wishList()" class="clicked">Save</button>
       </div>
     </div>
   </div>
