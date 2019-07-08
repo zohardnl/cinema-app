@@ -8,12 +8,21 @@
 
   margin-bottom: 2em;
 
-  button {
-    width: 5%;
-    padding: 4px;
-
-    span {
-      font-size: 18px;
+  h2 {
+    @include bp-mobile {
+      margin: 15px 0 0;
+      font-size: 30px;
     }
+    text-align: center;
+    margin: 15px 0;
+    font-weight: bold;
+    font-size: 60px;
+    color: $c-white;
+  }
+
+  hr {
+    width: 3%;
+    background: white;
+    border-width: 3px;
   }
 }

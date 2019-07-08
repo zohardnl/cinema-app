@@ -21,7 +21,7 @@
     transition: transform 0.6s;
     transform-style: preserve-3d;
     box-shadow: 0 2px 5px 0 rgba(231, 231, 231, 0.404), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
-    0 3px 5px -1px rgba(0, 0, 0, 0.2);
+      0 3px 5px -1px rgba(0, 0, 0, 0.2);
     border-radius: 1em;
   }
 }
@@ -46,7 +46,8 @@
   display: flex;
   flex-direction: column;
 
-  .edit-icon {
+  .edit-icon,
+  .remove-fav {
     font-size: 25px;
     cursor: pointer;
   }
@@ -58,7 +59,7 @@
 
     &-scroll {
       overflow: auto;
-      max-height: 14em;
+      max-height: 15em;
     }
 
     h3 {
@@ -81,20 +82,20 @@
   }
 }
 
-.clicked{
+.clicked {
   position: relative;
 
-  &:active{
+  &:active {
     top: 1px;
   }
 }
 
-.save{
+.save {
   position: absolute;
-  bottom: 5px;
+  bottom: 20px;
   width: 90%;
 
-  button{
+  button {
     width: 200px;
   }
 }

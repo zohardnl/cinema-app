@@ -4,6 +4,7 @@ import { ApiService } from "./api.service";
 import { Injectable, ElementRef } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { tap } from "rxjs/operators";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable()
 export class MovieServiceService {
@@ -11,12 +12,16 @@ export class MovieServiceService {
   movies$: Observable<Movie[]> = this._movies.asObservable();
   favoriteMovies: Movie[] = [];
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private snackBar: MatSnackBar) {}
 
   getMovie(): Observable<Movie> {
     return this.api.getMovie().pipe(
       tap(movie => {
-        this._movies.next([...this._movies.value, movie]);
+        if (this._movies.value.includes(movie)) {
+          this._movies.next([...this._movies.value]);
+        } else {
+          this._movies.next([...this._movies.value, movie]);
+        }
       })
     );
   }
@@ -36,5 +41,10 @@ export class MovieServiceService {
 
   setFavoriteMovie(movie: Movie) {
     this.favoriteMovies.push(movie);
+  }
+
+  removeFavoriteMovie(movie: Movie) {
+    let index = this.favoriteMovies.indexOf(movie);
+    this.favoriteMovies.splice(index, 1);
   }
 }

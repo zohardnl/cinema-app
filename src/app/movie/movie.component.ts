@@ -28,10 +28,14 @@ export class MovieComponent implements OnInit {
   }
 
   wishList() {
-    this.movieServ.setFavoriteMovie(this.movie);
-    this.snackBar.openFromComponent(SnackBarComponent, {
-      duration: 2000
-    });
+    if (this.movieServ.favoriteMovies.includes(this.movie)) {
+      this.snackBar.openFromComponent(SnackBarComponent, {
+        duration: 2000
+      });
+    } else {
+      this.movieServ.setFavoriteMovie(this.movie);
+      this.modal("Movie Added To Favorites!");
+    }
   }
 
   openInfo() {
@@ -40,5 +44,14 @@ export class MovieComponent implements OnInit {
 
   isFavorite() {
     return this.route.url !== "/favorites";
+  }
+
+  removeMovie() {
+    this.movieServ.removeFavoriteMovie(this.movie);
+    this.modal("Removed!");
+  }
+
+  modal(msg: string) {
+    this.snackBar.open(msg)._dismissAfter(2000);
   }
 }

@@ -5,7 +5,8 @@ import { FavoriteComponent } from "./favorite/favorite.component";
 
 const routes: Routes = [
   { path: "", component: MovieListComponent },
-  { path: "favorites", component: FavoriteComponent }
+  { path: "favorites", component: FavoriteComponent },
+  { path: "**", component: MovieListComponent }
 ];
 
 @NgModule({
