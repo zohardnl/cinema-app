@@ -1,10 +1,6 @@
 <div class="main-movies">
   <h2 class="main-movies__title">Movie List</h2>
-  <hr />
-
-  <!-- <div class="main-movies__error" *ngIf="!asValue">
-    {{ error }}
-  </div> -->
+  <hr/>
 
   <div class="main-movies__items">
     <app-movie *ngFor="let movie of movies$ | async" [movie]="movie" (infoMovie)="getInfoMovie($event)"></app-movie>
