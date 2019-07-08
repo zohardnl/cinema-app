@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {SnackBarComponent} from "./snack-bar/snack-bar.component";
 
+
 @Component({
   selector: "app-movie",
   templateUrl: "./movie.component.html",
