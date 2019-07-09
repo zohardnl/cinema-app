@@ -1,6 +1,6 @@
-import {MovieServiceService} from "./movie-service.service";
-import {Component, OnInit, ViewChild, ElementRef} from "@angular/core";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import { MovieServiceService } from "./movie-service.service";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-root",
@@ -8,14 +8,12 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-  @ViewChild("movieVal", {static: false}) movieSearchVal: ElementRef;
+  @ViewChild("movieVal", { static: false }) movieSearchVal: ElementRef;
   value: string = "";
 
-  constructor(private movie: MovieServiceService, private modal: MatSnackBar) {
-  }
+  constructor(private movie: MovieServiceService, private modal: MatSnackBar) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   addMovie() {
     this.movie.getMovie().subscribe();
@@ -28,7 +26,6 @@ export class AppComponent implements OnInit {
         this.modal.open("No results for this search!")._dismissAfter(2000);
     });
   }
-
 
   clearValue() {
     this.value = "";
