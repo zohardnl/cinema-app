@@ -1,10 +1,16 @@
 <div class="main-movies">
+  <button (click)="nav()">top</button>
   <h2 class="main-movies__title">Movie List</h2>
-  <hr/>
+  <hr />
 
   <div class="main-movies__items">
-    <app-movie *ngFor="let movie of movies$ | async" [movie]="movie" (infoMovie)="getInfoMovie($event)"></app-movie>
+    <app-movie
+      *ngFor="let movie of movies$ | async"
+      [movie]="movie"
+      (infoMovie)="getInfoMovie($event)"
+    ></app-movie>
   </div>
-
 </div>
+
+<input #navmovie value="daniel" />
 <app-modal [movieInfo]="movieInfo" *ngIf="movieInfo"></app-modal>

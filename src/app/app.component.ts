@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   }
 
   onKeyPress() {
-    this.value = this.movieSearchVal.nativeElement.value;
+    this.value = this.movieSearchVal.nativeElement.value.trim();
     this.movie.getSearch(this.movieSearchVal).subscribe(movies => {
       if (movies.length < 1)
         this.modal.open("No results for this search!")._dismissAfter(2000);

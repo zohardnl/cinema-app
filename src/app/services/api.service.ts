@@ -40,7 +40,7 @@ export class ApiService {
   searchMovieHttp(searchElement: ElementRef): Observable<any> {
     return this.http.get<any>(
       `${environment.apiUrl}?api_key=${environment.apiKey}&query=${
-      searchElement.nativeElement.value
+      searchElement.nativeElement.value.trim()
       }`
     );
   }
