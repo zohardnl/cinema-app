@@ -1,7 +1,7 @@
-import {Observable} from "rxjs";
-import {MovieServiceService} from "../movie-service.service";
-import {Movie} from "../models/Movie";
-import {Component, OnInit} from "@angular/core";
+import { Observable } from "rxjs";
+import { MovieServiceService } from "../services/movie-service.service";
+import { Movie } from "../models/Movie";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-movie-list",
@@ -24,6 +24,6 @@ export class MovieListComponent implements OnInit {
   }
 
   scroll(el: HTMLElement) {
-    el.scrollIntoView({behavior: 'smooth'});
+    el.scrollIntoView({ behavior: 'smooth' });
   }
 }

@@ -1,4 +1,4 @@
-import { MovieServiceService } from "./movie-service.service";
+import { MovieServiceService } from "./services/movie-service.service";
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 

@@ -1,7 +1,7 @@
-import {Component, OnInit, EventEmitter, Output, Input, ElementRef, ViewChild} from "@angular/core";
-import { ApiService } from "../api.service";
+import { Component, OnInit, EventEmitter, Output, Input } from "@angular/core";
+import { ApiService } from "../services/api.service";
 import { Movie } from "../models/Movie";
-import { MovieServiceService } from "../movie-service.service";
+import { MovieServiceService } from "../services/movie-service.service";
 import { Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { SnackBarComponent } from "./snack-bar/snack-bar.component";
@@ -22,7 +22,7 @@ export class MovieComponent implements OnInit {
     private movieServ: MovieServiceService,
     private route: Router,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.imageUrl = this.api.checkMovieImage(this.movie);

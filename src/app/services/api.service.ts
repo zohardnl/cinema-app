@@ -1,7 +1,7 @@
-import { environment } from "../environments/environment";
+import { environment } from "../../environments/environment";
 import { HttpClient } from "@angular/common/http";
 import { ElementRef, Injectable } from "@angular/core";
-import { Movie } from "./models/Movie";
+import { Movie } from "../models/Movie";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
@@ -10,7 +10,7 @@ export class ApiService {
   num: number;
   url: object;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   //SHOW MOVIE REQUSEST
   getMovie(): Observable<Movie> {
@@ -31,7 +31,7 @@ export class ApiService {
   getMovieHttp(): Observable<any> {
     return this.http.get<any>(
       `${environment.apiUrl}?api_key=${
-        environment.apiKey
+      environment.apiKey
       }&query=${this.getChar()}`
     );
   }
@@ -40,7 +40,7 @@ export class ApiService {
   searchMovieHttp(searchElement: ElementRef): Observable<any> {
     return this.http.get<any>(
       `${environment.apiUrl}?api_key=${environment.apiKey}&query=${
-        searchElement.nativeElement.value
+      searchElement.nativeElement.value
       }`
     );
   }
@@ -64,7 +64,7 @@ export class ApiService {
         this.url = {
           backgroundImage: `url(https://image.tmdb.org/t/p/w500${
             movie.poster_path
-          })`
+            })`
         };
       } else {
         this.url = {

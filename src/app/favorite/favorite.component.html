@@ -1,10 +1,14 @@
 <div fxLayout="column" fxLayoutAlign="center center" class="favorite-header">
   <h2>Favorites Movies</h2>
-  <hr/>
+  <hr />
 </div>
 
 <div fxLayout="row wrap" fxLayoutAlign="space-around center" *ngIf="asFav()">
-  <app-movie *ngFor="let movie of movies" [movie]="movie" (infoMovie)="getInfoMovie($event)"></app-movie>
+  <app-movie
+    *ngFor="let movie of movies"
+    [movie]="movie"
+    (infoMovie)="getInfoMovie($event)"
+  ></app-movie>
 </div>
 
 <app-modal [movieInfo]="movieInfo" *ngIf="movieInfo"></app-modal>

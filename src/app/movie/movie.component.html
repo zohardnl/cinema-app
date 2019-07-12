@@ -1,17 +1,25 @@
 <div class="flip-card">
   <div class="flip-card-inner">
-    <div class="front-info" [ngStyle]="imageUrl">
-    </div>
+    <div class="front-info" [ngStyle]="imageUrl"></div>
     <div class="back-info">
       <div fxLayout="row" fxLayoutAlign="space-between center">
-        <span data-toggle="modal" data-target="#myModal" class="edit-icon clicked" (click)="openInfo()">
+        <span
+          data-toggle="modal"
+          data-target="#myModal"
+          class="edit-icon clicked"
+          (click)="openInfo()"
+        >
           <i class="fas fa-info-circle"></i>
         </span>
-        <span class="clicked remove-fav" (click)="removeMovie()" *ngIf="!isFavorite()"><i
-            class="fas fa-times-circle"></i></span>
+        <span
+          class="clicked remove-fav"
+          (click)="removeMovie()"
+          *ngIf="!isFavorite()"
+          ><i class="fas fa-times-circle"></i
+        ></span>
       </div>
       <div class="movie-info">
-        <h3>{{ movie.title | titlecase | cleanString}}</h3>
+        <h3>{{ movie.title | titlecase | cleanString }}</h3>
       </div>
       <div class="movie-info">
         <label>ID:</label>
@@ -25,8 +33,20 @@
         <label>Overview:</label>
         <span>{{ movie.overview }}</span>
       </div>
-      <div class="save" fxLayout="row" fxLayoutAlign="center" *ngIf="isFavorite()">
-        <button type="submit" mat-raised-button (click)="wishList()" class="clicked">Save</button>
+      <div
+        class="save"
+        fxLayout="row"
+        fxLayoutAlign="center"
+        *ngIf="isFavorite()"
+      >
+        <button
+          type="submit"
+          mat-raised-button
+          (click)="wishList()"
+          class="clicked"
+        >
+          Save
+        </button>
       </div>
     </div>
   </div>

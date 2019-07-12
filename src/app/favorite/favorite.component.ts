@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Movie } from "../models/Movie";
-import { MovieServiceService } from "../movie-service.service";
+import { MovieServiceService } from "../services/movie-service.service";
 
 @Component({
   selector: "app-favorite",
@@ -11,9 +11,9 @@ export class FavoriteComponent implements OnInit {
   movies: Movie[] = this.movie.favoriteMovies;
   movieInfo: Movie;
 
-  constructor(private movie: MovieServiceService) {}
+  constructor(private movie: MovieServiceService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   asFav() {
     return this.movies !== null && this.movies !== undefined;
