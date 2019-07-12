@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, Input } from "@angular/core";
+import {Component, OnInit, EventEmitter, Output, Input, ElementRef, ViewChild} from "@angular/core";
 import { ApiService } from "../api.service";
 import { Movie } from "../models/Movie";
 import { MovieServiceService } from "../movie-service.service";
@@ -15,6 +15,7 @@ export class MovieComponent implements OnInit {
   imageUrl: object;
   @Input() movie: Movie;
   @Output() infoMovie = new EventEmitter<Movie>();
+
 
   constructor(
     private api: ApiService,

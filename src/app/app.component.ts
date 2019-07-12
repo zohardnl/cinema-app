@@ -11,9 +11,9 @@ export class AppComponent implements OnInit {
   @ViewChild("movieVal", { static: false }) movieSearchVal: ElementRef;
   value: string = "";
 
-  constructor(private movie: MovieServiceService, private modal: MatSnackBar) {}
+  constructor(private movie: MovieServiceService, private modal: MatSnackBar) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   addMovie() {
     this.movie.getMovie().subscribe();
