@@ -1,6 +1,7 @@
 import { MovieServiceService } from "./services/movie-service.service";
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { UiService } from "./services/ui.service";
 
 @Component({
   selector: "app-root",
@@ -11,15 +12,21 @@ export class AppComponent implements OnInit {
   @ViewChild("movieVal", { static: false }) movieSearchVal: ElementRef;
   value: string = "";
 
-  constructor(private movie: MovieServiceService, private modal: MatSnackBar) { }
+  constructor(
+    private movie: MovieServiceService,
+    private modal: MatSnackBar,
+    private ui: UiService
+  ) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   addMovie() {
     this.movie.getMovie().subscribe();
+    this.ui.searchFlag = false;
   }
 
   onKeyPress() {
+    this.ui.searchFlag = true;
     this.value = this.movieSearchVal.nativeElement.value.trim();
     this.movie.getSearch(this.movieSearchVal).subscribe(movies => {
       if (movies.length < 1)
@@ -34,5 +41,13 @@ export class AppComponent implements OnInit {
 
   resetList() {
     this.movie.resetMovies();
+    this.modal.open("Movies Cleared!")._dismissAfter(2000);
+  }
+
+  viewUp() {
+    document.querySelector("body").scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   }
 }

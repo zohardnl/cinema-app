@@ -19,6 +19,7 @@ import { SnackBarComponent } from "./movie/snack-bar/snack-bar.component";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { CommonModule } from "@angular/common";
 import { CleanStringPipe } from "./movie/clean-string.pipe";
+import { MatMenuModule } from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -41,10 +42,11 @@ import { CleanStringPipe } from "./movie/clean-string.pipe";
     MatFormFieldModule,
     FlexLayoutModule,
     MatSnackBarModule,
-    CommonModule
+    CommonModule,
+    MatMenuModule
   ],
   entryComponents: [SnackBarComponent],
   providers: [ApiService, MovieServiceService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

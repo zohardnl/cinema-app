@@ -1,31 +1,46 @@
-import { Component, OnInit, EventEmitter, Output, Input } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  EventEmitter,
+  Output,
+  Input,
+  AfterViewInit
+} from "@angular/core";
 import { ApiService } from "../services/api.service";
 import { Movie } from "../models/Movie";
 import { MovieServiceService } from "../services/movie-service.service";
 import { Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { SnackBarComponent } from "./snack-bar/snack-bar.component";
+import { UiService } from "../services/ui.service";
 
 @Component({
   selector: "app-movie",
   templateUrl: "./movie.component.html",
   styleUrls: ["./movie.component.scss"]
 })
-export class MovieComponent implements OnInit {
+export class MovieComponent implements OnInit, AfterViewInit {
   imageUrl: object;
   @Input() movie: Movie;
   @Output() infoMovie = new EventEmitter<Movie>();
-
+  @Input() elementId: number;
 
   constructor(
     private api: ApiService,
     private movieServ: MovieServiceService,
     private route: Router,
-    private snackBar: MatSnackBar
-  ) { }
+    private snackBar: MatSnackBar,
+    private sendToScroll: UiService
+  ) {}
 
   ngOnInit() {
     this.imageUrl = this.api.checkMovieImage(this.movie);
+  }
+
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    this.sendToScroll.scroll(this.elementId);
   }
 
   wishList() {

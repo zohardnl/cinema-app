@@ -11,7 +11,7 @@ export class MovieServiceService {
   movies$: Observable<Movie[]> = this._movies.asObservable();
   favoriteMovies: Movie[] = [];
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService) {}
 
   getMovie(): Observable<Movie> {
     return this.api.getMovie().pipe(

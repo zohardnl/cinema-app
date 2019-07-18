@@ -1,7 +1,7 @@
 import { Observable } from "rxjs";
 import { MovieServiceService } from "../services/movie-service.service";
 import { Movie } from "../models/Movie";
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-movie-list",
@@ -11,19 +11,10 @@ import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 export class MovieListComponent implements OnInit {
   movies$: Observable<Movie[]> = this.movies.movies$;
   movieInfo: Movie;
-  @ViewChild("navmovie", { static: false }) scrollMovie: ElementRef;
 
+  constructor(private movies: MovieServiceService) {}
 
-  constructor(private movies: MovieServiceService) {
-
-  }
-
-  ngOnInit() {
-  }
-
-  nav() {
-    this.scrollMovie.nativeElement.scrollIntoView({ behavior: 'smooth' });
-  }
+  ngOnInit() {}
 
   getInfoMovie(data: Movie) {
     this.movieInfo = data;

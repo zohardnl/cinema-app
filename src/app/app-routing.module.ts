@@ -6,11 +6,11 @@ import { FavoriteComponent } from "./favorite/favorite.component";
 const routes: Routes = [
   { path: "", component: MovieListComponent },
   { path: "favorites", component: FavoriteComponent },
-  { path: "**", component: MovieListComponent }
+  { path: "**", redirectTo: "" }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

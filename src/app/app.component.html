@@ -1,71 +1,52 @@
 <nav class="navbar navbar-expand navbar-light header-navbar">
-  <div
-    class="nav navbar-nav"
-    fxLayoutAlign="space-between center"
-    fxLayoutAlign.xs="center center"
-    fxLayoutAlign.sm="center center"
-  >
+  <div class="nav navbar-nav" fxLayoutAlign="space-between center" fxLayoutAlign.xs="center center"
+    fxLayoutAlign.sm="center center">
     <span routerLink="" style="cursor: pointer;">
-      <img
-        src="https://s3.amazonaws.com/herolo/herolo-logo-animated.gif"
-        alt="herolo-logo"
-      />
+      <img src="https://s3.amazonaws.com/herolo/herolo-logo-animated.gif" alt="herolo-logo" />
     </span>
 
-    <div class="search-movie">
+    <div class="search-movie" fxLayout="row" fxLayoutAlign="space-between center">
       <mat-form-field appearance="outline" routerLink="">
         <mat-label>Search Movie</mat-label>
-        <input
-          matInput
-          type="search"
-          placeholder="Example: Titanic"
-          (keyup)="onKeyPress()"
-          #movieVal
-        />
-        <button
-          mat-button
-          *ngIf="value"
-          matSuffix
-          mat-icon-button
-          (click)="clearValue()"
-        >
+        <input matInput type="search" placeholder="Example: Titanic" (keyup)="onKeyPress()" #movieVal />
+        <button mat-button *ngIf="value" matSuffix mat-icon-button (click)="clearValue()">
           <mat-icon>close</mat-icon>
         </button>
         <mat-hint>Live Search</mat-hint>
       </mat-form-field>
-    </div>
 
-    <div
-      class="nav-wrap1"
-      fxLayoutAlign.sm="space-around center"
-      fxLayoutAlign.xs="space-around center"
-      fxLayout="row"
-      fxLayoutAlign="space-between center"
-    >
-      <div class="nav-favorite">
-        <button routerLink="favorites" mat-raised-button color="primary">
-          Favorite Movies
-        </button>
-      </div>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <div class="nav-btn">
+          <button (click)="addMovie()" routerLink="" mat-raised-button color="primary">
+            Show Movie
+          </button>
+        </div>
 
-      <div class="nav-btn">
-        <button
-          (click)="addMovie()"
-          routerLink=""
-          mat-raised-button
-          color="accent"
-        >
-          Show Movie
-        </button>
-      </div>
-
-      <div class="nav-reset">
-        <button (click)="resetList()" mat-raised-button color="warn">
-          Reset List
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
         </button>
       </div>
     </div>
+
+    <mat-menu #menu="matMenu">
+      <button routerLink="" mat-menu-item>
+        Movie List
+      </button>
+
+      <button routerLink="favorites" mat-menu-item>
+        Favorite Movies
+      </button>
+
+      <button (click)="resetList()" mat-menu-item>
+        Clear Movies
+      </button>
+
+    </mat-menu>
   </div>
 </nav>
+
+<div class="arrow-up" (click)="viewUp()">
+  <mat-icon>keyboard_arrow_up</mat-icon>
+</div>
 
 <router-outlet></router-outlet>
