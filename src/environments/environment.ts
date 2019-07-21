@@ -5,7 +5,10 @@
 export const environment = {
   production: false,
   apiUrl: "https://api.themoviedb.org/3/search/movie",
-  apiKey: "4d9fc135f367468f10bcbf31008637e6"
+  apiKey: "4d9fc135f367468f10bcbf31008637e6",
+  errorImg: "https://www.metrorollerdoors.com.au/wp-content/uploads/2018/02/unavailable-image.jpg",
+  image: "https://image.tmdb.org/t/p/w500",
+  defaultImage: "https://daniel-dev.com/images/cinema.jpg"
 };
 
 /*

@@ -9,7 +9,7 @@
 
 html,
 body {
-  height: 100%;
+  height: 100vh;
   overflow: hidden auto;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -20,6 +20,6 @@ body {
     padding-top: 17em;
   }
 
-  background: url("./images/stars.jpg") no-repeat center / cover;
+  background: url("./images/stars.jpg") no-repeat center / cover fixed;
   padding-top: 8em;
 }

@@ -1,9 +1,9 @@
-import { Observable } from "rxjs";
-import { Movie } from "../models/Movie";
-import { ApiService } from "./api.service";
-import { Injectable, ElementRef } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
-import { tap } from "rxjs/operators";
+import {Observable} from "rxjs";
+import {Movie} from "../models/Movie";
+import {ApiService} from "./api.service";
+import {Injectable, ElementRef} from "@angular/core";
+import {BehaviorSubject} from "rxjs";
+import {tap} from "rxjs/operators";
 
 @Injectable()
 export class MovieServiceService {
@@ -16,9 +16,7 @@ export class MovieServiceService {
   getMovie(): Observable<Movie> {
     return this.api.getMovie().pipe(
       tap(movie => {
-        if (this._movies.value.includes(movie)) {
-          this._movies.next([...this._movies.value]);
-        } else {
+        if (!this._movies.value.includes(movie)) {
           this._movies.next([...this._movies.value, movie]);
         }
       })
@@ -46,5 +44,15 @@ export class MovieServiceService {
   removeFavoriteMovie(movie: Movie) {
     let index = this.favoriteMovies.indexOf(movie);
     this.favoriteMovies.splice(index, 1);
+  }
+
+  getArrayOfMovies() {
+    return this._movies;
+  }
+
+  addNewMovie(newMovie: Movie) {
+    if (!this._movies.value.includes(newMovie)) {
+      this._movies.next([...this._movies.value, newMovie]);
+    }
   }
 }

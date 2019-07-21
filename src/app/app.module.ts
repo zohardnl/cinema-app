@@ -20,6 +20,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { CommonModule } from "@angular/common";
 import { CleanStringPipe } from "./movie/clean-string.pipe";
 import { MatMenuModule } from "@angular/material/menu";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MatMenuModule } from "@angular/material/menu";
     FlexLayoutModule,
     MatSnackBarModule,
     CommonModule,
-    MatMenuModule
+    MatMenuModule,
+    FormsModule
   ],
   entryComponents: [SnackBarComponent],
   providers: [ApiService, MovieServiceService],

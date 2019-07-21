@@ -10,4 +10,4 @@
   </div>
 </div>
 
-<app-modal [movieInfo]="movieInfo" *ngIf="movieInfo"></app-modal>
+<app-modal [movieInfo]="movieInfo" [add]="asAddedMovie()" *ngIf="movieInfo || asAddedMovie()"></app-modal>

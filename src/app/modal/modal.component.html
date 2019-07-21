@@ -1,9 +1,9 @@
-<!-- MODAL INFO FOR EDIT -->
-<div class="modal fade" id="myModal">
+<!-- MODAL FOR INFO ABOUT MOVIE -->
+<div class="modal fade movie" id="movie" *ngIf="movieInfo">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <!-- Modal Header -->
-      <div class="modal-header">
+      <div class="modal-header movie__header">
         <div class="form-group">
           <label>Movie Name: </label>
           <h4 style="font-weight: bold;margin:0;">{{ movieInfo.title }}</h4>
@@ -23,6 +23,53 @@
       <div class="modal-footer">
         <button type="button" mat-raised-button color="warn" data-dismiss="modal">Close</button>
       </div>
+    </div>
+  </div>
+</div>
+<!-- END OF INFO MODAL -->
+
+<!-- MODAL FOR ADD MOVIE -->
+<div class="modal fade addMovie" id="addMovie" *ngIf="add">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header addMovie__header">
+        <h2 class="text-design">Add Movie</h2>
+
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+
+      <!-- Modal body -->
+      <form (ngSubmit)="onAddMovie(infoForm)" #infoForm="ngForm">
+        <div class="modal-body addMovie__body">
+          <div class="form-group">
+            <label for="movie-name">Movie Name:</label>
+            <input type="text" id="movie-name" name="movieName" class="form-control" ngModel required>
+          </div>
+
+          <div class="form-group">
+            <label for="release-date">Release Date:</label>
+            <input type="date" name="movieReleaseDate" id="release-date" class="form-control" ngModel required>
+          </div>
+
+          <div class="form-group">
+            <label for="movie-overview">Overview:</label>
+            <textarea name="movieOverView" id="movie-overview" rows="3" class="form-control"
+              placeholder="Tell us about your movie..." ngModel required></textarea>
+          </div>
+        </div>
+
+
+        <!-- Modal footer -->
+        <div class="modal-footer addMovie__footer">
+          <button type="submit" mat-raised-button color="primary" [disabled]="!infoForm.valid">Add
+            Movie</button>
+          <button type="button" mat-raised-button color="accent" (click)="resetForm(infoForm)">Reset</button>
+          <button type="button" mat-raised-button data-dismiss="modal">Close</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

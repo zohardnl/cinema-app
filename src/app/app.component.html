@@ -17,7 +17,7 @@
 
       <div fxLayout="row" fxLayoutAlign="end center">
         <div class="nav-btn">
-          <button (click)="addMovie()" routerLink="" mat-raised-button color="primary">
+          <button (click)="showMovie()" routerLink="" mat-raised-button color="primary">
             Show Movie
           </button>
         </div>
@@ -29,6 +29,10 @@
     </div>
 
     <mat-menu #menu="matMenu">
+      <button routerLink="" mat-menu-item (click)="addMovie()" data-toggle="modal" data-target="#addMovie">
+        Add Movie
+      </button>
+
       <button routerLink="" mat-menu-item>
         Movie List
       </button>

@@ -1,16 +1,16 @@
-import { environment } from "../../environments/environment";
-import { HttpClient } from "@angular/common/http";
-import { ElementRef, Injectable } from "@angular/core";
-import { Movie } from "../models/Movie";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import {environment} from "../../environments/environment";
+import {HttpClient} from "@angular/common/http";
+import {ElementRef, Injectable} from "@angular/core";
+import {Movie} from "../models/Movie";
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
 
 @Injectable()
 export class ApiService {
   num: number;
-  url: object;
+  url = {};
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   //SHOW MOVIE REQUSEST
   getMovie(): Observable<Movie> {
@@ -30,18 +30,16 @@ export class ApiService {
 
   getMovieHttp(): Observable<any> {
     return this.http.get<any>(
-      `${environment.apiUrl}?api_key=${
-      environment.apiKey
-      }&query=${this.getChar()}`
+      `${environment.apiUrl}?api_key=${environment.apiKey}&query=${this.getChar()}`
     );
   }
 
   //SEARCH MOVIE REQUEST
   searchMovieHttp(searchElement: ElementRef): Observable<any> {
     return this.http.get<any>(
-      `${environment.apiUrl}?api_key=${environment.apiKey}&query=${
-      searchElement.nativeElement.value.trim()
-      }`
+      `${environment.apiUrl}?api_key=${
+        environment.apiKey
+      }&query=${searchElement.nativeElement.value.trim()}`
     );
   }
 
@@ -54,26 +52,28 @@ export class ApiService {
   }
 
   //check image of movie if exits
-  checkMovieImage(movie: Movie): object {
+  checkMovieImage(movie: Movie) {
     if (movie !== undefined) {
-      if (
+      if (movie.poster_path === environment.defaultImage) {
+        this.url = {
+          backgroundImage: `url(${environment.defaultImage})`
+        };
+      } else if (
         movie.poster_path !== undefined &&
         movie.poster_path !== "" &&
         movie.poster_path !== null
       ) {
         this.url = {
-          backgroundImage: `url(https://image.tmdb.org/t/p/w500${
-            movie.poster_path
-            })`
+          backgroundImage: `url(${environment.image}${movie.poster_path})`
         };
       } else {
         this.url = {
-          backgroundImage: `url(https://www.metrorollerdoors.com.au/wp-content/uploads/2018/02/unavailable-image.jpg)`
+          backgroundImage: `url(${environment.errorImg})`
         };
       }
     } else {
       this.url = {
-        backgroundImage: `url(https://www.metrorollerdoors.com.au/wp-content/uploads/2018/02/unavailable-image.jpg)`
+        backgroundImage: `url(${environment.errorImg})`
       };
     }
     return this.url;
@@ -86,5 +86,9 @@ export class ApiService {
 
   getNumber(): number {
     return Math.floor(Math.random() * 20);
+  }
+
+  getId(): number {
+    return Math.floor(Math.random() * 10000 + 1);
   }
 }

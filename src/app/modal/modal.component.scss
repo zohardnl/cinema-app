@@ -1,7 +1,5 @@
-.modal {
-  transition: ease-in-out 0.3s;
-
-  &-header {
+.movie {
+  &__header {
     label {
       font-weight: bold;
       font-size: 26px;
@@ -11,12 +9,44 @@
     .form-group {
       width: 100%;
     }
+  }
+}
 
-    .favIcon {
-      background: transparent;
-      box-shadow: none;
-      border: none;
-      color: red;
+.addMovie {
+  padding: 0 !important;
+
+  &__header {
+    h2 {
+      text-align: center;
+      width: 100%;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+  }
+
+  &__body {
+    .form-group {
+      .form-control {
+        width: 70%;
+        &:focus {
+          border-color: #3f51b5;
+          box-shadow: none;
+        }
+      }
+
+      label {
+        font-weight: bold;
+      }
+
+      &:last-child {
+        textarea {
+          resize: none;
+        }
+      }
     }
   }
 }
@@ -24,4 +54,9 @@
 .text-design {
   font-weight: bold;
   color: #3f51b5;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
 }

@@ -1,7 +1,7 @@
-import { MovieServiceService } from "./services/movie-service.service";
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
-import { MatSnackBar } from "@angular/material/snack-bar";
-import { UiService } from "./services/ui.service";
+import {MovieServiceService} from "./services/movie-service.service";
+import {Component, OnInit, ViewChild, ElementRef} from "@angular/core";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {UiService} from "./services/ui.service";
 
 @Component({
   selector: "app-root",
@@ -9,7 +9,7 @@ import { UiService } from "./services/ui.service";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-  @ViewChild("movieVal", { static: false }) movieSearchVal: ElementRef;
+  @ViewChild("movieVal", {static: false}) movieSearchVal: ElementRef;
   value: string = "";
 
   constructor(
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {}
 
-  addMovie() {
+  showMovie() {
     this.movie.getMovie().subscribe();
     this.ui.searchFlag = false;
   }
@@ -29,8 +29,7 @@ export class AppComponent implements OnInit {
     this.ui.searchFlag = true;
     this.value = this.movieSearchVal.nativeElement.value.trim();
     this.movie.getSearch(this.movieSearchVal).subscribe(movies => {
-      if (movies.length < 1)
-        this.modal.open("No results for this search!")._dismissAfter(2000);
+      if (movies.length < 1) this.modal.open("No results for this search!")._dismissAfter(2000);
     });
   }
 
@@ -49,5 +48,9 @@ export class AppComponent implements OnInit {
       top: 0,
       behavior: "smooth"
     });
+  }
+
+  addMovie() {
+    this.ui.addedMovie();
   }
 }

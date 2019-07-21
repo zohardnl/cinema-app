@@ -1,18 +1,11 @@
-import {
-  Component,
-  OnInit,
-  EventEmitter,
-  Output,
-  Input,
-  AfterViewInit
-} from "@angular/core";
-import { ApiService } from "../services/api.service";
-import { Movie } from "../models/Movie";
-import { MovieServiceService } from "../services/movie-service.service";
-import { Router } from "@angular/router";
-import { MatSnackBar } from "@angular/material/snack-bar";
-import { SnackBarComponent } from "./snack-bar/snack-bar.component";
-import { UiService } from "../services/ui.service";
+import {Component, OnInit, EventEmitter, Output, Input, AfterViewInit} from "@angular/core";
+import {ApiService} from "../services/api.service";
+import {Movie} from "../models/Movie";
+import {MovieServiceService} from "../services/movie-service.service";
+import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {SnackBarComponent} from "./snack-bar/snack-bar.component";
+import {UiService} from "../services/ui.service";
 
 @Component({
   selector: "app-movie",
@@ -20,7 +13,7 @@ import { UiService } from "../services/ui.service";
   styleUrls: ["./movie.component.scss"]
 })
 export class MovieComponent implements OnInit, AfterViewInit {
-  imageUrl: object;
+  imageUrl = {};
   @Input() movie: Movie;
   @Output() infoMovie = new EventEmitter<Movie>();
   @Input() elementId: number;
