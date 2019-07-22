@@ -5,12 +5,13 @@ import {Injectable} from "@angular/core";
 })
 export class UiService {
   searchFlag: boolean;
+  favFlag: boolean;
   addMovie: boolean;
 
   constructor() {}
 
   scroll(id: number) {
-    if (!this.searchFlag) {
+    if (!this.searchFlag && !this.favFlag) {
       document.querySelector(`#drop${id}`).scrollIntoView({behavior: "smooth"});
     } else {
       document.querySelector("body").scrollTo({

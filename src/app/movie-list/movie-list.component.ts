@@ -1,8 +1,8 @@
-import { UiService } from "./../services/ui.service";
-import { Observable } from "rxjs";
-import { MovieServiceService } from "../services/movie-service.service";
-import { Movie } from "../models/Movie";
-import { Component, OnInit } from "@angular/core";
+import {UiService} from "./../services/ui.service";
+import {Observable} from "rxjs";
+import {MovieServiceService} from "../services/movie-service.service";
+import {Movie} from "../models/Movie";
+import {Component, OnInit} from "@angular/core";
 
 @Component({
   selector: "app-movie-list",

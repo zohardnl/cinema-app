@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
   showMovie() {
     this.movie.getMovie().subscribe();
     this.ui.searchFlag = false;
+    this.ui.favFlag = false;
   }
 
   onKeyPress() {
@@ -52,5 +53,9 @@ export class AppComponent implements OnInit {
 
   addMovie() {
     this.ui.addedMovie();
+  }
+
+  getFav() {
+    this.ui.favFlag = true;
   }
 }
