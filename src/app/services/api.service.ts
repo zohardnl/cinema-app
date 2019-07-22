@@ -1,16 +1,16 @@
-import {environment} from "../../environments/environment";
-import {HttpClient} from "@angular/common/http";
-import {ElementRef, Injectable} from "@angular/core";
-import {Movie} from "../models/Movie";
-import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
+import { environment } from "../../environments/environment";
+import { HttpClient } from "@angular/common/http";
+import { ElementRef, Injectable } from "@angular/core";
+import { Movie } from "../models/Movie";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Injectable()
 export class ApiService {
   num: number;
   url = {};
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   //SHOW MOVIE REQUSEST
   getMovie(): Observable<Movie> {
@@ -38,7 +38,7 @@ export class ApiService {
   searchMovieHttp(searchElement: ElementRef): Observable<any> {
     return this.http.get<any>(
       `${environment.apiUrl}?api_key=${
-        environment.apiKey
+      environment.apiKey
       }&query=${searchElement.nativeElement.value.trim()}`
     );
   }

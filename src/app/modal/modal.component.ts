@@ -1,9 +1,9 @@
-import {environment} from "./../../environments/environment";
-import {MovieServiceService} from "./../services/movie-service.service";
-import {ApiService} from "./../services/api.service";
-import {Component, OnInit, Input} from "@angular/core";
-import {Movie} from "../models/Movie";
-import {NgForm} from "@angular/forms";
+import { environment } from "./../../environments/environment";
+import { MovieServiceService } from "./../services/movie-service.service";
+import { ApiService } from "./../services/api.service";
+import { Component, OnInit, Input } from "@angular/core";
+import { Movie } from "../models/Movie";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-modal",
@@ -14,9 +14,9 @@ export class Modal implements OnInit {
   @Input() movieInfo: Movie;
   @Input() add: boolean;
 
-  constructor(private api: ApiService, private movie: MovieServiceService) {}
+  constructor(private api: ApiService, private movie: MovieServiceService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onAddMovie(form: NgForm) {
     let newMovie = new Movie();

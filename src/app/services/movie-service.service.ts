@@ -1,18 +1,19 @@
-import {Observable} from "rxjs";
-import {Movie} from "../models/Movie";
-import {ApiService} from "./api.service";
-import {Injectable, ElementRef} from "@angular/core";
-import {BehaviorSubject} from "rxjs";
-import {tap} from "rxjs/operators";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import { Observable } from "rxjs";
+import { Movie } from "../models/Movie";
+import { ApiService } from "./api.service";
+import { Injectable, ElementRef } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
+import { tap } from "rxjs/operators";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable()
 export class MovieServiceService {
   private _movies: BehaviorSubject<Movie[]> = new BehaviorSubject([]);
   movies$: Observable<Movie[]> = this._movies.asObservable();
   favoriteMovies: Movie[] = [];
+  addedMoviesArray: Movie[] = [];
 
-  constructor(private api: ApiService, private modal: MatSnackBar) {}
+  constructor(private api: ApiService, private modal: MatSnackBar) { }
 
   getMovie(): Observable<Movie> {
     return this.api.getMovie().pipe(
@@ -48,11 +49,25 @@ export class MovieServiceService {
   }
 
   addNewMovie(newMovie: Movie) {
-    if (!this._movies.value.includes(newMovie)) {
-      this._movies.next([...this._movies.value, newMovie]);
-      this.modal.open("Movie Added!")._dismissAfter(2000);
+    let flag = true;
+    if (this._movies.value.length >= 1) {
+      this._movies.value.forEach(movie => {
+        if (movie.title === newMovie.title) {
+          var index = this._movies.value.indexOf(movie);
+          this._movies.value.splice(index, 1);
+          flag = false;
+        }
+      });
+      if (flag) {
+        this._movies.next([...this._movies.value, newMovie]);
+        this.modal.open("Movie added!")._dismissAfter(2000);
+      } else {
+        this._movies.next([...this._movies.value, newMovie]); // at least one movie must stay from filter
+        this.modal.open("This movie already exist!")._dismissAfter(2000);
+      }
     } else {
-      this.modal.open("This movie already exist!")._dismissAfter(2000);
+      this._movies.next([...this._movies.value, newMovie]);
+      this.modal.open("Movie added!")._dismissAfter(2000);
     }
   }
 }
