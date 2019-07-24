@@ -1,7 +1,7 @@
-import { MovieServiceService } from "./services/movie-service.service";
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
-import { MatSnackBar } from "@angular/material/snack-bar";
-import { UiService } from "./services/ui.service";
+import {MovieServiceService} from "./services/movie-service.service";
+import {Component, OnInit, ViewChild, ElementRef} from "@angular/core";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {UiService} from "./services/ui.service";
 
 @Component({
   selector: "app-root",
@@ -9,16 +9,16 @@ import { UiService } from "./services/ui.service";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-  @ViewChild("movieVal", { static: false }) movieSearchVal: ElementRef;
+  @ViewChild("movieVal", {static: false}) movieSearchVal: ElementRef;
   value: string = "";
 
   constructor(
     private movie: MovieServiceService,
     private modal: MatSnackBar,
     private ui: UiService
-  ) { }
+  ) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   showMovie() {
     this.movie.getMovie().subscribe();

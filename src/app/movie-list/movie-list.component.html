@@ -5,9 +5,12 @@
 
   <div class="main-movies__items">
     <app-movie *ngFor="let movie of movies$ | async; let movieId = index;" [movie]="movie"
-      (infoMovie)="getInfoMovie($event)" id="{{'drop' + movieId}}" [elementId]="movieId">
+      (infoMovie)="getInfoMovie($event)" id="{{'drop' + movieId}}" [elementId]="movieId"
+      (updateMovie)="getUpdateMovie($event)">
     </app-movie>
   </div>
 </div>
 
-<app-modal [movieInfo]="movieInfo" [add]="asAddedMovie()" *ngIf="movieInfo || asAddedMovie()"></app-modal>
+<app-modal [movieInfo]="movieInfo" [add]="asAddedMovie()" [updatedMovie]="updateMovie"
+  *ngIf="movieInfo || asAddedMovie() || updateMovie">
+</app-modal>

@@ -100,6 +100,10 @@
   width: 90%;
 
   button {
-    width: 200px;
+    width: 130px;
+
+    &:nth-child(2) {
+      background-color: #8b44f1;
+    }
   }
 }

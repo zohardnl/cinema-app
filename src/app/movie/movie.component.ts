@@ -1,6 +1,6 @@
+import {Movie} from "./../models/Movie";
 import {Component, OnInit, EventEmitter, Output, Input, AfterViewInit} from "@angular/core";
 import {ApiService} from "../services/api.service";
-import {Movie} from "../models/Movie";
 import {MovieServiceService} from "../services/movie-service.service";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -17,6 +17,7 @@ export class MovieComponent implements OnInit, AfterViewInit {
   @Input() movie: Movie;
   @Output() infoMovie = new EventEmitter<Movie>();
   @Input() elementId: number;
+  @Output() updateMovie = new EventEmitter<Movie>();
 
   constructor(
     private api: ApiService,
@@ -62,5 +63,9 @@ export class MovieComponent implements OnInit, AfterViewInit {
 
   modal(msg: string) {
     this.snackBar.open(msg)._dismissAfter(2000);
+  }
+
+  updateMov() {
+    this.updateMovie.emit(this.movie);
   }
 }

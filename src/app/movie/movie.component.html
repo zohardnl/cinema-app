@@ -25,10 +25,12 @@
         <label>Overview:</label>
         <span>{{ movie.overview }}</span>
       </div>
-      <div class="save" fxLayout="row" fxLayoutAlign="center" *ngIf="isFavorite()">
-        <button type="submit" mat-raised-button (click)="wishList()" class="clicked">
-          Save
+      <div class="save" fxLayout="row" fxLayoutAlign="space-around" *ngIf="isFavorite()">
+        <button type="button" mat-raised-button (click)="wishList()" class="clicked">
+          Favorite
         </button>
+        <button mat-raised-button color="primary" class="clicked" (click)="updateMov()" data-toggle="modal"
+          data-target="#updateMovie">Update Movie</button>
       </div>
     </div>
   </div>

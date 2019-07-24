@@ -1,10 +1,11 @@
-import { Observable } from "rxjs";
-import { Movie } from "../models/Movie";
-import { ApiService } from "./api.service";
-import { Injectable, ElementRef } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
-import { tap } from "rxjs/operators";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import {Observable} from "rxjs";
+import {Movie} from "../models/Movie";
+import {ApiService} from "./api.service";
+import {Injectable, ElementRef} from "@angular/core";
+import {BehaviorSubject} from "rxjs";
+import {tap} from "rxjs/operators";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {SnackBarComponent} from "../movie/snack-bar/snack-bar.component";
 
 @Injectable()
 export class MovieServiceService {
@@ -13,7 +14,7 @@ export class MovieServiceService {
   favoriteMovies: Movie[] = [];
   addedMoviesArray: Movie[] = [];
 
-  constructor(private api: ApiService, private modal: MatSnackBar) { }
+  constructor(private api: ApiService, private modal: MatSnackBar) {}
 
   getMovie(): Observable<Movie> {
     return this.api.getMovie().pipe(
@@ -49,11 +50,12 @@ export class MovieServiceService {
   }
 
   addNewMovie(newMovie: Movie) {
-    let flag = true;
+    let flag: boolean = true;
+    let index: number;
     if (this._movies.value.length >= 1) {
       this._movies.value.forEach(movie => {
         if (movie.title === newMovie.title) {
-          var index = this._movies.value.indexOf(movie);
+          index = this._movies.value.indexOf(movie);
           this._movies.value.splice(index, 1);
           flag = false;
         }
@@ -63,7 +65,9 @@ export class MovieServiceService {
         this.modal.open("Movie added!")._dismissAfter(2000);
       } else {
         this._movies.next([...this._movies.value, newMovie]); // at least one movie must stay from filter
-        this.modal.open("This movie already exist!")._dismissAfter(2000);
+        this.modal.openFromComponent(SnackBarComponent, {
+          duration: 2000
+        });
       }
     } else {
       this._movies.next([...this._movies.value, newMovie]);

@@ -1,9 +1,10 @@
-import { environment } from "./../../environments/environment";
-import { MovieServiceService } from "./../services/movie-service.service";
-import { ApiService } from "./../services/api.service";
-import { Component, OnInit, Input } from "@angular/core";
-import { Movie } from "../models/Movie";
-import { NgForm } from "@angular/forms";
+import {environment} from "./../../environments/environment";
+import {MovieServiceService} from "./../services/movie-service.service";
+import {ApiService} from "./../services/api.service";
+import {Component, OnInit, Input} from "@angular/core";
+import {Movie} from "../models/Movie";
+import {NgForm} from "@angular/forms";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: "app-modal",
@@ -13,10 +14,16 @@ import { NgForm } from "@angular/forms";
 export class Modal implements OnInit {
   @Input() movieInfo: Movie;
   @Input() add: boolean;
+  @Input() updatedMovie: Movie;
 
-  constructor(private api: ApiService, private movie: MovieServiceService) { }
+  //vars for reactive form
+  title = new FormControl(this.updatedMovie.title);
+  overView = new FormControl(this.updatedMovie.overview);
+  releaseDate = new FormControl(this.updatedMovie.release_date);
 
-  ngOnInit() { }
+  constructor(private api: ApiService, private movie: MovieServiceService) {}
+
+  ngOnInit() {}
 
   onAddMovie(form: NgForm) {
     let newMovie = new Movie();
@@ -32,4 +39,6 @@ export class Modal implements OnInit {
   resetForm(form: NgForm) {
     form.reset();
   }
+
+  onUpdateMovie(form: NgForm) {}
 }
