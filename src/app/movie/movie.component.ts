@@ -25,7 +25,8 @@ export class MovieComponent implements OnInit, AfterViewInit {
     private route: Router,
     private snackBar: MatSnackBar,
     private sendToScroll: UiService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.imageUrl = this.api.checkMovieImage(this.movie);

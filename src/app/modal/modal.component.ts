@@ -3,7 +3,7 @@ import {MovieServiceService} from "./../services/movie-service.service";
 import {ApiService} from "./../services/api.service";
 import {Component, OnInit, Input} from "@angular/core";
 import {Movie} from "../models/Movie";
-import {NgForm} from "@angular/forms";
+import {FormGroup, NgForm, Validators} from "@angular/forms";
 import {FormControl} from "@angular/forms";
 
 @Component({
@@ -17,13 +17,18 @@ export class Modal implements OnInit {
   @Input() updatedMovie: Movie;
 
   //vars for reactive form
-  title = new FormControl(this.updatedMovie.title);
-  overView = new FormControl(this.updatedMovie.overview);
-  releaseDate = new FormControl(this.updatedMovie.release_date);
+  updateForm: FormGroup;
 
-  constructor(private api: ApiService, private movie: MovieServiceService) {}
+  constructor(private api: ApiService, private movie: MovieServiceService) {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.updateForm = new FormGroup({
+      'title': new FormControl(this.updatedMovie.title, Validators.required),
+      'overView': new FormControl(this.updatedMovie.overview, Validators.required),
+      'releaseDate': new FormControl(this.updatedMovie.release_date, Validators.required)
+    });
+  }
 
   onAddMovie(form: NgForm) {
     let newMovie = new Movie();
@@ -40,5 +45,7 @@ export class Modal implements OnInit {
     form.reset();
   }
 
-  onUpdateMovie(form: NgForm) {}
+  onUpdateMovie() {
+
+  }
 }

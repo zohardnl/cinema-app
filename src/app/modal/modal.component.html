@@ -1,5 +1,5 @@
 <!-- MODAL FOR INFO ABOUT MOVIE -->
-<div class="modal fade movie" id="movie" *ngIf="movieInfo">
+<div class="modal fade movie" id="movie">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <!-- Modal Header -->
@@ -28,7 +28,7 @@
 </div>
 
 <!-- MODAL FOR ADD MOVIE -->
-<div class="modal fade addMovie" id="addMovie" *ngIf="add">
+<div class="modal fade addMovie" id="addMovie">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <!-- Modal Header -->
@@ -56,7 +56,7 @@
           <div class="form-group">
             <label for="movie-overview">Overview:</label>
             <textarea name="movieOverView" id="movie-overview" rows="3" class="form-control"
-              placeholder="Tell us about your movie..." ngModel required></textarea>
+                      placeholder="Tell us about your movie..." ngModel required></textarea>
           </div>
         </div>
 
@@ -75,7 +75,7 @@
 </div>
 
 <!-- MODAL FOR UPDATE MOVIE -->
-<div class="modal fade updateMovie" id="updateMovie" *ngIf="updatedMovie">
+<div class="modal fade updateMovie" id="updateMovie">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <!-- Modal Header -->
@@ -87,24 +87,31 @@
       </div>
 
       <!-- Modal body -->
-      <form (ngSubmit)="onUpdateMovie(updateForm)" #updateForm="ngForm">
+      <form [formGroup]="updateForm" (ngSubmit)="onUpdateMovie()">
         <div class="modal-body updateMovie__body">
           <div class="form-group">
             <label for="movie-name">Movie Name:</label>
-            <input type="text" id="movie-name" name="movieName" class="form-control" [formControl]="title"
-              value="{{title.value}}">
+            <input
+              type="text"
+              id="movie-name"
+              name="movieName"
+              class="form-control"
+              formControlName="title"
+            >
           </div>
 
           <div class="form-group">
             <label for="release-date">Release Date:</label>
             <input type="date" name="movieReleaseDate" id="release-date" class="form-control"
-              value="{{updatedMovie.release_date}}" required ngModel>
+                   formControlName="releaseDate"
+            >
           </div>
 
           <div class="form-group">
             <label for="movie-overview">Overview:</label>
             <textarea name="movieOverView" id="movie-overview" rows="3" class="form-control"
-              placeholder="Tell us about your movie..." value="{{updatedMovie.overview}}" required ngModel></textarea>
+                      placeholder="Tell us about your movie..."
+                      formControlName="overView"></textarea>
           </div>
         </div>
 

@@ -45,7 +45,11 @@
 
       &:last-child {
         textarea {
-          resize: none;
+          resize: both;
+          max-width: 100%;
+          max-height: 300px;
+          min-height: 100px;
+          min-width: 70%;
         }
       }
     }
@@ -60,4 +64,8 @@
 input.ng-invalid.ng-touched,
 textarea.ng-invalid.ng-touched {
   border: 1px solid red;
+}
+
+.modal{
+  transition: opacity .3s linear;
 }
