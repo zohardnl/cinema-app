@@ -1,12 +1,12 @@
 <div class="main-movies">
 
   <h2 class="main-movies__title">Movie List</h2>
-  <hr/>
+  <hr />
 
   <div class="main-movies__items">
     <app-movie *ngFor="let movie of movies$ | async; let movieId = index;" [movie]="movie"
-               (infoMovie)="getInfoMovie($event)" id="{{'drop' + movieId}}" [elementId]="movieId"
-               (updateMovie)="getUpdateMovie($event)">
+      (infoMovie)="getInfoMovie($event)" id="{{'drop' + movieId}}" [elementId]="movieId"
+      (updateMovie)="getUpdateMovie($event)">
     </app-movie>
   </div>
 </div>

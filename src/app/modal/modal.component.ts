@@ -19,14 +19,13 @@ export class Modal implements OnInit {
   //vars for reactive form
   updateForm: FormGroup;
 
-  constructor(private api: ApiService, private movie: MovieServiceService) {
-  }
+  constructor(private api: ApiService, private movie: MovieServiceService) {}
 
   ngOnInit() {
     this.updateForm = new FormGroup({
-      'title': new FormControl(this.updatedMovie.title, Validators.required),
-      'overView': new FormControl(this.updatedMovie.overview, Validators.required),
-      'releaseDate': new FormControl(this.updatedMovie.release_date, Validators.required)
+      title: new FormControl(this.updatedMovie.title, Validators.required),
+      overView: new FormControl(this.updatedMovie.overview, Validators.required),
+      releaseDate: new FormControl(this.updatedMovie.release_date, Validators.required)
     });
   }
 
@@ -46,6 +45,6 @@ export class Modal implements OnInit {
   }
 
   onUpdateMovie() {
-
+    console.log(this.updateForm);
   }
 }
