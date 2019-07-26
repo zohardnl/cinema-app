@@ -1,11 +1,12 @@
-import {Movie} from "./../models/Movie";
-import {Component, OnInit, EventEmitter, Output, Input, AfterViewInit} from "@angular/core";
-import {ApiService} from "../services/api.service";
-import {MovieServiceService} from "../services/movie-service.service";
-import {Router} from "@angular/router";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {SnackBarComponent} from "./snack-bar/snack-bar.component";
-import {UiService} from "../services/ui.service";
+import { Movie } from "./../models/Movie";
+import { Component, OnInit, EventEmitter, Output, Input, AfterViewInit } from "@angular/core";
+import { ApiService } from "../services/api.service";
+import { MovieServiceService } from "../services/movie-service.service";
+import { Router } from "@angular/router";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { SnackBarComponent } from "./snack-bar/snack-bar.component";
+import { UiService } from "../services/ui.service";
+import { ModalService } from '../services/modal.service';
 
 @Component({
   selector: "app-movie",
@@ -24,8 +25,9 @@ export class MovieComponent implements OnInit, AfterViewInit {
     private movieServ: MovieServiceService,
     private route: Router,
     private snackBar: MatSnackBar,
-    private sendToScroll: UiService
-  ) {}
+    private sendToScroll: UiService,
+    private dialog: ModalService
+  ) { }
 
   ngOnInit() {
     this.imageUrl = this.api.checkMovieImage(this.movie);
@@ -49,7 +51,9 @@ export class MovieComponent implements OnInit, AfterViewInit {
   }
 
   openInfo() {
-    this.infoMovie.emit(this.movie);
+    // this.infoMovie.emit(this.movie);
+    this.dialog.movie = this.movie;
+    this.dialog.openDialogInfo();
   }
 
   isFavorite() {
@@ -66,6 +70,7 @@ export class MovieComponent implements OnInit, AfterViewInit {
   }
 
   updateMov() {
+    this.dialog.openDialogUpdate();
     this.updateMovie.emit(this.movie);
   }
 }

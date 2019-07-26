@@ -1,0 +1,49 @@
+<!-- MODAL FOR UPDATE MOVIE -->
+<div class="modal fade updateMovie" id="updateMovie">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header updateMovie__header">
+        <h2 class="text-design">Update Movie</h2>
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+
+      <!-- Modal body -->
+      <form [formGroup]="updateForm" (ngSubmit)="onUpdateMovie()">
+        <div class="modal-body updateMovie__body">
+          <div class="form-group">
+            <label for="movie-name">Movie Name:</label>
+            <input type="text" id="movie-name" name="movieName" class="form-control" formControlName="title" />
+          </div>
+
+          <div class="form-group">
+            <label for="release-date">Release Date:</label>
+            <input type="date" name="movieReleaseDate" id="release-date" class="form-control" formControlName="releaseDate" />
+          </div>
+
+          <div class="form-group">
+            <label for="movie-overview">Overview:</label>
+            <textarea
+              name="movieOverView"
+              id="movie-overview"
+              rows="3"
+              class="form-control"
+              placeholder="Tell us about your movie..."
+              formControlName="overView"
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer updateMovie__footer">
+          <button type="submit" mat-raised-button color="primary" [disabled]="!updateForm.valid">
+            Update Movie
+          </button>
+          <button type="button" mat-raised-button data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

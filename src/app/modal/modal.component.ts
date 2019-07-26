@@ -1,10 +1,10 @@
-import {environment} from "./../../environments/environment";
-import {MovieServiceService} from "./../services/movie-service.service";
-import {ApiService} from "./../services/api.service";
-import {Component, OnInit, Input} from "@angular/core";
-import {Movie} from "../models/Movie";
-import {FormGroup, NgForm, Validators} from "@angular/forms";
-import {FormControl} from "@angular/forms";
+import { environment } from "./../../environments/environment";
+import { MovieServiceService } from "./../services/movie-service.service";
+import { ApiService } from "./../services/api.service";
+import { Component, OnInit, Input } from "@angular/core";
+import { Movie } from "../models/Movie";
+import { FormGroup, NgForm, Validators } from "@angular/forms";
+import { FormControl } from "@angular/forms";
 
 @Component({
   selector: "app-modal",
@@ -19,7 +19,7 @@ export class Modal implements OnInit {
   //vars for reactive form
   updateForm: FormGroup;
 
-  constructor(private api: ApiService, private movie: MovieServiceService) {}
+  constructor(private api: ApiService, private movie: MovieServiceService) { }
 
   ngOnInit() {
     this.updateForm = new FormGroup({
@@ -29,20 +29,7 @@ export class Modal implements OnInit {
     });
   }
 
-  onAddMovie(form: NgForm) {
-    let newMovie = new Movie();
-    newMovie.id = this.api.getId();
-    newMovie.title = form.value.movieName;
-    newMovie.release_date = form.value.movieReleaseDate;
-    newMovie.overview = form.value.movieOverView;
-    newMovie.poster_path = environment.defaultImage;
-    this.movie.addNewMovie(newMovie);
-    form.reset();
-  }
 
-  resetForm(form: NgForm) {
-    form.reset();
-  }
 
   onUpdateMovie() {
     console.log(this.updateForm);

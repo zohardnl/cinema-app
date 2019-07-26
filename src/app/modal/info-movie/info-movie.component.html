@@ -1,0 +1,17 @@
+<div class="movie" id="movie">
+  <div class="movie__header">
+    <div class="form-group">
+      <label>Movie Name: </label>
+      <h4 mat-dialog-title>{{ movieInfo.title }}</h4>
+    </div>
+  </div>
+
+  <mat-dialog-content class="mat-typography">
+    <h4 class="text-design">Summary:</h4>
+    {{ movieInfo.overview }}
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button type="button" mat-raised-button color="warn" mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+</div>

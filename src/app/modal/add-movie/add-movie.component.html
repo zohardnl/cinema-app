@@ -1,0 +1,41 @@
+<!-- MODAL FOR ADD MOVIE -->
+<div class="addMovie">
+  <h2 class="text-design" mat-dialog-title>Add Movie</h2>
+
+  <mat-dialog-content>
+    <form (ngSubmit)="onAddMovie(infoForm)" #infoForm="ngForm">
+      <div class="addMovie__body">
+        <div class="form-group">
+          <label for="movie-name">Movie Name:</label>
+          <input type="text" id="movie-name" name="movieName" class="form-control" ngModel required />
+        </div>
+
+        <div class="form-group">
+          <label for="release-date">Release Date:</label>
+          <input type="date" name="movieReleaseDate" id="release-date" class="form-control" ngModel required />
+        </div>
+
+        <div class="form-group">
+          <label for="movie-overview">Overview:</label>
+          <textarea
+            name="movieOverView"
+            id="movie-overview"
+            rows="3"
+            class="form-control"
+            placeholder="Tell us about your movie..."
+            ngModel
+            required
+          ></textarea>
+        </div>
+      </div>
+
+      <mat-dialog-actions align="end">
+        <button type="submit" mat-raised-button color="primary" [disabled]="!infoForm.valid">
+          Add Movie
+        </button>
+        <button type="button" mat-raised-button color="accent" (click)="resetForm(infoForm)">Reset</button>
+        <button type="button" mat-raised-button mat-dialog-close>Close</button>
+      </mat-dialog-actions>
+    </form>
+  </mat-dialog-content>
+</div>

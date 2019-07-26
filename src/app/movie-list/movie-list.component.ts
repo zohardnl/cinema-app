@@ -1,8 +1,7 @@
-import {UiService} from "./../services/ui.service";
-import {Observable} from "rxjs";
-import {MovieServiceService} from "../services/movie-service.service";
-import {Movie} from "../models/Movie";
-import {Component, OnInit} from "@angular/core";
+import { Observable } from "rxjs";
+import { MovieServiceService } from "../services/movie-service.service";
+import { Movie } from "../models/Movie";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-movie-list",
@@ -11,22 +10,9 @@ import {Component, OnInit} from "@angular/core";
 })
 export class MovieListComponent implements OnInit {
   movies$: Observable<Movie[]> = this.movies.movies$;
-  movieInfo: Movie;
-  updateMovie: Movie;
 
-  constructor(private movies: MovieServiceService, private ui: UiService) {}
 
-  ngOnInit() {}
+  constructor(private movies: MovieServiceService) { }
 
-  getInfoMovie(data: Movie) {
-    this.movieInfo = data;
-  }
-
-  asAddedMovie() {
-    return this.ui.addMovie;
-  }
-
-  getUpdateMovie(data: Movie) {
-    this.updateMovie = data;
-  }
+  ngOnInit() { }
 }
