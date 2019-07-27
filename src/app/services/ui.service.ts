@@ -6,7 +6,6 @@ import { Injectable } from "@angular/core";
 export class UiService {
   searchFlag: boolean;
   favFlag: boolean;
-  addMovie: boolean;
 
   constructor() { }
 
@@ -19,9 +18,5 @@ export class UiService {
         behavior: "smooth"
       });
     }
-  }
-
-  addedMovie() {
-    this.addMovie = true;
   }
 }

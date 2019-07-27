@@ -1,0 +1,12 @@
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.mat-dialog-content {
+  overflow: hidden;
+
+  .mat-dialog-actions {
+    margin-bottom: 0;
+  }
+}

@@ -18,8 +18,4 @@ export class FavoriteComponent implements OnInit {
   asFav() {
     return this.movies !== null && this.movies !== undefined;
   }
-
-  getInfoMovie(data: Movie) {
-    this.movieInfo = data;
-  }
 }

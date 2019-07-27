@@ -54,7 +54,8 @@ export class AppComponent implements OnInit {
   }
 
   addMovie() {
-    this.ui.addedMovie();
+    this.ui.searchFlag = false;
+    this.ui.favFlag = false;
     this.dialog.openDialogAddMovie();
   }
 

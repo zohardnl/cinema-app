@@ -6,25 +6,27 @@ import { Movie } from './../models/Movie';
 import { AddMovieComponent } from '../modal/add-movie/add-movie.component';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ModalService {
-  movie: Movie;
-  dialogRef: MatDialogRef<any>;
+    movie: Movie;
+    dialogRef: MatDialogRef<any>;
 
-  constructor(private dialog: MatDialog) { }
+    constructor(private dialog: MatDialog) { }
 
-  openDialogInfo() {
-    this.dialog.open(InfoMovieComponent);
-  }
+    openDialogInfo() {
+        this.dialog.open(InfoMovieComponent);
+    }
 
-  openDialogUpdate() {
-    this.dialogRef = this.dialog.open(UpdateMovieComponent);
-  }
+    openDialogUpdate() {
+        this.dialogRef = this.dialog.open(UpdateMovieComponent, {
+            width: '800px'
+        });
+    }
 
-  openDialogAddMovie() {
-    this.dialogRef = this.dialog.open(AddMovieComponent, {
-      width: '800px'
-    });
-  }
+    openDialogAddMovie() {
+        this.dialogRef = this.dialog.open(AddMovieComponent, {
+            width: '800px'
+        });
+    }
 }

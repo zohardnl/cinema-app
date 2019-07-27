@@ -4,7 +4,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { MovieComponent } from "./movie/movie.component";
-import { Modal } from "./modal/modal.component";
 import { ApiService } from "./services/api.service";
 import { MovieListComponent } from "./movie-list/movie-list.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -15,7 +14,6 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FavoriteComponent } from "./favorite/favorite.component";
-import { SnackBarComponent } from "./movie/snack-bar/snack-bar.component";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { CommonModule } from "@angular/common";
 import { CleanStringPipe } from "./movie/clean-string.pipe";
@@ -31,10 +29,8 @@ import { MatDialogModule } from '@angular/material/dialog';
   declarations: [
     AppComponent,
     MovieComponent,
-    Modal,
     MovieListComponent,
     FavoriteComponent,
-    SnackBarComponent,
     CleanStringPipe,
     InfoMovieComponent,
     AddMovieComponent,
@@ -57,7 +53,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     MatDialogModule
   ],
-  entryComponents: [SnackBarComponent, InfoMovieComponent, AddMovieComponent, UpdateMovieComponent],
+  entryComponents: [InfoMovieComponent, AddMovieComponent, UpdateMovieComponent],
   providers: [ApiService, MovieServiceService],
   bootstrap: [AppComponent]
 })
