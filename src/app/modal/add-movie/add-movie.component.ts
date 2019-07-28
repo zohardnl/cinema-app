@@ -28,9 +28,8 @@ export class AddMovieComponent implements OnInit {
         newMovie.poster_path = environment.defaultImage;
         this.movie.addNewMovie(newMovie);
         form.reset();
-        setTimeout(() => {
-            this.modal.dialogRef.close();
-        }, 1000);
+        this.modal.dialogRef.close();
+
     }
 
     resetForm(form: NgForm) {

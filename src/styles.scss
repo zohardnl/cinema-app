@@ -11,8 +11,6 @@ html,
 body {
   height: 100vh;
   overflow: hidden auto;
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 body {
@@ -22,6 +20,8 @@ body {
 
   background: url("./images/stars.jpg") no-repeat center / cover fixed;
   padding-top: 8em;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .mat-snack-bar-container.red-alert {
