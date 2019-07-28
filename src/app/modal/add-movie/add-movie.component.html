@@ -1,7 +1,8 @@
 <!-- MODAL FOR ADD MOVIE -->
 <div class="addMovie">
-  <h2 class="text-design" mat-dialog-title>Add Movie</h2>
+  <h3 class="text-design">Add Movie</h3>
 
+  <hr />
   <mat-dialog-content>
     <form (ngSubmit)="onAddMovie(infoForm)" #infoForm="ngForm">
       <div class="addMovie__body">
@@ -29,6 +30,7 @@
         </div>
       </div>
 
+      <hr />
       <mat-dialog-actions align="end">
         <button type="submit" mat-raised-button color="primary" [disabled]="!infoForm.valid">
           Add Movie

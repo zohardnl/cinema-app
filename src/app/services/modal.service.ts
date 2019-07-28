@@ -15,18 +15,20 @@ export class ModalService {
     constructor(private dialog: MatDialog) { }
 
     openDialogInfo() {
-        this.dialog.open(InfoMovieComponent);
+        this.dialog.open(InfoMovieComponent, {
+            width: '40em'
+        });
     }
 
     openDialogUpdate() {
         this.dialogRef = this.dialog.open(UpdateMovieComponent, {
-            width: '800px'
+            width: '40em'
         });
     }
 
     openDialogAddMovie() {
         this.dialogRef = this.dialog.open(AddMovieComponent, {
-            width: '800px'
+            width: '40em'
         });
     }
 }

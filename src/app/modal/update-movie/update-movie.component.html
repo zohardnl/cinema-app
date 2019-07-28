@@ -1,6 +1,8 @@
 <!-- MODAL FOR UPDATE MOVIE -->
 <div class="updateMovie">
-  <h2 class="text-design" mat-dialog-title>Update Movie</h2>
+  <h3 class="text-design">Update Movie</h3>
+
+  <hr />
 
   <mat-dialog-content>
     <form [formGroup]="updateForm" (ngSubmit)="onUpdateMovie()">
@@ -26,6 +28,7 @@
         ></textarea>
       </div>
 
+      <hr />
       <mat-dialog-actions align="end">
         <button type="submit" mat-raised-button color="primary" [disabled]="!updateForm.valid">
           Update Movie

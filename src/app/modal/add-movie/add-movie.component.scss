@@ -10,3 +10,19 @@ textarea.ng-invalid.ng-touched {
     margin-bottom: 0;
   }
 }
+
+.addMovie {
+  .form-group {
+    label {
+      font-weight: bold;
+    }
+
+    textarea {
+      resize: both;
+      max-height: 200px;
+      max-width: 100%;
+      min-height: 100px;
+      min-width: 100%;
+    }
+  }
+}
