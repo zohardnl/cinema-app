@@ -9,7 +9,7 @@
 
 html,
 body {
-  height: 100vh;
+  height: 100%;
   overflow: hidden auto;
 }
 
@@ -18,12 +18,38 @@ body {
     padding-top: 17em;
   }
 
+  margin: 0;
   background: url("./images/stars.jpg") no-repeat center / cover fixed;
   padding-top: 8em;
-  margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .mat-snack-bar-container.red-alert {
   color: #c43e3e;
+}
+
+.mat-dialog-container {
+  overflow: hidden auto;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+
+  &-track {
+    background: rgba(255, 255, 255, 0.89);
+    border-radius: 1em;
+  }
+
+  &-thumb {
+    background: #3f51b5c4;
+    border-radius: 1em;
+
+    &:hover {
+      background: #4d6fe0;
+    }
+  }
+}
+
+.cdk-global-scrollblock {
+  overflow: hidden !important;
 }
