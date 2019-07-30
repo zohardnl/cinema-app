@@ -1,8 +1,8 @@
-import { MovieServiceService } from "./services/movie-service.service";
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
-import { MatSnackBar } from "@angular/material/snack-bar";
-import { UiService } from "./services/ui.service";
-import { ModalService } from './services/modal.service';
+import {MovieServiceService} from "./services/movie-service.service";
+import {Component, OnInit, ViewChild, ElementRef} from "@angular/core";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {UiService} from "./services/ui.service";
+import {ModalService} from "./services/modal.service";
 
 @Component({
   selector: "app-root",
@@ -10,17 +10,12 @@ import { ModalService } from './services/modal.service';
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-  @ViewChild("movieVal", { static: false }) movieSearchVal: ElementRef;
+  @ViewChild("movieVal", {static: false}) movieSearchVal: ElementRef;
   value: string = "";
 
-  constructor(
-    private movie: MovieServiceService,
-    private modal: MatSnackBar,
-    private ui: UiService,
-    private dialog: ModalService
-  ) { }
+  constructor(private movie: MovieServiceService, private modal: MatSnackBar, private ui: UiService, private dialog: ModalService) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   showMovie() {
     this.movie.getMovie().subscribe();
@@ -47,7 +42,7 @@ export class AppComponent implements OnInit {
   }
 
   viewUp() {
-    document.querySelector("body").scrollTo({
+    document.querySelector(".main-movies").scrollTo({
       top: 0,
       behavior: "smooth"
     });

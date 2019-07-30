@@ -2,6 +2,9 @@
 @import "../../tools/mixins";
 
 .main-movies {
+  max-height: calc(100vh - 125px);
+  overflow: hidden auto;
+
   hr {
     width: 3%;
     background: white;
@@ -26,14 +29,5 @@
     flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 3em;
-  }
-
-  &__error {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    font-size: 30px;
   }
 }

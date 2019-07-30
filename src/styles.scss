@@ -10,17 +10,12 @@
 html,
 body {
   height: 100%;
-  overflow: hidden auto;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 body {
-  @include bp-tablet {
-    padding-top: 17em;
-  }
-
   background: url("./images/stars.jpg") no-repeat center / cover fixed;
-  padding-top: 8em;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow: hidden auto;
 }
 
 .mat-snack-bar-container.red-alert {
@@ -29,6 +24,11 @@ body {
 
 .mat-dialog-container {
   overflow: hidden auto;
+}
+
+.text-design {
+  font-weight: bold;
+  color: #3f51b5;
 }
 
 ::-webkit-scrollbar {
@@ -47,13 +47,4 @@ body {
       background: #4d6fe0;
     }
   }
-}
-
-.cdk-global-scrollblock {
-  overflow: hidden !important;
-}
-
-.text-design {
-  font-weight: bold;
-  color: #3f51b5;
 }
