@@ -2,7 +2,15 @@
 @import "../../tools/mixins";
 
 .main-movies {
-  max-height: calc(100vh - 125px);
+  @include bp-mobile {
+    max-height: calc(100% - 150px);
+  }
+
+  @include bp-tablet {
+    max-height: calc(100% - 230px);
+  }
+
+  max-height: calc(100% - 125px);
   overflow: hidden auto;
 
   hr {
