@@ -1,16 +1,16 @@
-import { environment } from "../../environments/environment";
-import { HttpClient } from "@angular/common/http";
-import { ElementRef, Injectable } from "@angular/core";
-import { Movie } from "../models/Movie";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import {environment} from "../../environments/environment";
+import {HttpClient} from "@angular/common/http";
+import {ElementRef, Injectable} from "@angular/core";
+import {Movie} from "../models/Movie";
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
 
 @Injectable()
 export class ApiService {
   num: number;
   url = {};
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   //SHOW MOVIE REQUSEST
   getMovie(): Observable<Movie> {
@@ -29,18 +29,12 @@ export class ApiService {
   }
 
   getMovieHttp(): Observable<any> {
-    return this.http.get<any>(
-      `${environment.apiUrl}?api_key=${environment.apiKey}&query=${this.getChar()}`
-    );
+    return this.http.get<any>(`${environment.apiUrl}?api_key=${environment.apiKey}&query=${this.getChar()}`);
   }
 
   //SEARCH MOVIE REQUEST
   searchMovieHttp(searchElement: ElementRef): Observable<any> {
-    return this.http.get<any>(
-      `${environment.apiUrl}?api_key=${
-      environment.apiKey
-      }&query=${searchElement.nativeElement.value.trim()}`
-    );
+    return this.http.get<any>(`${environment.apiUrl}?api_key=${environment.apiKey}&query=${searchElement.nativeElement.value.trim()}`);
   }
 
   searchMovie(search: ElementRef): Observable<Movie[]> {
@@ -58,11 +52,7 @@ export class ApiService {
         this.url = {
           backgroundImage: `url(${environment.defaultImage})`
         };
-      } else if (
-        movie.poster_path !== undefined &&
-        movie.poster_path !== "" &&
-        movie.poster_path !== null
-      ) {
+      } else if (movie.poster_path !== undefined && movie.poster_path !== "" && movie.poster_path !== null) {
         this.url = {
           backgroundImage: `url(${environment.image}${movie.poster_path})`
         };

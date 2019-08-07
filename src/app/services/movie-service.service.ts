@@ -1,10 +1,10 @@
-import { Observable } from "rxjs";
-import { Movie } from "../models/Movie";
-import { ApiService } from "./api.service";
-import { Injectable, ElementRef } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
-import { tap } from "rxjs/operators";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import {Observable} from "rxjs";
+import {Movie} from "../models/Movie";
+import {ApiService} from "./api.service";
+import {Injectable, ElementRef} from "@angular/core";
+import {BehaviorSubject} from "rxjs";
+import {tap} from "rxjs/operators";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable()
 export class MovieServiceService {
@@ -12,7 +12,7 @@ export class MovieServiceService {
   movies$: Observable<Movie[]> = this._movies.asObservable();
   favoriteMovies: Movie[] = [];
 
-  constructor(private api: ApiService, private modal: MatSnackBar) { }
+  constructor(private api: ApiService, private modal: MatSnackBar) {}
 
   getMovie(): Observable<Movie> {
     return this.api.getMovie().pipe(
@@ -53,20 +53,18 @@ export class MovieServiceService {
       index = this._movies.value.findIndex(movie => movie.title === newMovie.title);
       if (index >= 0) {
         this._movies.value.splice(index, 1);
-        this.modal.open("This movie already exist!", 'Add', {
+        this.modal.open("This movie already exist!", "Add", {
           duration: 2000,
-          panelClass: 'red-alert'
+          panelClass: "red-alert"
         });
         this._movies.next([...this._movies.value, newMovie]);
-      }
-      else {
+      } else {
         this._movies.next([...this._movies.value, newMovie]);
-        this.modal.open("Movie added!", 'Add')._dismissAfter(2000);
+        this.modal.open("Movie added!", "Add")._dismissAfter(2000);
       }
-    }
-    else {
+    } else {
       this._movies.next([...this._movies.value, newMovie]);
-      this.modal.open("Movie added!", 'Add')._dismissAfter(2000);
+      this.modal.open("Movie added!", "Add")._dismissAfter(2000);
     }
   }
 
@@ -76,6 +74,6 @@ export class MovieServiceService {
     this._movies.value[index].title = newDataMovie.title;
     this._movies.value[index].release_date = newDataMovie.release_date;
     this._movies.value[index].overview = newDataMovie.overview;
-    this.modal.open("Movie updated!", 'Update')._dismissAfter(2000);
+    this.modal.open("Movie updated!", "Update")._dismissAfter(2000);
   }
 }
