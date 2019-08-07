@@ -3,8 +3,7 @@
   <hr />
 
   <div class="main-movies__items">
-    <app-movie *ngFor="let movie of movies$ | async; let movieId = index" [movie]="movie" id="{{ 'drop' + movieId }}"
-      [elementId]="movieId">
+    <app-movie *ngFor="let movie of movies$ | async; let movieId = index" [movie]="movie" id="{{ 'drop' + movieId }}" [elementId]="movieId">
     </app-movie>
   </div>
 </div>

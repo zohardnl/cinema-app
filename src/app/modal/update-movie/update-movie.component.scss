@@ -4,8 +4,7 @@ textarea.ng-invalid.ng-touched {
 }
 
 .mat-dialog-content {
-  overflow: hidden;
-
+  max-height: 100vh;
   .mat-dialog-actions {
     margin-bottom: 0;
   }

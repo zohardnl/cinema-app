@@ -15,7 +15,7 @@ body {
 
 body {
   background: url("./images/stars.jpg") no-repeat center / cover fixed;
-  overflow: hidden auto;
+  overflow: hidden;
 }
 
 .mat-snack-bar-container.red-alert {
@@ -23,7 +23,7 @@ body {
 }
 
 .mat-dialog-container {
-  overflow: hidden auto;
+  overflow: hidden auto !important;
 }
 
 .text-design {
