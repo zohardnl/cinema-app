@@ -2,6 +2,8 @@
 <div class="addMovie">
   <h3 class="text-design">Add Movie</h3>
 
+  <div fxLayout="row" class="alert alert-danger">Please enter a valid values!</div>
+
   <hr />
   <mat-dialog-content>
     <form (ngSubmit)="onAddMovie(infoForm)" #infoForm="ngForm">
@@ -18,21 +20,14 @@
 
         <div class="form-group">
           <label for="movie-overview">Overview:</label>
-          <textarea
-            name="movieOverView"
-            id="movie-overview"
-            rows="3"
-            class="form-control"
-            placeholder="Tell us about your movie..."
-            ngModel
-            required
-          ></textarea>
+          <textarea name="movieOverView" id="movie-overview" rows="3" class="form-control"
+            placeholder="Tell us about your movie..." ngModel required></textarea>
         </div>
       </div>
 
       <hr />
       <mat-dialog-actions align="end">
-        <button type="submit" mat-raised-button color="primary" [disabled]="!infoForm.valid">
+        <button type="submit" mat-raised-button color="primary" [disabled]="!infoForm.valid || !checkValues()">
           Add Movie
         </button>
         <button type="button" mat-raised-button color="accent" (click)="resetForm(infoForm)">Reset</button>
