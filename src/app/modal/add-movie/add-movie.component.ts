@@ -1,10 +1,11 @@
-import {Component, OnInit, ViewChild, ElementRef} from "@angular/core";
-import {NgForm} from "@angular/forms";
-import {Movie} from "src/app/models/Movie";
-import {ApiService} from "./../../services/api.service";
-import {MovieServiceService} from "src/app/services/movie-service.service";
-import {environment} from "./../../../environments/environment";
-import {ModalService} from "src/app/services/modal.service";
+import { Component, OnInit } from "@angular/core";
+import { NgForm, FormGroup, Validators, FormControl } from "@angular/forms";
+import { Movie } from "src/app/models/Movie";
+import { ApiService } from "./../../services/api.service";
+import { MovieServiceService } from "src/app/services/movie-service.service";
+import { environment } from "./../../../environments/environment";
+import { ModalService } from "src/app/services/modal.service";
+import { trimValue } from 'src/app/validators/trim.validator';
 
 @Component({
   selector: "app-add-movie",
@@ -12,45 +13,31 @@ import {ModalService} from "src/app/services/modal.service";
   styleUrls: ["./add-movie.component.scss"]
 })
 export class AddMovieComponent implements OnInit {
-  @ViewChild("infoForm", {static: false}) formInfo: NgForm;
+  infoForm: FormGroup;
 
-  constructor(private api: ApiService, private movie: MovieServiceService, private modal: ModalService) {}
+  constructor(private api: ApiService, private movie: MovieServiceService, private modal: ModalService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.infoForm = new FormGroup({
+      'title': new FormControl(null, [Validators.required, trimValue]),
+      'overView': new FormControl(null, [Validators.required, trimValue]),
+      'releaseDate': new FormControl(null, [Validators.required, trimValue])
+    });
+  }
 
-  onAddMovie(form: NgForm) {
+  onAddMovie() {
     let newMovie = new Movie();
     newMovie.id = this.api.getId();
-    newMovie.title = form.value.movieName;
-    newMovie.release_date = form.value.movieReleaseDate;
-    newMovie.overview = form.value.movieOverView;
+    newMovie.title = this.infoForm.value.movieName;
+    newMovie.release_date = this.infoForm.value.movieReleaseDate;
+    newMovie.overview = this.infoForm.value.movieOverView;
     newMovie.poster_path = environment.defaultImage;
     this.movie.addNewMovie(newMovie);
-    form.reset();
+    this.infoForm.reset();
     this.modal.close();
   }
 
-  resetForm(form: NgForm) {
-    form.reset();
-  }
-
-  checkValues() {
-    let validName = this.formInfo.value.movieName.trim();
-    let validDate = this.formInfo.value.movieReleaseDate.trim();
-    let validOverView = this.formInfo.value.movieOverView.trim();
-
-    if (this.checkTrim(validName) && this.checkTrim(validDate) && this.checkTrim(validOverView)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  checkTrim(val: string) {
-    if (val !== null && val !== undefined && val !== "") {
-      return true;
-    } else {
-      return false;
-    }
+  resetForm() {
+    this.infoForm.reset();
   }
 }
