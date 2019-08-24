@@ -31,6 +31,10 @@ body {
   color: #3f51b5;
 }
 
+.form-control:focus{
+  box-shadow: none;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 
