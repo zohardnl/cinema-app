@@ -1,6 +1,4 @@
-import { Injectable } from "@angular/core";
-import { InfoMovieComponent } from '../modal/info-movie/info-movie.component';
-import { Component } from '@angular/compiler/src/core';
+import { Injectable, TemplateRef } from "@angular/core";
 
 @Injectable({
   providedIn: "root"

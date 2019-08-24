@@ -1,6 +1,6 @@
 import { AddMovieComponent } from './../modal/add-movie/add-movie.component';
 import { InfoMovieComponent } from './../modal/info-movie/info-movie.component';
-import { Injectable } from '@angular/core';
+import { Injectable, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { UpdateMovieComponent } from '../modal/update-movie/update-movie.component';
 import { UiService } from './ui.service';
