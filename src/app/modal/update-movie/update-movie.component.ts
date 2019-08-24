@@ -25,7 +25,7 @@ export class UpdateMovieComponent implements OnInit {
       releaseDate: new FormControl(this.updatedMovie.release_date, [Validators.required, trimValue])
     });
   }
-
+  // שדגשדגדש
   onUpdateMovie() {
     let newMovie = new Movie();
     newMovie.title = this.updateForm.value.title;
