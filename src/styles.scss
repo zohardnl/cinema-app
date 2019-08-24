@@ -4,51 +4,55 @@
 @include google-font("Roboto");
 
 * {
-  outline: none !important;
+	outline: none !important;
 }
 
 html,
 body {
-  height: 100%;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+	height: 100%;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 body {
-  background: url("./images/stars.jpg") no-repeat center / cover fixed;
-  overflow: hidden;
+	background: url("./images/stars.jpg") no-repeat center / cover fixed;
+	overflow: hidden;
 }
 
-.mat-snack-bar-container.red-alert {
-  color: #c43e3e;
+.mat-snack-bar-container {
+	font-weight: bold;
+	&.red-alert {
+		color: #c43e3e;
+		font-weight: bold;
+	}
 }
 
 .mat-dialog-container {
-  overflow: hidden auto !important;
+	overflow: hidden auto !important;
 }
 
 .text-design {
-  font-weight: bold;
-  color: #3f51b5;
+	font-weight: bold;
+	color: #3f51b5;
 }
 
-.form-control:focus{
-  box-shadow: none;
+.form-control:focus {
+	box-shadow: none;
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+	width: 8px;
 
-  &-track {
-    background: rgba(255, 255, 255, 0.89);
-    border-radius: 1em;
-  }
+	&-track {
+		background: rgba(255, 255, 255, 0.89);
+		border-radius: 1em;
+	}
 
-  &-thumb {
-    background: #3f51b5c4;
-    border-radius: 1em;
+	&-thumb {
+		background: #3f51b5c4;
+		border-radius: 1em;
 
-    &:hover {
-      background: #4d6fe0;
-    }
-  }
+		&:hover {
+			background: #4d6fe0;
+		}
+	}
 }

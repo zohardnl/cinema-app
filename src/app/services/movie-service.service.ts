@@ -1,10 +1,10 @@
-import {Observable} from "rxjs";
-import {Movie} from "../models/Movie";
-import {ApiService} from "./api.service";
-import {Injectable, ElementRef} from "@angular/core";
-import {BehaviorSubject} from "rxjs";
-import {tap} from "rxjs/operators";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import { Observable } from "rxjs";
+import { Movie } from "../models/Movie";
+import { ApiService } from "./api.service";
+import { Injectable, ElementRef } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
+import { tap } from "rxjs/operators";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable()
 export class MovieServiceService {
@@ -12,13 +12,22 @@ export class MovieServiceService {
   movies$: Observable<Movie[]> = this._movies.asObservable();
   favoriteMovies: Movie[] = [];
 
-  constructor(private api: ApiService, private modal: MatSnackBar) {}
+  constructor(private api: ApiService, private modal: MatSnackBar) { }
 
   getMovie(): Observable<Movie> {
+    let index: number;
+    let xmovie: Movie;
     return this.api.getMovie().pipe(
       tap(movie => {
-        if (!this._movies.value.includes(movie)) {
+        xmovie = movie;
+        index = this._movies.value.findIndex(fmovie => fmovie.title === xmovie.title);
+        if (index === -1) {
           this._movies.next([...this._movies.value, movie]);
+        } else {
+          this.modal.open("Movie already exist, Try again!", "Show", {
+            duration: 2000,
+            panelClass: "red-alert"
+          });
         }
       })
     );

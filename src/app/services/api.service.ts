@@ -1,16 +1,16 @@
-import {environment} from "../../environments/environment";
-import {HttpClient} from "@angular/common/http";
-import {ElementRef, Injectable} from "@angular/core";
-import {Movie} from "../models/Movie";
-import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
+import { environment } from "../../environments/environment";
+import { HttpClient } from "@angular/common/http";
+import { ElementRef, Injectable } from "@angular/core";
+import { Movie } from "../models/Movie";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Injectable()
 export class ApiService {
   num: number;
   url = {};
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   //SHOW MOVIE REQUSEST
   getMovie(): Observable<Movie> {
@@ -47,12 +47,12 @@ export class ApiService {
 
   //check image of movie if exits
   checkMovieImage(movie: Movie) {
-    if (movie !== undefined) {
+    if (movie) {
       if (movie.poster_path === environment.defaultImage) {
         this.url = {
           backgroundImage: `url(${environment.defaultImage})`
         };
-      } else if (movie.poster_path !== undefined && movie.poster_path !== "" && movie.poster_path !== null) {
+      } else if (movie.poster_path) {
         this.url = {
           backgroundImage: `url(${environment.image}${movie.poster_path})`
         };

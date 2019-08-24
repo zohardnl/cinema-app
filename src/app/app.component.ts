@@ -1,8 +1,8 @@
-import {MovieServiceService} from "./services/movie-service.service";
-import {Component, OnInit, ViewChild, ElementRef} from "@angular/core";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {UiService} from "./services/ui.service";
-import {ModalService} from "./services/modal.service";
+import { MovieServiceService } from "./services/movie-service.service";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { UiService } from "./services/ui.service";
+import { ModalService } from "./services/modal.service";
 
 @Component({
   selector: "app-root",
@@ -10,12 +10,12 @@ import {ModalService} from "./services/modal.service";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-  @ViewChild("movieVal", {static: false}) movieSearchVal: ElementRef;
+  @ViewChild("movieVal", { static: false }) movieSearchVal: ElementRef;
   value: string = "";
 
-  constructor(private movie: MovieServiceService, private modal: MatSnackBar, private ui: UiService, private dialog: ModalService) {}
+  constructor(private movie: MovieServiceService, private modal: MatSnackBar, private ui: UiService, private dialog: ModalService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   showMovie() {
     this.movie.getMovie().subscribe();
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     this.ui.searchFlag = true;
     this.value = this.movieSearchVal.nativeElement.value.trim();
     this.movie.getSearch(this.movieSearchVal).subscribe(movies => {
-      if (movies.length < 1) this.modal.open("No results for this search!")._dismissAfter(2000);
+      if (movies.length < 1) this.modal.open("No results for this search!", "Search")._dismissAfter(2000);
     });
   }
 
@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
 
   resetList() {
     this.movie.resetMovies();
-    this.modal.open("Movies Cleared!")._dismissAfter(2000);
+    this.modal.open("Movies Cleared!", "Clear")._dismissAfter(2000);
   }
 
   viewUp() {

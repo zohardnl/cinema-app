@@ -15,10 +15,10 @@ export class UpdateMovieComponent implements OnInit {
   updateForm: FormGroup;
   updatedMovie: Movie;
 
-  constructor(private dialog: ModalService, private movie: MovieServiceService) { }
+  constructor(private modal: ModalService, private movie: MovieServiceService) { }
 
   ngOnInit() {
-    this.updatedMovie = this.dialog.movie;
+    this.updatedMovie = this.modal.movie;
     this.updateForm = new FormGroup({
       'title': new FormControl(this.updatedMovie.title, [Validators.required, trimValue]),
       'overView': new FormControl(this.updatedMovie.overview, [Validators.required, trimValue]),
@@ -32,6 +32,6 @@ export class UpdateMovieComponent implements OnInit {
     newMovie.overview = this.updateForm.value.overView;
     newMovie.release_date = this.updateForm.value.releaseDate;
     this.movie.updateMovie(this.updatedMovie, newMovie);
-    this.dialog.close();
+    this.modal.close();
   }
 }
