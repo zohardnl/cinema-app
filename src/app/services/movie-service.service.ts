@@ -12,7 +12,7 @@ export class MovieServiceService {
   movies$: Observable<Movie[]> = this._movies.asObservable();
   favoriteMovies: Movie[] = [];
 
-  constructor(private api: ApiService, private modal: MatSnackBar) { }
+  constructor(private api: ApiService, private modal: MatSnackBar) {}
 
   getMovie(): Observable<Movie> {
     let index: number;
@@ -54,6 +54,11 @@ export class MovieServiceService {
   removeFavoriteMovie(movie: Movie) {
     let index = this.favoriteMovies.indexOf(movie);
     this.favoriteMovies.splice(index, 1);
+  }
+
+  removeFromList(movie: Movie) {
+    let index = this._movies.value.indexOf(movie);
+    this._movies.value.splice(index, 1);
   }
 
   addNewMovie(newMovie: Movie) {

@@ -62,6 +62,11 @@ export class MovieComponent implements OnInit, AfterViewInit {
     this.modal("Removed!", "Remove");
   }
 
+  removeFromList(){
+    this.movieServ.removeFromList(this.movie);
+    this.modal("Removed!", "Remove");
+  }
+
   modal(msg: string, action: string) {
     this.snackBar.open(msg, action)._dismissAfter(2000);
   }
