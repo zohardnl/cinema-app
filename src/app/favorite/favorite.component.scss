@@ -1,28 +1,41 @@
 @import "../../tools/mixins";
 @import "../../tools/vars";
 
-.favorite-header {
+.favorite-area {
   @include bp-mobile {
-    margin: 1em 0 2em;
+    max-height: calc(100% - 150px);
   }
 
-  margin-bottom: 2em;
+  @include bp-tablet {
+    max-height: calc(100% - 230px);
+  }
 
-  h2 {
+  max-height: calc(100% - 125px);
+  overflow: hidden auto;
+
+  .favorite-header {
     @include bp-mobile {
-      margin: 15px 0 0;
-      font-size: 30px;
+      margin: 1em 0 2em;
     }
-    text-align: center;
-    margin: 15px 0;
-    font-weight: bold;
-    font-size: 60px;
-    color: $c-white;
-  }
 
-  hr {
-    width: 3%;
-    background: white;
-    border-width: 3px;
+    margin-bottom: 2em;
+
+    h2 {
+      @include bp-mobile {
+        margin: 15px 0 0;
+        font-size: 30px;
+      }
+      text-align: center;
+      margin: 15px 0;
+      font-weight: bold;
+      font-size: 60px;
+      color: $c-white;
+    }
+
+    hr {
+      width: 3%;
+      background: white;
+      border-width: 3px;
+    }
   }
 }

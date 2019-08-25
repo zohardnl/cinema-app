@@ -1,8 +1,10 @@
-<div fxLayout="column" fxLayoutAlign="center center" class="favorite-header">
-  <h2>Favorites Movies</h2>
-  <hr />
-</div>
+<div class="favorite-area">
+  <div fxLayout="column" fxLayoutAlign="center center" class="favorite-header">
+    <h2>Favorites Movies</h2>
+    <hr />
+  </div>
 
-<div fxLayout="row wrap" fxLayoutAlign="space-around center" *ngIf="asFav()">
-  <app-movie *ngFor="let movie of movies" [movie]="movie"></app-movie>
+  <div fxLayout="row wrap" fxLayoutAlign="space-around center" *ngIf="asFav()">
+    <app-movie *ngFor="let movie of movies" [movie]="movie"></app-movie>
+  </div>
 </div>

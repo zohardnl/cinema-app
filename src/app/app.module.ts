@@ -24,6 +24,7 @@ import { InfoMovieComponent } from "./modal/info-movie/info-movie.component";
 import { AddMovieComponent } from "./modal/add-movie/add-movie.component";
 import { UpdateMovieComponent } from "./modal/update-movie/update-movie.component";
 import { MatDialogModule } from "@angular/material/dialog";
+import { RemoveMovieComponent } from './modal/remove-movie/remove-movie.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MatDialogModule } from "@angular/material/dialog";
     CleanStringPipe,
     InfoMovieComponent,
     AddMovieComponent,
-    UpdateMovieComponent
+    UpdateMovieComponent,
+    RemoveMovieComponent
   ],
   imports: [
     BrowserModule,
