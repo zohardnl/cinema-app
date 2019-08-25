@@ -24,7 +24,7 @@ import { InfoMovieComponent } from "./modal/info-movie/info-movie.component";
 import { AddMovieComponent } from "./modal/add-movie/add-movie.component";
 import { UpdateMovieComponent } from "./modal/update-movie/update-movie.component";
 import { MatDialogModule } from "@angular/material/dialog";
-import { RemoveMovieComponent } from './modal/remove-movie/remove-movie.component';
+import { RemoveMovieComponent } from "./modal/remove-movie/remove-movie.component";
 
 @NgModule({
   declarations: [
@@ -55,8 +55,8 @@ import { RemoveMovieComponent } from './modal/remove-movie/remove-movie.componen
     ReactiveFormsModule,
     MatDialogModule
   ],
-  entryComponents: [InfoMovieComponent, AddMovieComponent, UpdateMovieComponent],
+  entryComponents: [InfoMovieComponent, AddMovieComponent, UpdateMovieComponent, RemoveMovieComponent],
   providers: [ApiService, MovieServiceService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

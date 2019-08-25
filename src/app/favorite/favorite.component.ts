@@ -11,9 +11,9 @@ export class FavoriteComponent implements OnInit {
   movies: Movie[] = this.movie.favoriteMovies;
   movieInfo: Movie;
 
-  constructor(private movie: MovieServiceService) { }
+  constructor(private movie: MovieServiceService) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   asFav() {
     return this.movies !== null && this.movies !== undefined;

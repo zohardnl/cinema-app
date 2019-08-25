@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Movie } from "./../models/Movie";
-import { OpenModalService } from './open-modal.service';
+import { OpenModalService } from "./open-modal.service";
 
 @Injectable({
   providedIn: "root"
@@ -8,7 +8,7 @@ import { OpenModalService } from './open-modal.service';
 export class ModalService {
   movie: Movie;
 
-  constructor(private openModal: OpenModalService) { }
+  constructor(private openModal: OpenModalService) {}
 
   close() {
     this.openModal.dialogRef.close();
@@ -24,5 +24,9 @@ export class ModalService {
 
   openDialogAddMovie() {
     this.openModal.addDialog();
+  }
+
+  openDialogRemoveMovie() {
+    this.openModal.removeDialog();
   }
 }

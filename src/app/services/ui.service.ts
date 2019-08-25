@@ -1,4 +1,4 @@
-import { Injectable, TemplateRef } from "@angular/core";
+import { Injectable } from "@angular/core";
 
 @Injectable({
   providedIn: "root"
@@ -7,7 +7,7 @@ export class UiService {
   searchFlag: boolean;
   favFlag: boolean;
 
-  constructor() { }
+  constructor() {}
 
   scroll(id: number) {
     if (!this.searchFlag && !this.favFlag) {

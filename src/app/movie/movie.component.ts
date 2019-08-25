@@ -24,7 +24,7 @@ export class MovieComponent implements OnInit, AfterViewInit {
     private snackBar: MatSnackBar,
     private sendToScroll: UiService,
     private dialog: ModalService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.imageUrl = this.api.checkMovieImage(this.movie);
@@ -58,21 +58,21 @@ export class MovieComponent implements OnInit, AfterViewInit {
   }
 
   removeMovie() {
-    this.movieServ.removeFavoriteMovie(this.movie);
-    this.modal("Removed!", "Remove");
+    this.dialog.movie = this.movie;
+    this.dialog.openDialogRemoveMovie();
   }
 
-  removeFromList(){
-    this.movieServ.removeFromList(this.movie);
-    this.modal("Removed!", "Remove");
-  }
-
-  modal(msg: string, action: string) {
-    this.snackBar.open(msg, action)._dismissAfter(2000);
+  removeFromList() {
+    this.dialog.movie = this.movie;
+    this.dialog.openDialogRemoveMovie();
   }
 
   updateMov() {
     this.dialog.movie = this.movie;
     this.dialog.openDialogUpdate();
+  }
+
+  modal(msg: string, action: string) {
+    this.snackBar.open(msg, action)._dismissAfter(2000);
   }
 }
