@@ -1,32 +1,27 @@
-import { Injectable } from "@angular/core";
 import { Movie } from "./../models/Movie";
-import { OpenModalService } from "./open-modal.service";
+import { MatDialogRef } from "@angular/material/dialog";
+import { MatDialog } from "@angular/material/dialog";
+import { Injectable } from "@angular/core";
+import { ComponentType } from "@angular/cdk/portal";
 
 @Injectable({
   providedIn: "root"
 })
 export class ModalService {
-  movie: Movie;
+  dialogRef: MatDialogRef<any>;
 
-  constructor(private openModal: OpenModalService) {}
+  constructor(private dialog: MatDialog) {}
 
-  close() {
-    this.openModal.dialogRef.close();
+  openDialog(component: ComponentType<any>, movie?: Movie, width: string = "40em") {
+    this.dialogRef = this.dialog.open(component, {
+      width,
+      data: {
+        movie
+      }
+    });
   }
 
-  openDialogInfo() {
-    this.openModal.infoDialog();
-  }
-
-  openDialogUpdate() {
-    this.openModal.updateDialog();
-  }
-
-  openDialogAddMovie() {
-    this.openModal.addDialog();
-  }
-
-  openDialogRemoveMovie() {
-    this.openModal.removeDialog();
+  closeDialog() {
+    this.dialogRef.close();
   }
 }

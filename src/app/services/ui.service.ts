@@ -11,9 +11,9 @@ export class UiService {
 
   scroll(id: number) {
     if (!this.searchFlag && !this.favFlag) {
-      setTimeout(() => {
+      requestAnimationFrame(() => {
         document.querySelector(`#drop${id}`).scrollIntoView({ behavior: "smooth" });
-      }, 100);
+      });
     } else {
       document.querySelector(".main-movies").scrollTo({
         top: 0,

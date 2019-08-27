@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { UiService } from "./services/ui.service";
 import { ModalService } from "./services/modal.service";
+import { AddMovieComponent } from './modal/add-movie/add-movie.component';
 
 @Component({
   selector: "app-root",
@@ -13,9 +14,9 @@ export class AppComponent implements OnInit {
   @ViewChild("movieVal", { static: false }) movieSearchVal: ElementRef;
   value: string = "";
 
-  constructor(private movie: MovieServiceService, private modal: MatSnackBar, private ui: UiService, private dialog: ModalService) { }
+  constructor(private movie: MovieServiceService, private modal: MatSnackBar, private ui: UiService, private dialog: ModalService) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   showMovie() {
     this.movie.getMovie().subscribe();
@@ -51,7 +52,7 @@ export class AppComponent implements OnInit {
   addMovie() {
     this.ui.searchFlag = false;
     this.ui.favFlag = false;
-    this.dialog.openDialogAddMovie();
+    this.dialog.openDialog(AddMovieComponent);
   }
 
   getFav() {

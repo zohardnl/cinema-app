@@ -1,15 +1,15 @@
 <div class="movie">
-  <h3 class="text-design">Movie Name: </h3>
-  <h4 mat-dialog-title>{{ movieInfo.title }}</h4>
+  <h3 class="text-design">Movie Name:</h3>
+  <h4 mat-dialog-title>{{ data.movie.title }}</h4>
 
-  <hr>
+  <hr />
 
   <mat-dialog-content>
     <h5 class="text-design">Summary:</h5>
-    {{ movieInfo.overview }}
+    {{ data.movie.overview }}
   </mat-dialog-content>
 
-  <hr>
+  <hr />
 
   <mat-dialog-actions align="end">
     <button type="button" mat-raised-button color="primary" mat-dialog-close>Close</button>

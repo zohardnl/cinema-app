@@ -6,7 +6,9 @@ import { BehaviorSubject } from "rxjs";
 import { tap } from "rxjs/operators";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
-@Injectable()
+@Injectable({
+  providedIn: "root"
+})
 export class MovieServiceService {
   private _movies: BehaviorSubject<Movie[]> = new BehaviorSubject([]);
   movies$: Observable<Movie[]> = this._movies.asObservable();

@@ -1,9 +1,8 @@
-import { Component, OnInit } from "@angular/core";
 import { ModalService } from "src/app/services/modal.service";
+import { Component, OnInit } from "@angular/core";
 import { MovieServiceService } from "src/app/services/movie-service.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Movie } from "./../../models/Movie";
-import { OpenModalService } from "./../../services/open-modal.service";
 import { Router } from "@angular/router";
 
 @Component({
@@ -14,31 +13,23 @@ import { Router } from "@angular/router";
 export class RemoveMovieComponent implements OnInit {
   movie: Movie;
 
-  constructor(
-    private modal: ModalService,
-    private movieServ: MovieServiceService,
-    private snackBar: MatSnackBar,
-    private openModal: OpenModalService,
-    private route: Router
-  ) {}
+  constructor(private movieServ: MovieServiceService, private snackBar: MatSnackBar, private route: Router, private modal: ModalService) {}
 
-  ngOnInit() {
-    this.movie = this.modal.movie;
-  }
+  ngOnInit() {}
 
   removeMovie() {
     this.movieServ.removeFromList(this.movie);
-    this.openModal.dialogRef.close();
     this.snackBar.open("Removed!", "Remove")._dismissAfter(2000);
-  }
-
-  isFavorite() {
-    return this.route.url !== "/favorites";
+    this.modal.closeDialog();
   }
 
   removeFavorite() {
     this.movieServ.removeFavoriteMovie(this.movie);
-    this.openModal.dialogRef.close();
     this.snackBar.open("Removed!", "Remove")._dismissAfter(2000);
+    this.modal.closeDialog();
+  }
+
+  isFavorite() {
+    return this.route.url !== "/favorites";
   }
 }

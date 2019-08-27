@@ -5,12 +5,14 @@ import { Movie } from "../models/Movie";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
-@Injectable()
+@Injectable({
+  providedIn: "root"
+})
 export class ApiService {
   num: number;
   url = {};
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   //SHOW MOVIE REQUSEST
   getMovie(): Observable<Movie> {

@@ -1,3 +1,4 @@
+import { RemoveMovieComponent } from "./../modal/remove-movie/remove-movie.component";
 import { Movie } from "./../models/Movie";
 import { Component, OnInit, Input, AfterViewInit } from "@angular/core";
 import { ApiService } from "../services/api.service";
@@ -6,6 +7,8 @@ import { Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { UiService } from "../services/ui.service";
 import { ModalService } from "../services/modal.service";
+import { InfoMovieComponent } from "../modal/info-movie/info-movie.component";
+import { UpdateMovieComponent } from "../modal/update-movie/update-movie.component";
 
 @Component({
   selector: "app-movie",
@@ -23,7 +26,7 @@ export class MovieComponent implements OnInit, AfterViewInit {
     private route: Router,
     private snackBar: MatSnackBar,
     private sendToScroll: UiService,
-    private dialog: ModalService
+    private dialogService: ModalService
   ) {}
 
   ngOnInit() {
@@ -48,28 +51,24 @@ export class MovieComponent implements OnInit, AfterViewInit {
     }
   }
 
-  openInfo() {
-    this.dialog.movie = this.movie;
-    this.dialog.openDialogInfo();
-  }
-
   isFavorite() {
     return this.route.url !== "/favorites";
   }
 
+  openInfo() {
+    this.dialogService.openDialog(InfoMovieComponent, this.movie);
+  }
+
   removeMovie() {
-    this.dialog.movie = this.movie;
-    this.dialog.openDialogRemoveMovie();
+    this.dialogService.openDialog(RemoveMovieComponent, this.movie);
   }
 
   removeFromList() {
-    this.dialog.movie = this.movie;
-    this.dialog.openDialogRemoveMovie();
+    this.dialogService.openDialog(RemoveMovieComponent, this.movie);
   }
 
   updateMov() {
-    this.dialog.movie = this.movie;
-    this.dialog.openDialogUpdate();
+    this.dialogService.openDialog(UpdateMovieComponent, this.movie);
   }
 
   modal(msg: string, action: string) {

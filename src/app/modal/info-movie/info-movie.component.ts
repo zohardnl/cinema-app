@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { ModalService } from "src/app/services/modal.service";
+import { MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { Component, OnInit, Inject } from "@angular/core";
 import { Movie } from "./../../models/Movie";
 
 @Component({
@@ -8,11 +8,7 @@ import { Movie } from "./../../models/Movie";
   styleUrls: ["./info-movie.component.scss"]
 })
 export class InfoMovieComponent implements OnInit {
-  movieInfo: Movie;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
-  constructor(private modal: ModalService) { }
-
-  ngOnInit() {
-    this.movieInfo = this.modal.movie;
-  }
+  ngOnInit() {}
 }

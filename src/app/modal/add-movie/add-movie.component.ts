@@ -1,3 +1,4 @@
+import { ModalService } from "src/app/services/modal.service";
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, Validators, FormControl } from "@angular/forms";
 import { Movie } from "src/app/models/Movie";
@@ -5,7 +6,6 @@ import { ApiService } from "./../../services/api.service";
 import { MovieServiceService } from "src/app/services/movie-service.service";
 import { environment } from "./../../../environments/environment";
 import { trimValue } from "src/app/validators/trim.validator";
-import { OpenModalService } from 'src/app/services/open-modal.service';
 
 @Component({
   selector: "app-add-movie",
@@ -15,13 +15,13 @@ import { OpenModalService } from 'src/app/services/open-modal.service';
 export class AddMovieComponent implements OnInit {
   infoForm: FormGroup;
 
-  constructor(private api: ApiService, private movie: MovieServiceService, private modal: OpenModalService) { }
+  constructor(private api: ApiService, private movie: MovieServiceService, private modal: ModalService) {}
 
   ngOnInit() {
     this.infoForm = new FormGroup({
-      'title': new FormControl("", [Validators.required, trimValue]),
-      'overView': new FormControl("", [Validators.required, trimValue]),
-      'releaseDate': new FormControl("", [Validators.required, trimValue])
+      title: new FormControl("", [Validators.required, trimValue]),
+      overView: new FormControl("", [Validators.required, trimValue]),
+      releaseDate: new FormControl("", [Validators.required, trimValue])
     });
   }
 
@@ -34,7 +34,7 @@ export class AddMovieComponent implements OnInit {
     newMovie.poster_path = environment.defaultImage;
     this.movie.addNewMovie(newMovie);
     this.infoForm.reset();
-    this.modal.dialogRef.close();
+    this.modal.closeDialog();
   }
 
   resetForm() {

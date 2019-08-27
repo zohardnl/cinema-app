@@ -4,10 +4,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { MovieComponent } from "./movie/movie.component";
-import { ApiService } from "./services/api.service";
 import { MovieListComponent } from "./movie-list/movie-list.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MovieServiceService } from "./services/movie-service.service";
 import { MatButtonModule } from "@angular/material/button";
 import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
@@ -56,7 +54,7 @@ import { RemoveMovieComponent } from "./modal/remove-movie/remove-movie.componen
     MatDialogModule
   ],
   entryComponents: [InfoMovieComponent, AddMovieComponent, UpdateMovieComponent, RemoveMovieComponent],
-  providers: [ApiService, MovieServiceService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
