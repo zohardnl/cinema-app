@@ -5,23 +5,23 @@ import { Injectable } from "@angular/core";
 import { ComponentType } from "@angular/cdk/portal";
 
 @Injectable({
-  providedIn: "root"
+	providedIn: "root"
 })
 export class ModalService {
-  dialogRef: MatDialogRef<any>;
+	dialogRef: MatDialogRef<any>;
 
-  constructor(private dialog: MatDialog) {}
+	constructor(private dialog: MatDialog) {}
 
-  openDialog(component: ComponentType<any>, movie?: Movie, width: string = "40em") {
-    this.dialogRef = this.dialog.open(component, {
-      width,
-      data: {
-        movie
-      }
-    });
-  }
+	openDialog(component: ComponentType<any>, movie?: Movie, width: string = "40em") {
+		this.dialogRef = this.dialog.open(component, {
+			width,
+			data: {
+				movie
+			}
+		});
+	}
 
-  closeDialog() {
-    this.dialogRef.close();
-  }
+	closeDialog() {
+		this.dialogRef.close();
+	}
 }

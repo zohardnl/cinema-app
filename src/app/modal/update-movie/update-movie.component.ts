@@ -1,15 +1,15 @@
-import { ModalService } from 'src/app/services/modal.service';
-import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { Movie } from 'src/app/models/Movie';
-import { Validators } from '@angular/forms';
-import { MovieServiceService } from 'src/app/services/movie-service.service';
-import { trimValue } from 'src/app/validators/trim.validator';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ModalService } from "src/app/services/modal.service";
+import { Component, OnInit, Inject } from "@angular/core";
+import { FormGroup, FormControl } from "@angular/forms";
+import { Movie } from "src/app/models/Movie";
+import { Validators } from "@angular/forms";
+import { MovieServiceService } from "src/app/services/movie-service.service";
+import { trimValue } from "src/app/validators/trim.validator";
+import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 @Component({
-	selector: 'app-update-movie',
-	templateUrl: './update-movie.component.html',
-	styleUrls: ['./update-movie.component.scss']
+	selector: "app-update-movie",
+	templateUrl: "./update-movie.component.html",
+	styleUrls: ["./update-movie.component.scss"]
 })
 export class UpdateMovieComponent implements OnInit {
 	updateForm: FormGroup;
