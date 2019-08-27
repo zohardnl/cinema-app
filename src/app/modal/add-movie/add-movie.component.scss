@@ -1,29 +1,29 @@
 input.ng-invalid.ng-touched,
 textarea.ng-invalid.ng-touched {
-  border: 1px solid red;
+	border: 1px solid red;
 }
 
 .mat-dialog-content {
-  max-height: 100vh;
-  .mat-dialog-actions {
-    margin-bottom: 0;
-    flex-wrap: nowrap;
-    padding: 0;
-  }
+	max-height: 100vh;
+	.mat-dialog-actions {
+		margin-bottom: 0;
+		flex-wrap: nowrap;
+		padding: 0;
+	}
 }
 
 .addMovie {
-  .form-group {
-    label {
-      font-weight: bold;
-    }
+	.form-group {
+		label {
+			font-weight: bold;
+		}
 
-    textarea {
-      resize: both;
-      max-height: 200px;
-      max-width: 100%;
-      min-height: 100px;
-      min-width: 100%;
-    }
-  }
+		textarea {
+			resize: both;
+			max-height: 200px;
+			max-width: 100%;
+			min-height: 100px;
+			min-width: 100%;
+		}
+	}
 }

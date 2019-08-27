@@ -1,11 +1,11 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: "cleanString" })
+@Pipe({ name: 'cleanString' })
 export class CleanStringPipe implements PipeTransform {
-  transform(value: string): string {
-    if (value) {
-      let newVal = value.replace(/[^\w\s]/gi, " ");
-      return newVal.charAt(0).toUpperCase() + newVal.slice(1);
-    }
-  }
+	transform(value: string): string {
+		if (value) {
+			let newVal = value.replace(/[^\w\s]/gi, ' ');
+			return newVal.charAt(0).toUpperCase() + newVal.slice(1);
+		}
+	}
 }

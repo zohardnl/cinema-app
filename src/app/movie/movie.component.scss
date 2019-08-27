@@ -1,109 +1,109 @@
-@import "../../tools/vars";
-@import "../../tools/mixins";
+@import '../../tools/vars';
+@import '../../tools/mixins';
 
 .flip-card {
-  @include bp-mobile {
-    width: 95vw;
-  }
+	@include bp-mobile {
+		width: 95vw;
+	}
 
-  width: 350px;
-  height: 550px;
-  background: transparent;
-  perspective: 1000px;
-  margin-bottom: 2em;
+	width: 350px;
+	height: 550px;
+	background: transparent;
+	perspective: 1000px;
+	margin-bottom: 2em;
 
-  &:hover {
-    .flip-card-inner {
-      transform: rotateY(180deg);
-    }
-  }
+	&:hover {
+		.flip-card-inner {
+			transform: rotateY(180deg);
+		}
+	}
 
-  &-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    box-shadow: 0 2px 5px 0 rgba(231, 231, 231, 0.404), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
-    border-radius: 1em;
-  }
+	&-inner {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		transition: transform 0.6s;
+		transform-style: preserve-3d;
+		box-shadow: 0 2px 5px 0 rgba(231, 231, 231, 0.404), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+		border-radius: 1em;
+	}
 }
 
 .front-info,
 .back-info {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 1em;
-  background: no-repeat center;
-  background-size: cover;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	border-radius: 1em;
+	background: no-repeat center;
+	background-size: cover;
 }
 
 .back-info {
-  background-color: #2d2b2b;
-  color: white;
-  transform: rotateY(180deg);
-  padding: 1em;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
+	background-color: #2d2b2b;
+	color: white;
+	transform: rotateY(180deg);
+	padding: 1em;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
 
-  .edit-icon,
-  .remove-fav {
-    font-size: 25px;
-    cursor: pointer;
-  }
+	.edit-icon,
+	.remove-fav {
+		font-size: 25px;
+		cursor: pointer;
+	}
 
-  .movie-info {
-    &::-webkit-scrollbar {
-      display: none;
-    }
+	.movie-info {
+		&::-webkit-scrollbar {
+			display: none;
+		}
 
-    &-scroll {
-      overflow: hidden auto;
-      max-height: 10em;
-    }
+		&-scroll {
+			overflow: hidden auto;
+			max-height: 10em;
+		}
 
-    h3 {
-      text-align: center;
-      font-weight: bold;
-      font-size: 30px;
-      padding-top: 10px;
-      word-break: break-word;
-    }
+		h3 {
+			text-align: center;
+			font-weight: bold;
+			font-size: 30px;
+			padding-top: 10px;
+			word-break: break-word;
+		}
 
-    label {
-      color: #8b44f1;
-      font-weight: bold;
-      padding-right: 0.4em;
-    }
+		label {
+			color: #8b44f1;
+			font-weight: bold;
+			padding-right: 0.4em;
+		}
 
-    span {
-      font-size: 16px;
-      font-weight: bold;
-    }
-  }
+		span {
+			font-size: 16px;
+			font-weight: bold;
+		}
+	}
 }
 
 .clicked {
-  position: relative;
+	position: relative;
 
-  &:active {
-    top: 1px;
-  }
+	&:active {
+		top: 1px;
+	}
 }
 
 .save {
-  position: absolute;
-  bottom: 20px;
-  width: 90%;
+	position: absolute;
+	bottom: 20px;
+	width: 90%;
 
-  button {
-    width: 130px;
+	button {
+		width: 130px;
 
-    &:nth-child(2) {
-      background-color: #8b44f1;
-    }
-  }
+		&:nth-child(2) {
+			background-color: #8b44f1;
+		}
+	}
 }
