@@ -3,7 +3,7 @@
 		<div class="front-info" [ngStyle]="imageUrl"></div>
 		<div class="back-info">
 			<div fxLayout="row" fxLayoutAlign="space-between center">
-				<span data-toggle="modal" data-target="#movie" class="edit-icon clicked" (click)="openInfo()">
+				<span class="edit-icon clicked" (click)="openInfo()">
 					<i class="fas fa-info-circle"></i>
 				</span>
 				<span class="clicked remove-fav" (click)="removeMovie()" *ngIf="!isFavorite()">

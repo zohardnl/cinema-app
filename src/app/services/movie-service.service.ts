@@ -1,13 +1,13 @@
-import { Observable } from 'rxjs';
-import { Movie } from '../models/Movie';
-import { ApiService } from './api.service';
-import { Injectable, ElementRef } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from "rxjs";
+import { Movie } from "../models/Movie";
+import { ApiService } from "./api.service";
+import { Injectable, ElementRef } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
+import { tap } from "rxjs/operators";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: "root"
 })
 export class MovieServiceService {
 	private _movies: BehaviorSubject<Movie[]> = new BehaviorSubject([]);
@@ -26,9 +26,9 @@ export class MovieServiceService {
 				if (index === -1) {
 					this._movies.next([...this._movies.value, movie]);
 				} else {
-					this.modal.open('Movie already exist, Try again!', 'Show', {
+					this.modal.open("Movie already exist, Try again!", "Show", {
 						duration: 2000,
-						panelClass: 'red-alert'
+						panelClass: "red-alert"
 					});
 				}
 			})
@@ -68,17 +68,17 @@ export class MovieServiceService {
 		if (this._movies.value.length >= 1) {
 			index = this._movies.value.findIndex(movie => movie.title === newMovie.title);
 			if (index >= 0) {
-				this.modal.open('This movie already exist!', 'Add', {
+				this.modal.open("This movie already exist!", "Add", {
 					duration: 2000,
-					panelClass: 'red-alert'
+					panelClass: "red-alert"
 				});
 			} else {
 				this._movies.next([...this._movies.value, newMovie]);
-				this.modal.open('Movie added!', 'Add')._dismissAfter(2000);
+				this.modal.open("Movie added!", "Add")._dismissAfter(2000);
 			}
 		} else {
 			this._movies.next([...this._movies.value, newMovie]);
-			this.modal.open('Movie added!', 'Add')._dismissAfter(2000);
+			this.modal.open("Movie added!", "Add")._dismissAfter(2000);
 		}
 	}
 
@@ -88,6 +88,6 @@ export class MovieServiceService {
 		this._movies.value[index].title = newDataMovie.title;
 		this._movies.value[index].release_date = newDataMovie.release_date;
 		this._movies.value[index].overview = newDataMovie.overview;
-		this.modal.open('Movie updated!', 'Update')._dismissAfter(2000);
+		this.modal.open("Movie updated!", "Update")._dismissAfter(2000);
 	}
 }

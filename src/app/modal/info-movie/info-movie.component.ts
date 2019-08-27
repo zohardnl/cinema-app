@@ -8,7 +8,11 @@ import { Movie } from "./../../models/Movie";
 	styleUrls: ["./info-movie.component.scss"]
 })
 export class InfoMovieComponent implements OnInit {
+	movieInfo: Movie;
+
 	constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.movieInfo = this.data.movie;
+	}
 }

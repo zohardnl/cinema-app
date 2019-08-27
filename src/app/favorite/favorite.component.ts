@@ -3,19 +3,19 @@ import { Movie } from "../models/Movie";
 import { MovieServiceService } from "../services/movie-service.service";
 
 @Component({
-  selector: "app-favorite",
-  templateUrl: "./favorite.component.html",
-  styleUrls: ["./favorite.component.scss"]
+	selector: "app-favorite",
+	templateUrl: "./favorite.component.html",
+	styleUrls: ["./favorite.component.scss"]
 })
 export class FavoriteComponent implements OnInit {
-  movies: Movie[] = this.movie.favoriteMovies;
-  movieInfo: Movie;
+	movies: Movie[] = this.movie.favoriteMovies;
+	movieInfo: Movie;
 
-  constructor(private movie: MovieServiceService) {}
+	constructor(private movie: MovieServiceService) {}
 
-  ngOnInit() {}
+	ngOnInit() {}
 
-  asFav() {
-    return this.movies !== null && this.movies !== undefined;
-  }
+	asFav() {
+		return this.movies !== null && this.movies !== undefined;
+	}
 }

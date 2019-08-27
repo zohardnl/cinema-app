@@ -1,12 +1,12 @@
-import { MovieListComponent } from './movie-list/movie-list.component';
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { FavoriteComponent } from './favorite/favorite.component';
+import { MovieListComponent } from "./movie-list/movie-list.component";
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { FavoriteComponent } from "./favorite/favorite.component";
 
 const routes: Routes = [
-	{ path: '', component: MovieListComponent },
-	{ path: 'favorites', component: FavoriteComponent },
-	{ path: '**', redirectTo: '' }
+	{ path: "", component: MovieListComponent },
+	{ path: "favorites", component: FavoriteComponent },
+	{ path: "**", redirectTo: "" }
 ];
 
 @NgModule({

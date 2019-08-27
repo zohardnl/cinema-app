@@ -1,19 +1,19 @@
-import { RemoveMovieComponent } from './../modal/remove-movie/remove-movie.component';
-import { Movie } from './../models/Movie';
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
-import { ApiService } from '../services/api.service';
-import { MovieServiceService } from '../services/movie-service.service';
-import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { UiService } from '../services/ui.service';
-import { ModalService } from '../services/modal.service';
-import { InfoMovieComponent } from '../modal/info-movie/info-movie.component';
-import { UpdateMovieComponent } from '../modal/update-movie/update-movie.component';
+import { RemoveMovieComponent } from "./../modal/remove-movie/remove-movie.component";
+import { Movie } from "./../models/Movie";
+import { Component, OnInit, Input, AfterViewInit } from "@angular/core";
+import { ApiService } from "../services/api.service";
+import { MovieServiceService } from "../services/movie-service.service";
+import { Router } from "@angular/router";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { UiService } from "../services/ui.service";
+import { ModalService } from "../services/modal.service";
+import { InfoMovieComponent } from "../modal/info-movie/info-movie.component";
+import { UpdateMovieComponent } from "../modal/update-movie/update-movie.component";
 
 @Component({
-	selector: 'app-movie',
-	templateUrl: './movie.component.html',
-	styleUrls: ['./movie.component.scss']
+	selector: "app-movie",
+	templateUrl: "./movie.component.html",
+	styleUrls: ["./movie.component.scss"]
 })
 export class MovieComponent implements OnInit, AfterViewInit {
 	imageUrl = {};
@@ -42,17 +42,17 @@ export class MovieComponent implements OnInit, AfterViewInit {
 	wishList() {
 		if (!this.movieServ.favoriteMovies.includes(this.movie)) {
 			this.movieServ.setFavoriteMovie(this.movie);
-			this.modal('Movie added to favorites!', 'Favorite');
+			this.modal("Movie added to favorites!", "Favorite");
 		} else {
-			this.snackBar.open('This movie already exist!', 'Favorite', {
+			this.snackBar.open("This movie already exist!", "Favorite", {
 				duration: 2000,
-				panelClass: 'red-alert'
+				panelClass: "red-alert"
 			});
 		}
 	}
 
 	isFavorite() {
-		return this.route.url !== '/favorites';
+		return this.route.url !== "/favorites";
 	}
 
 	openInfo() {

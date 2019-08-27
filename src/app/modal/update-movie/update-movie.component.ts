@@ -17,8 +17,8 @@ export class UpdateMovieComponent implements OnInit {
 
 	constructor(
 		private movieService: MovieServiceService,
-		@Inject(MAT_DIALOG_DATA) public data: any,
-		private modal: ModalService
+		private modal: ModalService,
+		@Inject(MAT_DIALOG_DATA) public data: any
 	) {}
 
 	ngOnInit() {
