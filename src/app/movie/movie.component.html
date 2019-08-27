@@ -1,41 +1,41 @@
 <div class="flip-card">
-  <div class="flip-card-inner">
-    <div class="front-info" [ngStyle]="imageUrl"></div>
-    <div class="back-info">
-      <div fxLayout="row" fxLayoutAlign="space-between center">
-        <span data-toggle="modal" data-target="#movie" class="edit-icon clicked" (click)="openInfo()">
-          <i class="fas fa-info-circle"></i>
-        </span>
-        <span class="clicked remove-fav" (click)="removeMovie()" *ngIf="!isFavorite()">
-          <i class="fas fa-times-circle"></i>
-        </span>
-        <span class="clicked remove-fav" (click)="removeFromList()" *ngIf="isFavorite()">
-          <i class="fas fa-times-circle"></i>
-        </span>
-      </div>
-      <div class="movie-info">
-        <h3>{{ movie.title | titlecase | cleanString }}</h3>
-      </div>
-      <div class="movie-info">
-        <label>ID:</label>
-        <span>{{ movie.id }}</span>
-      </div>
-      <div class="movie-info">
-        <label>Release Date:</label>
-        <span>{{ movie.release_date }}</span>
-      </div>
-      <div class="movie-info movie-info-scroll">
-        <label>Overview:</label>
-        <span>{{ movie.overview }}</span>
-      </div>
-      <div class="save" fxLayout="row" fxLayoutAlign="space-around" *ngIf="isFavorite()">
-        <button type="button" mat-raised-button (click)="wishList()" class="clicked">
-          Favorite
-        </button>
-        <button mat-raised-button color="primary" class="clicked" (click)="updateMov()">
-          Edit
-        </button>
-      </div>
-    </div>
-  </div>
+	<div class="flip-card-inner">
+		<div class="front-info" [ngStyle]="imageUrl"></div>
+		<div class="back-info">
+			<div fxLayout="row" fxLayoutAlign="space-between center">
+				<span data-toggle="modal" data-target="#movie" class="edit-icon clicked" (click)="openInfo()">
+					<i class="fas fa-info-circle"></i>
+				</span>
+				<span class="clicked remove-fav" (click)="removeMovie()" *ngIf="!isFavorite()">
+					<i class="fas fa-times-circle"></i>
+				</span>
+				<span class="clicked remove-fav" (click)="removeFromList()" *ngIf="isFavorite()">
+					<i class="fas fa-times-circle"></i>
+				</span>
+			</div>
+			<div class="movie-info">
+				<h3>{{ movie.title | titlecase | cleanString }}</h3>
+			</div>
+			<div class="movie-info">
+				<label>ID:</label>
+				<span>{{ movie.id }}</span>
+			</div>
+			<div class="movie-info">
+				<label>Release Date:</label>
+				<span>{{ movie.release_date }}</span>
+			</div>
+			<div class="movie-info movie-info-scroll">
+				<label>Overview:</label>
+				<span>{{ movie.overview }}</span>
+			</div>
+			<div class="save" fxLayout="row" fxLayoutAlign="space-around" *ngIf="isFavorite()">
+				<button type="button" mat-raised-button (click)="wishList()" class="clicked">
+					Favorite
+				</button>
+				<button mat-raised-button color="primary" class="clicked" (click)="updateMov()">
+					Edit
+				</button>
+			</div>
+		</div>
+	</div>
 </div>
