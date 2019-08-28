@@ -1,26 +1,33 @@
+@import "../../../tools/mixins";
+
 input.ng-invalid.ng-touched,
 textarea.ng-invalid.ng-touched {
-  border: 1px solid red;
+	border: 1px solid red;
 }
 
 .mat-dialog-content {
-  max-height: 100vh;
-  .mat-dialog-actions {
-    margin-bottom: 0;
-  }
+	max-height: 100vh;
+	.mat-dialog-actions {
+		margin-bottom: 0;
+		flex-wrap: nowrap;
+	}
 }
 
 .updateMovie {
-  .form-group {
-    label {
-      font-weight: bold;
-    }
-    textarea {
-      resize: both;
-      max-height: 200px;
-      max-width: 100%;
-      min-height: 100px;
-      min-width: 100%;
-    }
-  }
+	.form-group {
+		label {
+			font-weight: bold;
+		}
+		textarea {
+			resize: both;
+			max-height: 200px;
+			max-width: 100%;
+			min-height: 100px;
+			min-width: 100%;
+		}
+	}
+
+	&__alert {
+		margin-top: 10px;
+	}
 }

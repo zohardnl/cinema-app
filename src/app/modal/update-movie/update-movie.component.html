@@ -7,12 +7,36 @@
 		<form [formGroup]="updateForm" (ngSubmit)="onUpdateMovie()">
 			<div class="form-group">
 				<label for="movie-name">Movie Name:</label>
-				<input type="text" id="movie-name" name="movieName" class="form-control" formControlName="title" />
+				<input
+					type="text"
+					id="movie-name"
+					name="movieName"
+					class="form-control"
+					formControlName="title"
+				/>
+				<div
+					*ngIf="updateForm.controls.title.invalid && updateForm.controls.title.touched"
+					class="updateMovie__alert text-danger"
+				>
+					Please enter a valid value!
+				</div>
 			</div>
 
 			<div class="form-group">
 				<label for="release-date">Release Date:</label>
-				<input type="date" name="movieReleaseDate" id="release-date" class="form-control" formControlName="releaseDate" />
+				<input
+					type="date"
+					name="movieReleaseDate"
+					id="release-date"
+					class="form-control"
+					formControlName="releaseDate"
+				/>
+				<div
+					*ngIf="updateForm.controls.releaseDate.invalid && updateForm.controls.releaseDate.touched"
+					class="updateMovie__alert text-danger"
+				>
+					Please enter a valid value!
+				</div>
 			</div>
 
 			<div class="form-group">
@@ -25,11 +49,22 @@
 					placeholder="Tell us about your movie..."
 					formControlName="overView"
 				></textarea>
+				<div
+					*ngIf="updateForm.controls.overView.invalid && updateForm.controls.overView.touched"
+					class="updateMovie__alert text-danger"
+				>
+					Please enter a valid value!
+				</div>
 			</div>
 
 			<hr />
 			<mat-dialog-actions align="end">
-				<button type="submit" mat-raised-button color="primary" [disabled]="!updateForm.valid || !updateForm.dirty">
+				<button
+					type="submit"
+					mat-raised-button
+					color="primary"
+					[disabled]="!updateForm.valid || !updateForm.dirty"
+				>
 					Save
 				</button>
 				<button type="button" mat-raised-button mat-dialog-close>Close</button>

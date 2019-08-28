@@ -15,7 +15,11 @@ import { trimValue } from "src/app/validators/trim.validator";
 export class AddMovieComponent implements OnInit {
 	infoForm: FormGroup;
 
-	constructor(private api: ApiService, private movie: MovieServiceService, private modal: ModalService) {}
+	constructor(
+		private api: ApiService,
+		private movie: MovieServiceService,
+		private modal: ModalService
+	) {}
 
 	ngOnInit() {
 		this.infoForm = new FormGroup({

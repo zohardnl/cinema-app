@@ -1,3 +1,5 @@
+@import "../../../tools/mixins";
+
 input.ng-invalid.ng-touched,
 textarea.ng-invalid.ng-touched {
 	border: 1px solid red;
@@ -8,7 +10,6 @@ textarea.ng-invalid.ng-touched {
 	.mat-dialog-actions {
 		margin-bottom: 0;
 		flex-wrap: nowrap;
-		padding: 0;
 	}
 }
 
@@ -25,5 +26,9 @@ textarea.ng-invalid.ng-touched {
 			min-height: 100px;
 			min-width: 100%;
 		}
+	}
+
+	&__alert {
+		margin-top: 10px;
 	}
 }
