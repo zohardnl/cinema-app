@@ -1,7 +1,7 @@
 import { Observable } from "rxjs";
 import { Movie } from "../models/Movie";
 import { ApiService } from "./api.service";
-import { Injectable, ElementRef } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { tap } from "rxjs/operators";
 import { MatSnackBar } from "@angular/material/snack-bar";
@@ -35,7 +35,7 @@ export class MovieServiceService {
 		);
 	}
 
-	getSearch(name: ElementRef): Observable<Movie[]> {
+	getSearch(name: string): Observable<Movie[]> {
 		return this.api.searchMovie(name).pipe(
 			tap(movies => {
 				if (movies.length >= 1) this._movies.next(movies);

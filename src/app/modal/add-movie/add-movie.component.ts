@@ -1,11 +1,11 @@
-import { ModalService } from "src/app/services/modal.service";
+import { trimValue } from "../../validators/trim.validator";
+import { ModalService } from "../../services/modal.service";
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, Validators, FormControl } from "@angular/forms";
-import { Movie } from "src/app/models/Movie";
+import { Movie } from "../../models/Movie";
 import { ApiService } from "./../../services/api.service";
-import { MovieServiceService } from "src/app/services/movie-service.service";
+import { MovieServiceService } from "../../services/movie-service.service";
 import { environment } from "./../../../environments/environment";
-import { trimValue } from "src/app/validators/trim.validator";
 
 @Component({
 	selector: "app-add-movie",
@@ -15,11 +15,7 @@ import { trimValue } from "src/app/validators/trim.validator";
 export class AddMovieComponent implements OnInit {
 	infoForm: FormGroup;
 
-	constructor(
-		private api: ApiService,
-		private movie: MovieServiceService,
-		private modal: ModalService
-	) {}
+	constructor(private api: ApiService, private movie: MovieServiceService, private modal: ModalService) {}
 
 	ngOnInit() {
 		this.infoForm = new FormGroup({

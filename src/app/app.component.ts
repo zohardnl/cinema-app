@@ -14,12 +14,7 @@ export class AppComponent implements OnInit {
 	@ViewChild("movieVal", { static: false }) movieSearchVal: ElementRef;
 	value: string = "";
 
-	constructor(
-		private movieService: MovieServiceService,
-		private modal: MatSnackBar,
-		private ui: UiService,
-		private dialog: ModalService
-	) {}
+	constructor(private movieService: MovieServiceService, private modal: MatSnackBar, private ui: UiService, private dialog: ModalService) {}
 
 	ngOnInit() {}
 
@@ -32,7 +27,7 @@ export class AppComponent implements OnInit {
 	onKeyPress() {
 		this.ui.searchFlag = true;
 		this.value = this.movieSearchVal.nativeElement.value.trim();
-		this.movieService.getSearch(this.movieSearchVal).subscribe(movies => {
+		this.movieService.getSearch(this.value).subscribe(movies => {
 			if (movies.length < 1) this.modal.open("No results for this search!", "Search")._dismissAfter(2000);
 		});
 	}

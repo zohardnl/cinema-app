@@ -1,12 +1,12 @@
-import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { ElementRef, Injectable } from '@angular/core';
-import { Movie } from '../models/Movie';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { environment } from "../../environments/environment";
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Movie } from "../models/Movie";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: "root"
 })
 export class ApiService {
 	num: number;
@@ -35,13 +35,11 @@ export class ApiService {
 	}
 
 	//SEARCH MOVIE REQUEST
-	searchMovieHttp(searchElement: ElementRef): Observable<any> {
-		return this.http.get<any>(
-			`${environment.apiUrl}?api_key=${environment.apiKey}&query=${searchElement.nativeElement.value.trim()}`
-		);
+	searchMovieHttp(searchElement: string): Observable<any> {
+		return this.http.get<any>(`${environment.apiUrl}?api_key=${environment.apiKey}&query=${searchElement}`);
 	}
 
-	searchMovie(search: ElementRef): Observable<Movie[]> {
+	searchMovie(search: string): Observable<Movie[]> {
 		return this.searchMovieHttp(search).pipe(
 			map(movies => {
 				return movies.results;

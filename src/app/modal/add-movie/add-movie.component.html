@@ -1,20 +1,13 @@
 <!-- MODAL FOR ADD MOVIE -->
 <div class="addMovie">
 	<h3 class="text-design">Add Movie</h3>
-
 	<hr />
 	<mat-dialog-content>
 		<form (ngSubmit)="onAddMovie()" [formGroup]="infoForm">
 			<div class="addMovie__body">
 				<div class="form-group">
 					<label for="movie-name">Movie Name:</label>
-					<input
-						type="text"
-						id="movie-name"
-						name="movieName"
-						class="form-control"
-						formControlName="title"
-					/>
+					<input type="text" id="movie-name" name="movieName" class="form-control" formControlName="title" />
 					<div
 						*ngIf="infoForm.controls.title.invalid && infoForm.controls.title.touched"
 						class="addMovie__alert text-danger"

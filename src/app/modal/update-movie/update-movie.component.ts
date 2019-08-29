@@ -1,10 +1,10 @@
-import { ModalService } from "src/app/services/modal.service";
+import { ModalService } from "../../services/modal.service";
 import { Component, OnInit, Inject } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
-import { Movie } from "src/app/models/Movie";
+import { Movie } from "../../models/Movie";
 import { Validators } from "@angular/forms";
-import { MovieServiceService } from "src/app/services/movie-service.service";
-import { trimValue } from "src/app/validators/trim.validator";
+import { MovieServiceService } from "../../services/movie-service.service";
+import { trimValue } from "../../validators/trim.validator";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 @Component({
 	selector: "app-update-movie",

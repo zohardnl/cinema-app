@@ -1,10 +1,10 @@
-import { ModalService } from "src/app/services/modal.service";
+import { ModalService } from "../../services/modal.service";
 import { Component, OnInit, Inject } from "@angular/core";
-import { MovieServiceService } from "src/app/services/movie-service.service";
+import { MovieServiceService } from "../../services/movie-service.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { Movie } from "src/app/models/Movie";
+import { Movie } from "../../models/Movie";
 
 @Component({
 	selector: "app-remove-movie",

@@ -1,5 +1,3 @@
-@import "../../../tools/mixins";
-
 input.ng-invalid.ng-touched,
 textarea.ng-invalid.ng-touched {
 	border: 1px solid red;
@@ -7,6 +5,8 @@ textarea.ng-invalid.ng-touched {
 
 .mat-dialog-content {
 	max-height: 100vh;
+	overflow: hidden;
+
 	.mat-dialog-actions {
 		margin-bottom: 0;
 		flex-wrap: nowrap;
