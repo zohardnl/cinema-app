@@ -19,9 +19,9 @@ export class AddMovieComponent implements OnInit {
 
 	ngOnInit() {
 		this.infoForm = new FormGroup({
-			title: new FormControl("", [Validators.required, trimValue]),
-			overView: new FormControl("", [Validators.required, trimValue]),
-			releaseDate: new FormControl("", [Validators.required, trimValue])
+			title: new FormControl("", [Validators.required, trimValue, Validators.pattern("[^\u0590-\u05FF]*")]),
+			overView: new FormControl("", [Validators.required, trimValue, Validators.pattern("[^\u0590-\u05FF]*")]),
+			releaseDate: new FormControl("", Validators.required)
 		});
 	}
 

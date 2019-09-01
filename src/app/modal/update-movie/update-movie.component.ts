@@ -24,9 +24,17 @@ export class UpdateMovieComponent implements OnInit {
 	ngOnInit() {
 		this.updatedMovie = this.data.movie;
 		this.updateForm = new FormGroup({
-			title: new FormControl(this.updatedMovie.title.trim(), [Validators.required, trimValue]),
-			overView: new FormControl(this.updatedMovie.overview.trim(), [Validators.required, trimValue]),
-			releaseDate: new FormControl(this.updatedMovie.release_date.trim(), [Validators.required, trimValue])
+			title: new FormControl(this.updatedMovie.title.trim(), [
+				Validators.required,
+				trimValue,
+				Validators.pattern("[^\u0590-\u05FF]*")
+			]),
+			overView: new FormControl(this.updatedMovie.overview.trim(), [
+				Validators.required,
+				trimValue,
+				Validators.pattern("[^\u0590-\u05FF]*")
+			]),
+			releaseDate: new FormControl(this.updatedMovie.release_date, Validators.required)
 		});
 	}
 

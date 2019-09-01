@@ -12,12 +12,7 @@ export class ModalService {
 
 	constructor(private dialog: MatDialog) {}
 
-	openDialog(
-		component: ComponentType<any>,
-		movie?: Movie,
-		width: string = "40em",
-		maxHeight: string = "95vh"
-	) {
+	openDialog(component: ComponentType<any>, movie?: Movie, width: string = "40em", maxHeight: string = "95vh") {
 		this.dialogRef = this.dialog.open(component, {
 			width,
 			maxHeight,

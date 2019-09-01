@@ -1,9 +1,10 @@
 import { MovieServiceService } from "./services/movie-service.service";
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { UiService } from "./services/ui.service";
 import { ModalService } from "./services/modal.service";
 import { AddMovieComponent } from "./modal/add-movie/add-movie.component";
+import { FormControl } from "@angular/forms";
 
 @Component({
 	selector: "app-root",
@@ -11,10 +12,15 @@ import { AddMovieComponent } from "./modal/add-movie/add-movie.component";
 	styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-	@ViewChild("movieVal", { static: false }) movieSearchVal: ElementRef;
+	@ViewChild("search", { static: false }) search: FormControl;
 	value: string = "";
 
-	constructor(private movieService: MovieServiceService, private modal: MatSnackBar, private ui: UiService, private dialog: ModalService) {}
+	constructor(
+		private movieService: MovieServiceService,
+		private modal: MatSnackBar,
+		private ui: UiService,
+		private dialog: ModalService
+	) {}
 
 	ngOnInit() {}
 
@@ -26,15 +32,20 @@ export class AppComponent implements OnInit {
 
 	onKeyPress() {
 		this.ui.searchFlag = true;
-		this.value = this.movieSearchVal.nativeElement.value.trim();
-		this.movieService.getSearch(this.value).subscribe(movies => {
-			if (movies.length < 1) this.modal.open("No results for this search!", "Search")._dismissAfter(2000);
-		});
+		this.value = this.search.value;
+		if (this.search.valid) {
+			this.movieService.getSearch(this.value).subscribe(movies => {
+				if (movies.length < 1) this.modal.open("No results for this search!", "Search")._dismissAfter(2000);
+			});
+		} else {
+			this.movieService.resetMovies();
+		}
 	}
 
 	clearValue() {
 		this.value = "";
-		this.movieSearchVal.nativeElement.value = "";
+		this.search.reset();
+		this.movieService.resetMovies();
 	}
 
 	resetList() {
