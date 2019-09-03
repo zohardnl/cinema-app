@@ -35,8 +35,8 @@ export class ApiService {
 	}
 
 	//SEARCH MOVIE REQUEST
-	searchMovieHttp(searchElement: string): Observable<any> {
-		return this.http.get<any>(`${environment.apiUrl}?api_key=${environment.apiKey}&query=${searchElement}`);
+	searchMovieHttp(value: string): Observable<any> {
+		return this.http.get<any>(`${environment.apiUrl}?api_key=${environment.apiKey}&query=${value}`);
 	}
 
 	searchMovie(search: string): Observable<Movie[]> {

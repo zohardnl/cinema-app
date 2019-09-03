@@ -9,6 +9,7 @@
 			<img src="https://s3.amazonaws.com/herolo/herolo-logo-animated.gif" alt="herolo-logo" />
 		</span>
 
+		<!-- (keyup)="onKeyPress()" -->
 		<div class="search-movie" fxLayout="row" fxLayoutAlign="space-between center">
 			<mat-form-field appearance="outline" routerLink="">
 				<mat-label>Search Movie</mat-label>
@@ -16,7 +17,6 @@
 					matInput
 					type="search"
 					placeholder="Example: Titanic"
-					(keyup)="onKeyPress()"
 					pattern="[^\u0590-\u05FF]*"
 					ngModel
 					#search="ngModel"

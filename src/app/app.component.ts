@@ -1,5 +1,7 @@
+import { distinctUntilChanged, tap, switchMap } from "rxjs/operators";
+import { debounceTime, filter } from "rxjs/operators";
 import { MovieServiceService } from "./services/movie-service.service";
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, AfterViewInit } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { UiService } from "./services/ui.service";
 import { ModalService } from "./services/modal.service";
@@ -11,7 +13,7 @@ import { FormControl } from "@angular/forms";
 	templateUrl: "./app.component.html",
 	styleUrls: ["./app.component.scss"]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
 	@ViewChild("search", { static: false }) search: FormControl;
 	value: string = "";
 
@@ -24,22 +26,43 @@ export class AppComponent implements OnInit {
 
 	ngOnInit() {}
 
+	ngAfterViewInit(): void {
+		this.registerValueListener();
+	}
+
 	showMovie() {
 		this.movieService.getMovie().subscribe();
 		this.ui.searchFlag = false;
 		this.ui.favFlag = false;
 	}
 
-	onKeyPress() {
-		this.ui.searchFlag = true;
-		this.value = this.search.value;
-		if (this.search.valid) {
-			this.movieService.getSearch(this.value).subscribe(movies => {
-				if (movies.length < 1) this.modal.open("No results for this search!", "Search")._dismissAfter(2000);
-			});
-		} else {
-			this.movieService.resetMovies();
-		}
+	registerValueListener(): void {
+		// empty query stream handler, reset the movies when the query is empty.
+		this.search.valueChanges
+			.pipe(
+				debounceTime(500),
+				filter(value => value.trim().length === 0 && this.search.valid),
+				tap(value => {
+					if (value.length === 0) {
+						this.movieService.resetMovies();
+					}
+				})
+			)
+			.subscribe();
+
+		// search movies stream handler;
+		this.search.valueChanges
+			.pipe(
+				debounceTime(500),
+				tap(() => {
+					this.ui.searchFlag = true;
+					if (this.search.invalid) this.movieService.resetMovies();
+				}),
+				filter(value => value.trim() && value.length >= 1 && this.search.valid),
+				distinctUntilChanged(),
+				switchMap(value => this.movieService.searchMovie(value))
+			)
+			.subscribe();
 	}
 
 	clearValue() {

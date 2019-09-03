@@ -16,6 +16,20 @@ export class MovieServiceService {
 
 	constructor(private api: ApiService, private modal: MatSnackBar) {}
 
+	searchMovie(value: string) {
+		value = value.trim();
+		return this.api.searchMovie(value).pipe(
+			tap(movies => {
+				if (movies.length < 1) {
+					this._movies.next([]);
+					this.modal.open("No movies for this search!", "Search")._dismissAfter(2000);
+				} else {
+					this._movies.next(movies);
+				}
+			})
+		);
+	}
+
 	getMovie(): Observable<Movie> {
 		let index: number;
 		let xmovie: Movie;
@@ -31,15 +45,6 @@ export class MovieServiceService {
 						panelClass: "red-alert"
 					});
 				}
-			})
-		);
-	}
-
-	getSearch(name: string): Observable<Movie[]> {
-		return this.api.searchMovie(name).pipe(
-			tap(movies => {
-				if (movies.length >= 1) this._movies.next(movies);
-				else this._movies.next([]);
 			})
 		);
 	}
