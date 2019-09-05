@@ -13,6 +13,7 @@ export class MovieServiceService {
 	private _movies: BehaviorSubject<Movie[]> = new BehaviorSubject([]);
 	movies$: Observable<Movie[]> = this._movies.asObservable();
 	favoriteMovies: Movie[] = [];
+	isLoading: boolean = false;
 
 	constructor(private api: ApiService, private modal: MatSnackBar) {}
 

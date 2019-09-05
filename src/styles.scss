@@ -56,3 +56,15 @@ body {
 		}
 	}
 }
+
+.spinner {
+	display: flex;
+	justify-content: center;
+	margin-top: 1em;
+
+	mat-spinner,
+	mat-spinner svg {
+		width: 50px !important;
+		height: 50px !important;
+	}
+}

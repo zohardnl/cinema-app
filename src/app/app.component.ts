@@ -40,12 +40,12 @@ export class AppComponent implements OnInit, AfterViewInit {
 		// empty query stream handler, reset the movies when the query is empty.
 		this.search.valueChanges
 			.pipe(
-				debounceTime(500),
-				filter(value => value.trim().length === 0 && this.search.valid),
+				filter(value => value.length === 0 || this.search.invalid),
 				tap(value => {
-					if (value.length === 0) {
+					if (value.length === 0 || this.search.invalid) {
 						this.movieService.resetMovies();
 					}
+					this.movieService.isLoading = false;
 				})
 			)
 			.subscribe();
@@ -53,21 +53,22 @@ export class AppComponent implements OnInit, AfterViewInit {
 		// search movies stream handler;
 		this.search.valueChanges
 			.pipe(
-				debounceTime(500),
+				filter(value => value && value.length >= 2 && this.search.valid),
 				tap(() => {
 					this.ui.searchFlag = true;
+					this.movieService.isLoading = true;
 					if (this.search.invalid) this.movieService.resetMovies();
 				}),
-				filter(value => value.trim() && value.length >= 1 && this.search.valid),
-				distinctUntilChanged(),
+				debounceTime(3000),
 				switchMap(value => this.movieService.searchMovie(value))
 			)
-			.subscribe();
+			.subscribe(() => {
+				this.movieService.isLoading = false;
+			});
 	}
 
 	clearValue() {
-		this.value = "";
-		this.search.reset();
+		this.search.reset("");
 		this.movieService.resetMovies();
 	}
 

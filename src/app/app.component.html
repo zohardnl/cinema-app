@@ -17,11 +17,11 @@
 					matInput
 					type="search"
 					placeholder="Example: Titanic"
-					pattern="[^\u0590-\u05FF]*"
+					pattern="^[\S][^\u0590-\u05FF]+$"
 					ngModel
 					#search="ngModel"
 				/>
-				<button mat-button *ngIf="value" matSuffix mat-icon-button (click)="clearValue()">
+				<button mat-button *ngIf="search.value" matSuffix mat-icon-button (click)="clearValue()">
 					<mat-icon>close</mat-icon>
 				</button>
 				<mat-hint>Live Search</mat-hint>

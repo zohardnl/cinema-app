@@ -23,6 +23,7 @@ import { AddMovieComponent } from "./modal/add-movie/add-movie.component";
 import { UpdateMovieComponent } from "./modal/update-movie/update-movie.component";
 import { MatDialogModule } from "@angular/material/dialog";
 import { RemoveMovieComponent } from "./modal/remove-movie/remove-movie.component";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @NgModule({
 	declarations: [
@@ -51,7 +52,8 @@ import { RemoveMovieComponent } from "./modal/remove-movie/remove-movie.componen
 		MatMenuModule,
 		FormsModule,
 		ReactiveFormsModule,
-		MatDialogModule
+		MatDialogModule,
+		MatProgressSpinnerModule
 	],
 	entryComponents: [InfoMovieComponent, AddMovieComponent, UpdateMovieComponent, RemoveMovieComponent],
 	providers: [],

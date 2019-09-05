@@ -2,7 +2,11 @@
 	<h2 class="main-movies__title">Movie List</h2>
 	<hr />
 
-	<div class="main-movies__items">
+	<div class="spinner" *ngIf="this.movies.isLoading">
+		<mat-spinner></mat-spinner>
+	</div>
+
+	<div class="main-movies__items" *ngIf="!this.movies.isLoading">
 		<app-movie
 			*ngFor="let movie of movies$ | async; let movieId = index"
 			[movie]="movie"
