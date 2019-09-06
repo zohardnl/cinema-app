@@ -96,4 +96,8 @@ export class MovieServiceService {
 		this._movies.value[index].overview = newDataMovie.overview;
 		this.modal.open("Movie updated!", "Update")._dismissAfter(2000);
 	}
+
+	getMoviesArray() {
+		return this._movies.value;
+	}
 }

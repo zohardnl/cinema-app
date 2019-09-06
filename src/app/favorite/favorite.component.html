@@ -4,7 +4,7 @@
 		<hr />
 	</div>
 
-	<div fxLayout="row wrap" fxLayoutAlign="space-around center" *ngIf="asFav()">
+	<div fxLayout="row wrap" fxLayoutAlign="space-around center" *ngIf="asFav()" class="favorite-area__items">
 		<app-movie *ngFor="let movie of movies" [movie]="movie"></app-movie>
 	</div>
 </div>

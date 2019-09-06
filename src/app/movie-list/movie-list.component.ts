@@ -11,7 +11,7 @@ import { Component, OnInit } from "@angular/core";
 export class MovieListComponent implements OnInit {
 	movies$: Observable<Movie[]> = this.movies.movies$;
 
-	constructor(private movies: MovieServiceService) {}
+	constructor(public movies: MovieServiceService) {}
 
 	ngOnInit() {}
 }

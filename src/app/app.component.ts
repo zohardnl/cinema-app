@@ -73,8 +73,12 @@ export class AppComponent implements OnInit, AfterViewInit {
 	}
 
 	resetList() {
-		this.movieService.resetMovies();
-		this.modal.open("Movies Cleared!", "Clear")._dismissAfter(2000);
+		if (this.movieService.getMoviesArray().length >= 1) {
+			this.movieService.resetMovies();
+			this.modal.open("Movies Cleared!", "Clear")._dismissAfter(2000);
+		} else {
+			this.modal.open("No Movies To Cleared!", "Clear")._dismissAfter(2000);
+		}
 	}
 
 	viewUp() {
