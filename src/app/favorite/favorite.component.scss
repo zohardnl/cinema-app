@@ -2,44 +2,44 @@
 @import "../../tools/vars";
 
 .favorite-area {
-	@include bp-mobile {
-		max-height: calc(100% - 150px);
-	}
+  @include bp-mobile {
+    height: calc(100% - 150px);
+  }
 
-	@include bp-tablet {
-		max-height: calc(100% - 230px);
-	}
+  @include bp-tablet {
+    height: calc(100% - 230px);
+  }
 
-	max-height: calc(100% - 125px);
-	overflow: hidden auto;
+  height: calc(100% - 125px);
+  overflow: hidden auto;
 
-	.favorite-header {
-		@include bp-mobile {
-			margin: 1em 0 2em;
-		}
+  .favorite-header {
+    @include bp-mobile {
+      margin: 1em 0 2em;
+    }
 
-		margin-bottom: 2em;
+    margin-bottom: 2em;
 
-		h2 {
-			@include bp-mobile {
-				margin: 15px 0 0;
-				font-size: 30px;
-			}
-			text-align: center;
-			margin: 15px 0;
-			font-weight: bold;
-			font-size: 60px;
-			color: $c-white;
-		}
+    h2 {
+      @include bp-mobile {
+        margin: 15px 0 0;
+        font-size: 30px;
+      }
+      text-align: center;
+      margin: 15px 0;
+      font-weight: bold;
+      font-size: 60px;
+      color: $c-white;
+    }
 
-		hr {
-			width: 3%;
-			background: white;
-			border-width: 3px;
-		}
-	}
+    hr {
+      width: 3%;
+      background: white;
+      border-width: 3px;
+    }
+  }
 
-	&__items {
-		margin-bottom: 1em;
-	}
+  &__items {
+    margin-bottom: 1em;
+  }
 }

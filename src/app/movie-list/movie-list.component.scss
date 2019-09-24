@@ -3,14 +3,14 @@
 
 .main-movies {
 	@include bp-mobile {
-		max-height: calc(100% - 150px);
+		height: calc(100% - 150px);
 	}
 
 	@include bp-tablet {
-		max-height: calc(100% - 230px);
+		height: calc(100% - 230px);
 	}
 
-	max-height: calc(100% - 125px);
+	height: calc(100% - 125px);
 	overflow: hidden auto;
 
 	hr {
