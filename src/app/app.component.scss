@@ -75,14 +75,14 @@
 	height: 60px;
 	width: 60px;
 	position: fixed;
-	bottom: 2.5em;
+	bottom: 1em;
 	right: 2em;
 	z-index: 22;
 	border-radius: 2em;
 	cursor: pointer;
 
 	&:active {
-		bottom: 2.4em;
+		bottom: 0.9em;
 	}
 
 	mat-icon {

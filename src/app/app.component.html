@@ -1,69 +1,71 @@
 <nav class="navbar navbar-expand navbar-light header-navbar">
-	<div
-		class="nav navbar-nav"
-		fxLayoutAlign="space-between center"
-		fxLayoutAlign.xs="center center"
-		fxLayoutAlign.sm="center center"
-	>
+  <div
+    class="nav navbar-nav"
+    fxLayoutAlign="space-between center"
+    fxLayoutAlign.xs="center center"
+    fxLayoutAlign.sm="center center"
+  >
 		<span routerLink="" style="cursor: pointer;">
-			<img src="https://s3.amazonaws.com/herolo/herolo-logo-animated.gif" alt="herolo-logo" />
+			<img src="https://s3.amazonaws.com/herolo/herolo-logo-animated.gif" alt="herolo-logo"/>
 		</span>
 
-		<!-- (keyup)="onKeyPress()" -->
-		<div class="search-movie" fxLayout="row" fxLayoutAlign="space-between center">
-			<mat-form-field appearance="outline" routerLink="">
-				<mat-label>Search Movie</mat-label>
-				<input
-					matInput
-					type="search"
-					placeholder="Example: Titanic"
-					pattern="^[\S][^\u0590-\u05FF]+$"
-					ngModel
-					#search="ngModel"
-				/>
-				<button mat-button *ngIf="search.value" matSuffix mat-icon-button (click)="clearValue()">
-					<mat-icon>close</mat-icon>
-				</button>
-				<mat-hint>Live Search</mat-hint>
-				<mat-hint class="text-danger" *ngIf="!search.valid" align="end">
-					Please enter a valid value!
-				</mat-hint>
-			</mat-form-field>
+    <!-- (keyup)="onKeyPress()" -->
+    <div class="search-movie" fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-form-field appearance="outline" routerLink="">
+        <mat-label>Search Movie</mat-label>
+        <input
+          matInput
+          type="search"
+          placeholder="Example: Titanic"
+          pattern="^[\S][^\u0590-\u05FF]+$"
+          ngModel
+          #search="ngModel"
+        />
+        <button mat-button *ngIf="search.value" matSuffix mat-icon-button (click)="clearValue()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-hint>Live Search</mat-hint>
+        <mat-hint class="text-danger" *ngIf="!search.valid" align="end">
+          Please enter a valid value!
+        </mat-hint>
+      </mat-form-field>
 
-			<div fxLayout="row" fxLayoutAlign="end center">
-				<div class="nav-btn">
-					<button (click)="showMovie()" routerLink="" mat-raised-button color="primary">
-						Show Movie
-					</button>
-				</div>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <div class="nav-btn">
+          <button (click)="showMovie()" routerLink="" mat-raised-button color="primary">
+            Show Movie
+          </button>
+        </div>
 
-				<button mat-icon-button [matMenuTriggerFor]="menu">
-					<mat-icon>more_vert</mat-icon>
-				</button>
-			</div>
-		</div>
-		<mat-menu #menu="matMenu">
-			<button routerLink="" mat-menu-item (click)="addMovie()">
-				Add Movie
-			</button>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
+    </div>
+    <mat-menu #menu="matMenu">
+      <button routerLink="" mat-menu-item (click)="addMovie()">
+        Add Movie
+      </button>
 
-			<button routerLink="" mat-menu-item>
-				Movie List
-			</button>
+      <button routerLink="" mat-menu-item>
+        Movie List
+      </button>
 
-			<button routerLink="favorites" mat-menu-item (click)="getFav()">
-				Favorite Movies
-			</button>
+      <button routerLink="favorites" mat-menu-item (click)="getFav()">
+        Favorite Movies
+      </button>
 
-			<button (click)="resetList()" mat-menu-item>
-				Clear Movies
-			</button>
-		</mat-menu>
-	</div>
+      <button (click)="resetList()" mat-menu-item>
+        Clear Movies
+      </button>
+    </mat-menu>
+  </div>
 </nav>
 
 <div class="arrow-up" (click)="viewUp()">
-	<mat-icon>keyboard_arrow_up</mat-icon>
+  <mat-icon>keyboard_arrow_up</mat-icon>
 </div>
+
+<app-paginator [search]="search?.value"></app-paginator>
 
 <router-outlet></router-outlet>

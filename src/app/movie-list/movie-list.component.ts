@@ -1,17 +1,22 @@
-import { Observable } from "rxjs";
-import { MovieServiceService } from "../services/movie-service.service";
-import { Movie } from "../models/Movie";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { untilDestroyed } from 'ngx-take-until-destroy';
+import { Movie, MovieService } from '../stores';
+import { Observable } from 'rxjs';
 
 @Component({
-	selector: "app-movie-list",
-	templateUrl: "./movie-list.component.html",
-	styleUrls: ["./movie-list.component.scss"]
+  selector: 'app-movie-list',
+  templateUrl: './movie-list.component.html',
+  styleUrls: ['./movie-list.component.scss']
 })
-export class MovieListComponent implements OnInit {
-	movies$: Observable<Movie[]> = this.movies.movies$;
+export class MovieListComponent implements OnInit, OnDestroy {
+  movies$: Observable<Movie[]> = this.movieService.selectMovies();
+  loader$: Observable<boolean> = this.movieService.getLoader();
 
-	constructor(public movies: MovieServiceService) {}
+  constructor(public movieService: MovieService) {}
 
-	ngOnInit() {}
+  ngOnInit() {
+  }
+
+  ngOnDestroy(): void {
+  }
 }

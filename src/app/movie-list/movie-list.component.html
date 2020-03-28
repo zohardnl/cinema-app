@@ -1,18 +1,18 @@
 <div class="main-movies">
-	<h2 class="main-movies__title">Movie List</h2>
-	<hr />
+  <h2 class="main-movies__title">Movie List</h2>
+  <hr/>
 
-	<div class="spinner" *ngIf="this.movies.isLoading">
-		<mat-spinner></mat-spinner>
-	</div>
+  <div class="spinner" *ngIf="(loader$ | async)">
+    <mat-spinner [diameter]="50"></mat-spinner>
+  </div>
 
-	<div class="main-movies__items" *ngIf="!this.movies.isLoading">
-		<app-movie
-			*ngFor="let movie of movies$ | async; let movieId = index"
-			[movie]="movie"
-			id="{{ 'drop' + movieId }}"
-			[elementId]="movieId"
-		>
-		</app-movie>
-	</div>
+  <div class="main-movies__items" *ngIf="!(loader$ | async)">
+    <app-movie
+      *ngFor="let movie of (movies$ | async); let movieId = index"
+      [movie]="movie"
+      id="{{ 'drop' + movieId }}"
+      [elementId]="movieId"
+    >
+    </app-movie>
+  </div>
 </div>

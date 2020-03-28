@@ -1,10 +1,10 @@
 import { ModalService } from "../../services/modal.service";
 import { Component, OnInit, Inject } from "@angular/core";
-import { MovieServiceService } from "../../services/movie-service.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { Movie } from "../../models/Movie";
+import { Movie, MovieService } from '../../stores';
+
 
 @Component({
 	selector: "app-remove-movie",
@@ -15,7 +15,7 @@ export class RemoveMovieComponent implements OnInit {
 	movie: Movie;
 
 	constructor(
-		private movieServ: MovieServiceService,
+		private movieServ: MovieService,
 		private snackBar: MatSnackBar,
 		private route: Router,
 		private modal: ModalService,
@@ -27,7 +27,7 @@ export class RemoveMovieComponent implements OnInit {
 	}
 
 	removeMovie() {
-		this.movieServ.removeFromList(this.movie);
+		this.movieServ.removeFromList(this.movie.id);
 		this.snackBar.open("Removed!", "Remove")._dismissAfter(2000);
 		this.modal.closeDialog();
 	}

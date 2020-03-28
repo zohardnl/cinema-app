@@ -1,14 +1,13 @@
 import { RemoveMovieComponent } from "./../modal/remove-movie/remove-movie.component";
-import { Movie } from "./../models/Movie";
 import { Component, OnInit, Input, AfterViewInit } from "@angular/core";
 import { ApiService } from "../services/api.service";
-import { MovieServiceService } from "../services/movie-service.service";
 import { Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { UiService } from "../services/ui.service";
 import { ModalService } from "../services/modal.service";
 import { InfoMovieComponent } from "../modal/info-movie/info-movie.component";
 import { UpdateMovieComponent } from "../modal/update-movie/update-movie.component";
+import { Movie, MovieService } from '../stores';
 
 @Component({
 	selector: "app-movie",
@@ -22,7 +21,7 @@ export class MovieComponent implements OnInit, AfterViewInit {
 
 	constructor(
 		private api: ApiService,
-		private movieServ: MovieServiceService,
+		private movieService: MovieService,
 		private route: Router,
 		private snackBar: MatSnackBar,
 		private sendToScroll: UiService,
@@ -30,7 +29,7 @@ export class MovieComponent implements OnInit, AfterViewInit {
 	) {}
 
 	ngOnInit() {
-		this.imageUrl = this.api.checkMovieImage(this.movie);
+		this.imageUrl = this.movieService.checkMovieImage(this.movie);
 	}
 
 	ngAfterViewInit(): void {
@@ -40,8 +39,8 @@ export class MovieComponent implements OnInit, AfterViewInit {
 	}
 
 	wishList() {
-		if (!this.movieServ.favoriteMovies.includes(this.movie)) {
-			this.movieServ.setFavoriteMovie(this.movie);
+		if (!this.movieService.favoriteMovies.includes(this.movie)) {
+			this.movieService.setFavoriteMovie(this.movie);
 			this.modal("Movie added to favorites!", "Favorite");
 		} else {
 			this.snackBar.open("This movie already exist!", "Favorite", {
