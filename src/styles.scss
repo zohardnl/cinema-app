@@ -14,7 +14,7 @@ body {
 }
 
 body {
-	background: url("./images/stars.jpg") no-repeat center / cover fixed;
+	background: url("assets/images/stars.jpg") no-repeat center / cover fixed;
 	overflow: hidden;
 }
 
@@ -62,11 +62,9 @@ body {
 	justify-content: center;
 	margin-top: 1em;
 
-	mat-spinner,
-	mat-spinner svg {
-		width: 50px !important;
-		height: 50px !important;
-	}
+  .mat-spinner circle{
+    stroke: white;
+  }
 }
 
 .coded {
