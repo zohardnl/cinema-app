@@ -1,21 +1,22 @@
-import { Component, OnInit } from "@angular/core";
-import { Movie } from "../models/Movie";
-import { MovieServiceService } from "../services/movie-service.service";
+import { Component, OnInit } from '@angular/core';
+import { Movie, MovieService } from '../stores';
 
 @Component({
-	selector: "app-favorite",
-	templateUrl: "./favorite.component.html",
-	styleUrls: ["./favorite.component.scss"]
+  selector: 'app-favorite',
+  templateUrl: './favorite.component.html',
+  styleUrls: ['./favorite.component.scss']
 })
 export class FavoriteComponent implements OnInit {
-	movies: Movie[] = this.movie.favoriteMovies;
-	movieInfo: Movie;
+  movies: Movie[];
 
-	constructor(private movie: MovieServiceService) {}
+  constructor(private movieService: MovieService) {
+  }
 
-	ngOnInit() {}
+  ngOnInit() {
+    this.movies = this.movieService.favoriteMovies;
+  }
 
-	asFav() {
-		return this.movies !== null && this.movies !== undefined;
-	}
+  asFav() {
+    return this.movies !== null && this.movies !== undefined;
+  }
 }

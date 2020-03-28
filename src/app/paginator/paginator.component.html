@@ -1,0 +1,6 @@
+<mat-paginator [length]="allMovies"
+               [pageSize]="20"
+               hidePageSize
+               *ngIf="allMovies"
+               (page)="getListOfMovies($event)">
+</mat-paginator>

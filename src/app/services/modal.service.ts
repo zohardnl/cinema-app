@@ -1,8 +1,9 @@
-import { Movie } from "./../models/Movie";
+
 import { MatDialogRef } from "@angular/material/dialog";
 import { MatDialog } from "@angular/material/dialog";
 import { Injectable } from "@angular/core";
 import { ComponentType } from "@angular/cdk/portal";
+import { Movie } from '../stores';
 
 @Injectable({
 	providedIn: "root"
