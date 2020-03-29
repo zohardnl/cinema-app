@@ -2,5 +2,7 @@
                [pageSize]="20"
                hidePageSize
                *ngIf="allMovies"
-               (page)="getListOfMovies($event)">
+               (page)="setPageIndex($event)">
 </mat-paginator>
+
+
