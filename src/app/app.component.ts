@@ -98,6 +98,10 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   addMovie() {
+    if (this.search.value) {
+      this.movieService.resetMovies();
+      this.search.reset('');
+    }
     this.ui.searchFlag = false;
     this.ui.favFlag = false;
     this.dialog.openDialog(AddMovieComponent);

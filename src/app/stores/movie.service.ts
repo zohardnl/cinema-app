@@ -107,6 +107,9 @@ export class MovieService {
   removeFromList(movieId: ID) {
     this.movieStore.setLoading(true);
     this.removeMovie(movieId);
+    if (this.allData.value > 0) {
+      this.allData.next(this.allData.value - 1);
+    }
   }
 
   addNewMovie(newMovie: Movie) {

@@ -10,8 +10,9 @@ import { MovieService, Movie } from '../stores';
 })
 export class PaginatorComponent extends MatPaginatorIntl implements OnInit, OnDestroy {
   @Input() search: string;
-
   allMovies: number;
+  pageIndex: number = 0;
+
   nextPageLabel = 'Next';
   previousPageLabel = 'Back';
   getRangeLabel = (page: number, pageSize: number, length: number) => {
@@ -33,13 +34,18 @@ export class PaginatorComponent extends MatPaginatorIntl implements OnInit, OnDe
     this.movieService.getAllData().pipe(untilDestroyed(this))
       .subscribe((res: number) => {
         this.allMovies = res;
+        this.getRangeLabel(this.pageIndex, 20, res);
       });
   }
 
+  setPageIndex(data) {
+    this.pageIndex = data.pageIndex;
+    this.getListOfMovies(this.pageIndex);
+  }
 
-  getListOfMovies(data) {
+  getListOfMovies(index: number) {
     this.movieService.setLoader(true);
-    this.movieService.searchMovie(this.search, data.pageIndex + 1).pipe(untilDestroyed(this))
+    this.movieService.searchMovie(this.search, index + 1).pipe(untilDestroyed(this))
       .subscribe();
   }
 
