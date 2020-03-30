@@ -48,7 +48,7 @@
 		}
 
 		@include bp-tablet {
-			width: 100%;
+			width: 35%;
 			margin: 1em 0 0;
 		}
 
@@ -75,14 +75,14 @@
 	height: 60px;
 	width: 60px;
 	position: fixed;
-	bottom: 1em;
+	bottom: 3em;
 	right: 2em;
 	z-index: 22;
 	border-radius: 2em;
 	cursor: pointer;
 
 	&:active {
-		bottom: 0.9em;
+		bottom: 2.9em;
 	}
 
 	mat-icon {

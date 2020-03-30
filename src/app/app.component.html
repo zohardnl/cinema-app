@@ -4,6 +4,7 @@
     fxLayoutAlign="space-between center"
     fxLayoutAlign.xs="center center"
     fxLayoutAlign.sm="center center"
+    fxLayoutAlign.md="center center"
   >
 		<span routerLink="" style="cursor: pointer;">
 			<img src="https://s3.amazonaws.com/herolo/herolo-logo-animated.gif" alt="herolo-logo"/>
@@ -30,7 +31,7 @@
         </mat-hint>
       </mat-form-field>
 
-      <app-paginator [search]="search?.value"></app-paginator>
+      <app-paginator [search]="search?.value" fxHide.xs></app-paginator>
 
       <div fxLayout="row" fxLayoutAlign="end center">
         <div class="nav-btn">

@@ -6,7 +6,7 @@
     <mat-spinner [diameter]="50"></mat-spinner>
   </div>
 
-  <div class="main-movies__items" *ngIf="!(loader$ | async)">
+  <div class="main-movies__items" *ngIf="!(loader$ | async) && (movies$ | async).length">
     <app-movie
       *ngFor="let movie of (movies$ | async); let movieId = index"
       [movie]="movie"
